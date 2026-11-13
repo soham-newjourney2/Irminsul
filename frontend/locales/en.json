@@ -1,13 +1,39 @@
 {
-  "app": { "name": "Irminsul" },
-  "nav": { "label": "Main", "home": "Home", "approvals": "Approvals" },
+  "app": {
+    "name": "Irminsul"
+  },
+  "nav": {
+    "label": "Main",
+    "home": "Home",
+    "approvals": "Approvals",
+    "farms": "Farms",
+    "sell": "Sell",
+    "storage": "Storage",
+    "market": "Market",
+    "deals": "Deals",
+    "facilities": "Facilities",
+    "bookings": "Bookings"
+  },
   "common": {
     "logout": "Log out",
     "loading": "Loading…",
     "retry": "Try again",
     "language": "Language",
     "online": "Online",
-    "offline": "Offline"
+    "offline": "Offline",
+    "choose": "Choose…",
+    "all": "All",
+    "all_crops": "All crops",
+    "all_districts": "All districts",
+    "any": "Any",
+    "district": "District",
+    "crop": "Crop",
+    "quantity": "Quantity",
+    "unit": "Unit",
+    "note": "Note",
+    "save": "Save",
+    "saved": "Saved",
+    "contact": "Contact"
   },
   "roles": {
     "farmer": "Farmer",
@@ -15,7 +41,11 @@
     "storage_operator": "Cold-storage operator",
     "admin": "Admin"
   },
-  "status": { "active": "Active", "pending": "Awaiting approval", "rejected": "Rejected" },
+  "status": {
+    "active": "Active",
+    "pending": "Awaiting approval",
+    "rejected": "Rejected"
+  },
   "landing": {
     "title": "From field to market, with every step on record",
     "body": "Sell produce, book cold storage, and trace each batch — for farmers, distributors, and storage operators in West Bengal.",
@@ -81,7 +111,12 @@
     "target": "Record",
     "reason": "Reason"
   },
-  "audit": { "user": { "approve": "Account approved", "reject": "Account rejected" } },
+  "audit": {
+    "user": {
+      "approve": "Account approved",
+      "reject": "Account rejected"
+    }
+  },
   "validation": {
     "required": "Please fill in all required fields.",
     "phone": "Enter a valid 10-digit Indian mobile number.",
@@ -100,6 +135,275 @@
     "validation_error": "Some details are invalid. Please check and try again.",
     "db_unavailable": "The service is temporarily unavailable.",
     "not_pending": "This account has already been reviewed.",
-    "not_found": "Not found."
+    "not_found": "Not found.",
+    "listing_unavailable": "This listing is no longer accepting requests.",
+    "insufficient_quantity": "Not enough quantity left.",
+    "not_your_turn": "Waiting for the other party to respond.",
+    "invalid_transition": "This action is not possible in the current state.",
+    "conflict": "This changed meanwhile. Reload and try again.",
+    "insufficient_capacity": "Not enough free capacity.",
+    "capacity_below_usage": "Capacity cannot be less than what is reserved and occupied.",
+    "commodity_not_supported": "This facility does not store that crop.",
+    "request_in_progress": "This request is already being processed.",
+    "idempotency_key_reused": "Please try again.",
+    "listing_closed": "This listing can no longer be edited.",
+    "no_organization": "Your account has no organisation.",
+    "capacity_mismatch": "Capacity records are inconsistent. Contact the admin."
+  },
+  "units": {
+    "kg": "kg",
+    "quintal": "quintal",
+    "tonne": "tonne",
+    "per_quintal": "{price} / quintal"
+  },
+  "commodities": {
+    "potato": "Potato",
+    "tomato": "Tomato",
+    "rice": "Rice",
+    "jute": "Jute"
+  },
+  "badges": {
+    "demo": "Demo"
+  },
+  "prices": {
+    "asking": "Asking price",
+    "offered": "Offered price",
+    "agreed": "Agreed price"
+  },
+  "map": {
+    "unavailable": "Map unavailable. You can still enter coordinates.",
+    "use_my_location": "Use my location",
+    "pick_hint": "Tap the map to set the location.",
+    "location_failed": "Could not get your location",
+    "lat": "Latitude",
+    "lng": "Longitude"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "No notifications yet.",
+    "mark_all": "Mark all read",
+    "request": {
+      "created": "{name} sent a request for {qty} of {commodity}",
+      "countered": "{name} sent a counter-offer for {commodity}",
+      "accepted": "{name} accepted the deal: {qty} of {commodity}",
+      "rejected": "Your request for {commodity} was rejected",
+      "withdrawn": "A request for {commodity} was withdrawn",
+      "listing_cancelled": "A {commodity} listing you requested was cancelled"
+    },
+    "order": {
+      "dispatched": "Order dispatched: {qty} of {commodity}",
+      "delivered": "Order delivered: {qty} of {commodity}",
+      "closed": "Order closed: {commodity}",
+      "cancelled": "Order cancelled: {qty} of {commodity}"
+    },
+    "booking": {
+      "requested": "{name} requested storage for {qty} of {commodity} at {facility}",
+      "accepted": "Storage booking accepted at {facility}",
+      "rejected": "Storage booking rejected at {facility}",
+      "changes_requested": "{facility} asked for changes to your booking",
+      "checked_in": "{qty} of {commodity} checked in at {facility}",
+      "released": "{qty} of {commodity} released from {facility}",
+      "cancelled": "{name} cancelled a booking at {facility}"
+    }
+  },
+  "parties": {
+    "farmer": "Farmer",
+    "distributor": "Distributor",
+    "storage_operator": "Storage operator",
+    "admin": "Admin",
+    "system": "System"
+  },
+  "history": {
+    "offer": "offer",
+    "counter": "counter-offer",
+    "accept": "accepted",
+    "reject": "rejected",
+    "withdraw": "withdrawn",
+    "listing_cancelled": "listing cancelled"
+  },
+  "status_listing": {
+    "draft": "Draft",
+    "active": "Active",
+    "reserved": "Reserved",
+    "partially_fulfilled": "Partly sold",
+    "sold": "Sold",
+    "expired": "Expired",
+    "cancelled": "Cancelled"
+  },
+  "status_request": {
+    "pending": "Awaiting farmer",
+    "accepted": "Accepted",
+    "rejected": "Rejected",
+    "countered": "Counter-offer",
+    "withdrawn": "Withdrawn"
+  },
+  "status_order": {
+    "confirmed": "Confirmed",
+    "dispatched": "Dispatched",
+    "delivered": "Delivered",
+    "closed": "Closed",
+    "cancelled": "Cancelled"
+  },
+  "status_booking": {
+    "requested": "Requested",
+    "accepted": "Accepted",
+    "rejected": "Rejected",
+    "changes_requested": "Changes requested",
+    "checked_in": "Checked in",
+    "released": "Released",
+    "cancelled": "Cancelled"
+  },
+  "farms": {
+    "title": "My farms",
+    "add": "Add a farm",
+    "name": "Farm name",
+    "village": "Village",
+    "area": "Area",
+    "acres": "acres",
+    "area_acres": "Area (acres)",
+    "location": "Location",
+    "save": "Save farm",
+    "saved": "Farm saved",
+    "empty": "No farms yet. Add your first farm to start selling."
+  },
+  "sell": {
+    "title": "Sell produce",
+    "tab_listings": "My listings",
+    "tab_requests": "Requests",
+    "tab_orders": "Orders",
+    "need_farm": "Add a farm first.",
+    "new_listing": "New listing",
+    "farm": "Farm",
+    "variety": "Variety",
+    "grade": "Grade",
+    "asking_price": "Asking price (₹ per quintal)",
+    "price_hint": "1 quintal = 100 kg",
+    "harvest_date": "Harvest date",
+    "available_from": "Available from",
+    "available_until": "Available until",
+    "publish_now": "Publish now (otherwise saved as draft)",
+    "create": "Create listing",
+    "created": "Listing created",
+    "publish": "Publish",
+    "cancel": "Cancel listing",
+    "confirm_cancel": "Cancel this listing? Open requests will be rejected.",
+    "edit_price": "Change asking price",
+    "remaining": "Remaining",
+    "empty_listings": "No listings yet."
+  },
+  "deals": {
+    "title": "My deals",
+    "tab_requests": "Requests",
+    "tab_orders": "Orders",
+    "qty_optional": "Leave empty to keep",
+    "counter_price": "Your price (₹ per quintal)",
+    "send_counter": "Send counter-offer",
+    "countered": "Counter-offer sent",
+    "counter": "Counter-offer",
+    "accept": "Accept",
+    "accepted": "Deal accepted — order created",
+    "reject": "Reject",
+    "confirm_reject": "Reject this request?",
+    "withdraw": "Withdraw",
+    "confirm_withdraw": "Withdraw this request?",
+    "delivery": "Delivery",
+    "mode_pickup": "Buyer picks up",
+    "mode_delivery": "Farmer delivers",
+    "needed_by": "Needed by",
+    "your_turn": "Your response is needed.",
+    "their_turn": "Waiting for the other party.",
+    "empty_requests": "No purchase requests yet."
+  },
+  "orders": {
+    "dispatch": "Mark dispatched",
+    "deliver": "Mark delivered",
+    "close": "Close order",
+    "cancel": "Cancel order",
+    "confirm_cancel": "Cancel this order? The quantity returns to the listing.",
+    "done_dispatch": "Marked as dispatched",
+    "done_deliver": "Marked as delivered",
+    "done_close": "Order closed",
+    "done_cancel": "Order cancelled",
+    "total": "Total value",
+    "offline_payment": "Payment is settled directly between buyer and seller (not through Irminsul).",
+    "empty": "No orders yet."
+  },
+  "storage": {
+    "title": "Cold storage",
+    "meter": "{free} free of {capacity}",
+    "occupied": "Occupied",
+    "reserved": "Reserved",
+    "free": "Free",
+    "start_date": "From",
+    "end_date": "Until",
+    "reason": "Reason",
+    "facility": "Facility",
+    "period": "Period",
+    "request_booking": "Request booking",
+    "booking_sent": "Booking request sent",
+    "book_here": "Book space here",
+    "my_bookings": "My bookings",
+    "empty_bookings": "No bookings yet.",
+    "empty_facilities": "No cold storage found for this filter.",
+    "commodities": "Crops stored",
+    "facility_name": "Facility name",
+    "address": "Address",
+    "contact_phone": "Contact phone",
+    "capacity": "Capacity",
+    "create_facility": "Add facility",
+    "facility_created": "Facility added",
+    "status": "Status",
+    "status_active": "Open for bookings",
+    "status_inactive": "Closed for bookings",
+    "zone_name": "Zone / chamber name",
+    "zone_kind": "Type",
+    "zone_cold": "Cold",
+    "zone_ambient": "Ambient",
+    "add_zone": "Add zone",
+    "zones": "Zones",
+    "no_zones": "No zones yet.",
+    "edit": "Edit facility",
+    "my_facilities": "My facilities",
+    "add_facility": "Add a facility",
+    "no_facilities": "No facilities yet."
+  },
+  "bookings": {
+    "title": "Booking requests",
+    "accept": "Accept",
+    "request-changes": "Ask for changes",
+    "reject": "Reject",
+    "check-in": "Check in",
+    "release": "Release",
+    "cancel": "Cancel booking",
+    "resubmit": "Send updated request",
+    "done_accept": "Booking accepted — capacity reserved",
+    "done_request-changes": "Changes requested",
+    "done_reject": "Booking rejected",
+    "done_check-in": "Checked in",
+    "done_release": "Released",
+    "done_cancel": "Booking cancelled",
+    "done_resubmit": "Updated request sent",
+    "no_zone": "No specific zone",
+    "zone": "Zone",
+    "confirm_cancel": "Cancel this booking?",
+    "empty": "No bookings for this filter."
+  },
+  "market": {
+    "title": "Market",
+    "your_price": "Your offer (₹ per quintal)",
+    "send_request": "Send request",
+    "request_sent": "Request sent to the farmer",
+    "available": "Available",
+    "make_offer": "Make an offer",
+    "sort": "Sort by",
+    "sort_newest": "Newest",
+    "sort_price": "Lowest price",
+    "sort_distance": "Nearest",
+    "near_set": "Searching near your location",
+    "near_unset": "Location not set — showing all of West Bengal",
+    "max_price": "Max price (₹ per quintal)",
+    "radius": "Radius (km)",
+    "search": "Search",
+    "empty": "No produce matches these filters."
   }
 }

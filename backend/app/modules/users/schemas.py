@@ -67,3 +67,13 @@ def user_out(user: Doc, org: Doc | None = None) -> UserOut:
         ),
         created_at=user["created_at"],
     )
+
+
+class PartyOut(BaseModel):
+    """Counterparty view. `phone` is only filled once contact reveal is allowed."""
+
+    id: str
+    name: str
+    org_name: str | None = None
+    district: str | None = None
+    phone: str | None = None

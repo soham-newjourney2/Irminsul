@@ -3,12 +3,26 @@ import { api } from "../api.js";
 import { HOME, getMe, logout } from "../auth.js";
 import { LANGS, apply, initI18n, setLang, t } from "../i18n.js";
 import { el } from "./dom.js";
+import { bell } from "./notify.js";
 
 // Nav grows as milestones add pages. Keys are locale keys.
 const NAV = {
-  farmer: [{ href: "/farmer/", key: "nav.home" }],
-  distributor: [{ href: "/distributor/", key: "nav.home" }],
-  storage_operator: [{ href: "/storage/", key: "nav.home" }],
+  farmer: [
+    { href: "/farmer/", key: "nav.home" },
+    { href: "/farmer/farms.html", key: "nav.farms" },
+    { href: "/farmer/sell.html", key: "nav.sell" },
+    { href: "/farmer/storage.html", key: "nav.storage" },
+  ],
+  distributor: [
+    { href: "/distributor/", key: "nav.home" },
+    { href: "/distributor/market.html", key: "nav.market" },
+    { href: "/distributor/deals.html", key: "nav.deals" },
+  ],
+  storage_operator: [
+    { href: "/storage/", key: "nav.home" },
+    { href: "/storage/facilities.html", key: "nav.facilities" },
+    { href: "/storage/bookings.html", key: "nav.bookings" },
+  ],
   admin: [{ href: "/admin/", key: "nav.approvals" }],
 };
 
@@ -47,6 +61,7 @@ function renderHeader(me) {
   if (!host) return;
   const links = (me && me.status === "active" ? NAV[me.role] : []) ?? [];
   const here = location.pathname;
+  const notifications = me && me.status === "active" ? bell() : null;
   host.className = "app-header";
   host.replaceChildren(
     el(
@@ -70,6 +85,7 @@ function renderHeader(me) {
         "div",
         { class: "header-tools" },
         connIndicator(),
+        notifications?.button,
         langSelect(me),
         me
           ? el("button", {
@@ -80,6 +96,7 @@ function renderHeader(me) {
             })
           : null,
       ),
+      notifications?.panel,
     ),
   );
 }

@@ -1,14 +1,40 @@
 {
   "_review": "Draft by Claude — owner review pending",
-  "app": { "name": "इर्मिनसुल" },
-  "nav": { "label": "मुख्य", "home": "होम", "approvals": "स्वीकृतियाँ" },
+  "app": {
+    "name": "इर्मिनसुल"
+  },
+  "nav": {
+    "label": "मुख्य",
+    "home": "होम",
+    "approvals": "स्वीकृतियाँ",
+    "farms": "खेत",
+    "sell": "बेचें",
+    "storage": "कोल्ड स्टोरेज",
+    "market": "बाज़ार",
+    "deals": "सौदे",
+    "facilities": "स्टोरेज केंद्र",
+    "bookings": "बुकिंग"
+  },
   "common": {
     "logout": "लॉग आउट",
     "loading": "लोड हो रहा है…",
     "retry": "फिर से कोशिश करें",
     "language": "भाषा",
     "online": "ऑनलाइन",
-    "offline": "ऑफ़लाइन"
+    "offline": "ऑफ़लाइन",
+    "choose": "चुनें…",
+    "all": "सभी",
+    "all_crops": "सभी फसलें",
+    "all_districts": "सभी ज़िले",
+    "any": "कोई भी",
+    "district": "ज़िला",
+    "crop": "फसल",
+    "quantity": "मात्रा",
+    "unit": "इकाई",
+    "note": "टिप्पणी",
+    "save": "सहेजें",
+    "saved": "सहेजा गया",
+    "contact": "संपर्क"
   },
   "roles": {
     "farmer": "किसान",
@@ -16,7 +42,11 @@
     "storage_operator": "कोल्ड स्टोरेज संचालक",
     "admin": "एडमिन"
   },
-  "status": { "active": "सक्रिय", "pending": "स्वीकृति की प्रतीक्षा में", "rejected": "अस्वीकृत" },
+  "status": {
+    "active": "सक्रिय",
+    "pending": "स्वीकृति की प्रतीक्षा में",
+    "rejected": "अस्वीकृत"
+  },
   "landing": {
     "title": "खेत से बाज़ार तक, हर कदम का रिकॉर्ड",
     "body": "उपज बेचें, कोल्ड स्टोरेज बुक करें और हर बैच का स्रोत जानें — पश्चिम बंगाल के किसानों, वितरकों और कोल्ड स्टोरेज संचालकों के लिए।",
@@ -82,7 +112,12 @@
     "target": "रिकॉर्ड",
     "reason": "कारण"
   },
-  "audit": { "user": { "approve": "खाता स्वीकृत", "reject": "खाता अस्वीकृत" } },
+  "audit": {
+    "user": {
+      "approve": "खाता स्वीकृत",
+      "reject": "खाता अस्वीकृत"
+    }
+  },
   "validation": {
     "required": "कृपया सभी ज़रूरी जानकारी भरें।",
     "phone": "सही 10 अंकों का भारतीय मोबाइल नंबर डालें।",
@@ -101,6 +136,275 @@
     "validation_error": "कुछ जानकारी सही नहीं है। जाँचकर फिर से कोशिश करें।",
     "db_unavailable": "सेवा अस्थायी रूप से उपलब्ध नहीं है।",
     "not_pending": "इस खाते की जाँच पहले ही हो चुकी है।",
-    "not_found": "नहीं मिला।"
+    "not_found": "नहीं मिला।",
+    "listing_unavailable": "यह लिस्टिंग अब अनुरोध नहीं ले रही।",
+    "insufficient_quantity": "पर्याप्त मात्रा बाकी नहीं है।",
+    "not_your_turn": "दूसरे पक्ष के जवाब की प्रतीक्षा है।",
+    "invalid_transition": "मौजूदा स्थिति में यह काम संभव नहीं।",
+    "conflict": "इस बीच यह बदल गया। फिर से लोड करके कोशिश करें।",
+    "insufficient_capacity": "पर्याप्त खाली जगह नहीं है।",
+    "capacity_below_usage": "क्षमता आरक्षित और भरी मात्रा से कम नहीं हो सकती।",
+    "commodity_not_supported": "यह केंद्र वह फसल नहीं रखता।",
+    "request_in_progress": "यह अनुरोध प्रक्रिया में है।",
+    "idempotency_key_reused": "फिर से कोशिश करें।",
+    "listing_closed": "यह लिस्टिंग अब संपादित नहीं हो सकती।",
+    "no_organization": "आपके खाते में कोई संस्था नहीं है।",
+    "capacity_mismatch": "क्षमता के रिकॉर्ड में गड़बड़ी। एडमिन से संपर्क करें।"
+  },
+  "units": {
+    "kg": "किलो",
+    "quintal": "क्विंटल",
+    "tonne": "टन",
+    "per_quintal": "{price} / क्विंटल"
+  },
+  "commodities": {
+    "potato": "आलू",
+    "tomato": "टमाटर",
+    "rice": "धान",
+    "jute": "जूट"
+  },
+  "badges": {
+    "demo": "डेमो"
+  },
+  "prices": {
+    "asking": "माँगी गई कीमत",
+    "offered": "प्रस्तावित कीमत",
+    "agreed": "तय कीमत"
+  },
+  "map": {
+    "unavailable": "नक्शा उपलब्ध नहीं। आप निर्देशांक लिख सकते हैं।",
+    "use_my_location": "मेरी लोकेशन लें",
+    "pick_hint": "लोकेशन चुनने के लिए नक्शे पर टैप करें।",
+    "location_failed": "आपकी लोकेशन नहीं मिल सकी",
+    "lat": "अक्षांश",
+    "lng": "देशांतर"
+  },
+  "notifications": {
+    "title": "सूचनाएँ",
+    "empty": "अभी कोई सूचना नहीं।",
+    "mark_all": "सब पढ़ा हुआ करें",
+    "request": {
+      "created": "{name} ने {commodity} {qty} का अनुरोध भेजा",
+      "countered": "{name} ने {commodity} के लिए जवाबी प्रस्ताव भेजा",
+      "accepted": "{name} ने सौदा स्वीकार किया: {commodity} {qty}",
+      "rejected": "{commodity} के लिए आपका अनुरोध अस्वीकार हुआ",
+      "withdrawn": "{commodity} का एक अनुरोध वापस लिया गया",
+      "listing_cancelled": "जिस {commodity} लिस्टिंग पर आपने अनुरोध किया था, वह रद्द हो गई"
+    },
+    "order": {
+      "dispatched": "ऑर्डर भेजा गया: {commodity} {qty}",
+      "delivered": "ऑर्डर पहुँचा: {commodity} {qty}",
+      "closed": "ऑर्डर बंद: {commodity}",
+      "cancelled": "ऑर्डर रद्द: {commodity} {qty}"
+    },
+    "booking": {
+      "requested": "{name} ने {facility} में {commodity} {qty} रखने का अनुरोध किया",
+      "accepted": "{facility} में स्टोरेज बुकिंग स्वीकार",
+      "rejected": "{facility} में स्टोरेज बुकिंग अस्वीकार",
+      "changes_requested": "{facility} ने आपकी बुकिंग में बदलाव माँगा",
+      "checked_in": "{facility} में {commodity} {qty} जमा हुआ",
+      "released": "{facility} से {commodity} {qty} निकाला गया",
+      "cancelled": "{name} ने {facility} की एक बुकिंग रद्द की"
+    }
+  },
+  "parties": {
+    "farmer": "किसान",
+    "distributor": "वितरक",
+    "storage_operator": "स्टोरेज संचालक",
+    "admin": "एडमिन",
+    "system": "सिस्टम"
+  },
+  "history": {
+    "offer": "प्रस्ताव",
+    "counter": "जवाबी प्रस्ताव",
+    "accept": "स्वीकार",
+    "reject": "अस्वीकार",
+    "withdraw": "वापस लिया",
+    "listing_cancelled": "लिस्टिंग रद्द"
+  },
+  "status_listing": {
+    "draft": "ड्राफ़्ट",
+    "active": "सक्रिय",
+    "reserved": "आरक्षित",
+    "partially_fulfilled": "आंशिक बिका",
+    "sold": "बिक गया",
+    "expired": "समय समाप्त",
+    "cancelled": "रद्द"
+  },
+  "status_request": {
+    "pending": "किसान के जवाब की प्रतीक्षा",
+    "accepted": "स्वीकार",
+    "rejected": "अस्वीकार",
+    "countered": "जवाबी प्रस्ताव",
+    "withdrawn": "वापस लिया"
+  },
+  "status_order": {
+    "confirmed": "पक्का",
+    "dispatched": "भेजा गया",
+    "delivered": "पहुँचा",
+    "closed": "बंद",
+    "cancelled": "रद्द"
+  },
+  "status_booking": {
+    "requested": "अनुरोध किया",
+    "accepted": "स्वीकार",
+    "rejected": "अस्वीकार",
+    "changes_requested": "बदलाव माँगा",
+    "checked_in": "जमा हुआ",
+    "released": "निकाला गया",
+    "cancelled": "रद्द"
+  },
+  "farms": {
+    "title": "मेरे खेत",
+    "add": "खेत जोड़ें",
+    "name": "खेत का नाम",
+    "village": "गाँव",
+    "area": "क्षेत्रफल",
+    "acres": "एकड़",
+    "area_acres": "क्षेत्रफल (एकड़)",
+    "location": "लोकेशन",
+    "save": "खेत सहेजें",
+    "saved": "खेत सहेजा गया",
+    "empty": "अभी कोई खेत नहीं। बेचना शुरू करने के लिए पहला खेत जोड़ें।"
+  },
+  "sell": {
+    "title": "उपज बेचें",
+    "tab_listings": "मेरी लिस्टिंग",
+    "tab_requests": "अनुरोध",
+    "tab_orders": "ऑर्डर",
+    "need_farm": "पहले एक खेत जोड़ें।",
+    "new_listing": "नई लिस्टिंग",
+    "farm": "खेत",
+    "variety": "किस्म",
+    "grade": "ग्रेड",
+    "asking_price": "माँगी गई कीमत (₹ प्रति क्विंटल)",
+    "price_hint": "1 क्विंटल = 100 किलो",
+    "harvest_date": "कटाई की तारीख",
+    "available_from": "कब से उपलब्ध",
+    "available_until": "कब तक उपलब्ध",
+    "publish_now": "अभी प्रकाशित करें (वरना ड्राफ़्ट में रहेगा)",
+    "create": "लिस्टिंग बनाएँ",
+    "created": "लिस्टिंग बन गई",
+    "publish": "प्रकाशित करें",
+    "cancel": "लिस्टिंग रद्द करें",
+    "confirm_cancel": "यह लिस्टिंग रद्द करें? खुले अनुरोध अस्वीकार हो जाएँगे।",
+    "edit_price": "माँगी गई कीमत बदलें",
+    "remaining": "बाकी",
+    "empty_listings": "अभी कोई लिस्टिंग नहीं।"
+  },
+  "deals": {
+    "title": "मेरे सौदे",
+    "tab_requests": "अनुरोध",
+    "tab_orders": "ऑर्डर",
+    "qty_optional": "वही रखने के लिए खाली छोड़ें",
+    "counter_price": "आपकी कीमत (₹ प्रति क्विंटल)",
+    "send_counter": "जवाबी प्रस्ताव भेजें",
+    "countered": "जवाबी प्रस्ताव भेजा गया",
+    "counter": "जवाबी प्रस्ताव",
+    "accept": "स्वीकार करें",
+    "accepted": "सौदा स्वीकार — ऑर्डर बना",
+    "reject": "अस्वीकार करें",
+    "confirm_reject": "यह अनुरोध अस्वीकार करें?",
+    "withdraw": "वापस लें",
+    "confirm_withdraw": "यह अनुरोध वापस लें?",
+    "delivery": "डिलीवरी",
+    "mode_pickup": "खरीदार ले जाएगा",
+    "mode_delivery": "किसान पहुँचाएगा",
+    "needed_by": "कब तक चाहिए",
+    "your_turn": "आपका जवाब चाहिए।",
+    "their_turn": "दूसरे पक्ष के जवाब की प्रतीक्षा।",
+    "empty_requests": "अभी कोई खरीद अनुरोध नहीं।"
+  },
+  "orders": {
+    "dispatch": "भेजा गया चिह्नित करें",
+    "deliver": "पहुँचा चिह्नित करें",
+    "close": "ऑर्डर बंद करें",
+    "cancel": "ऑर्डर रद्द करें",
+    "confirm_cancel": "यह ऑर्डर रद्द करें? मात्रा लिस्टिंग में लौट जाएगी।",
+    "done_dispatch": "भेजा गया चिह्नित",
+    "done_deliver": "पहुँचा चिह्नित",
+    "done_close": "ऑर्डर बंद हुआ",
+    "done_cancel": "ऑर्डर रद्द हुआ",
+    "total": "कुल मूल्य",
+    "offline_payment": "भुगतान खरीदार और विक्रेता के बीच सीधे होता है (इर्मिनसुल के ज़रिए नहीं)।",
+    "empty": "अभी कोई ऑर्डर नहीं।"
+  },
+  "storage": {
+    "title": "कोल्ड स्टोरेज",
+    "meter": "{capacity} में से {free} खाली",
+    "occupied": "भरा",
+    "reserved": "आरक्षित",
+    "free": "खाली",
+    "start_date": "से",
+    "end_date": "तक",
+    "reason": "कारण",
+    "facility": "स्टोरेज केंद्र",
+    "period": "अवधि",
+    "request_booking": "बुकिंग का अनुरोध करें",
+    "booking_sent": "बुकिंग अनुरोध भेजा गया",
+    "book_here": "यहाँ जगह बुक करें",
+    "my_bookings": "मेरी बुकिंग",
+    "empty_bookings": "अभी कोई बुकिंग नहीं।",
+    "empty_facilities": "इस फ़िल्टर में कोई कोल्ड स्टोरेज नहीं मिला।",
+    "commodities": "रखी जाने वाली फसलें",
+    "facility_name": "केंद्र का नाम",
+    "address": "पता",
+    "contact_phone": "संपर्क फ़ोन",
+    "capacity": "क्षमता",
+    "create_facility": "केंद्र जोड़ें",
+    "facility_created": "केंद्र जोड़ा गया",
+    "status": "स्थिति",
+    "status_active": "बुकिंग खुली",
+    "status_inactive": "बुकिंग बंद",
+    "zone_name": "ज़ोन / चैंबर का नाम",
+    "zone_kind": "प्रकार",
+    "zone_cold": "ठंडा",
+    "zone_ambient": "सामान्य तापमान",
+    "add_zone": "ज़ोन जोड़ें",
+    "zones": "ज़ोन",
+    "no_zones": "अभी कोई ज़ोन नहीं।",
+    "edit": "केंद्र संपादित करें",
+    "my_facilities": "मेरे केंद्र",
+    "add_facility": "एक केंद्र जोड़ें",
+    "no_facilities": "अभी कोई केंद्र नहीं।"
+  },
+  "bookings": {
+    "title": "बुकिंग अनुरोध",
+    "accept": "स्वीकार करें",
+    "request-changes": "बदलाव माँगें",
+    "reject": "अस्वीकार करें",
+    "check-in": "जमा करें",
+    "release": "निकालें",
+    "cancel": "बुकिंग रद्द करें",
+    "resubmit": "नया अनुरोध भेजें",
+    "done_accept": "बुकिंग स्वीकार — जगह आरक्षित",
+    "done_request-changes": "बदलाव माँगा गया",
+    "done_reject": "बुकिंग अस्वीकार",
+    "done_check-in": "जमा किया गया",
+    "done_release": "निकाला गया",
+    "done_cancel": "बुकिंग रद्द हुई",
+    "done_resubmit": "नया अनुरोध भेजा गया",
+    "no_zone": "कोई खास ज़ोन नहीं",
+    "zone": "ज़ोन",
+    "confirm_cancel": "यह बुकिंग रद्द करें?",
+    "empty": "इस फ़िल्टर में कोई बुकिंग नहीं।"
+  },
+  "market": {
+    "title": "बाज़ार",
+    "your_price": "आपका प्रस्ताव (₹ प्रति क्विंटल)",
+    "send_request": "अनुरोध भेजें",
+    "request_sent": "किसान को अनुरोध भेजा गया",
+    "available": "उपलब्ध",
+    "make_offer": "प्रस्ताव दें",
+    "sort": "क्रम",
+    "sort_newest": "नए पहले",
+    "sort_price": "कम कीमत पहले",
+    "sort_distance": "नज़दीकी पहले",
+    "near_set": "आपकी लोकेशन के पास खोज रहे हैं",
+    "near_unset": "लोकेशन नहीं दी — पूरा पश्चिम बंगाल दिखा रहे हैं",
+    "max_price": "अधिकतम कीमत (₹ प्रति क्विंटल)",
+    "radius": "दायरा (किमी)",
+    "search": "खोजें",
+    "empty": "इन फ़िल्टर से कोई उपज नहीं मिली।"
   }
 }

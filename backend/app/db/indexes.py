@@ -22,13 +22,44 @@ INDEXES: dict[str, list[IndexModel]] = {
         IndexModel([("key", ASCENDING), ("user_id", ASCENDING)], unique=True, name="key_user"),
         IndexModel([("created_at", ASCENDING)], expireAfterSeconds=24 * 3600, name="ttl_24h"),
     ],
-    # Market / storage (M2) — geo indexes needed for proximity search
-    "farms": [IndexModel([("location", GEOSPHERE)], name="location_2dsphere")],
+    # Market (M2)
+    "farms": [
+        IndexModel([("location", GEOSPHERE)], name="location_2dsphere"),
+        IndexModel([("farmer_id", ASCENDING)], name="farmer"),
+    ],
     "produce_listings": [
         IndexModel([("status", ASCENDING), ("commodity", ASCENDING)], name="status_commodity"),
         IndexModel([("location", GEOSPHERE)], name="location_2dsphere"),
+        IndexModel([("farmer_id", ASCENDING), ("created_at", DESCENDING)], name="farmer_created"),
     ],
-    "storage_facilities": [IndexModel([("location", GEOSPHERE)], name="location_2dsphere")],
+    "purchase_requests": [
+        IndexModel([("farmer_id", ASCENDING), ("updated_at", DESCENDING)], name="farmer_updated"),
+        IndexModel(
+            [("distributor_id", ASCENDING), ("updated_at", DESCENDING)], name="distributor_updated"
+        ),
+        IndexModel([("listing_id", ASCENDING), ("status", ASCENDING)], name="listing_status"),
+    ],
+    "orders": [
+        IndexModel([("farmer_id", ASCENDING), ("updated_at", DESCENDING)], name="farmer_updated"),
+        IndexModel(
+            [("distributor_id", ASCENDING), ("updated_at", DESCENDING)], name="distributor_updated"
+        ),
+        IndexModel([("listing_id", ASCENDING), ("status", ASCENDING)], name="listing_status"),
+    ],
+    # Storage (M2)
+    "storage_facilities": [
+        IndexModel([("location", GEOSPHERE)], name="location_2dsphere"),
+        IndexModel([("org_id", ASCENDING)], name="org"),
+    ],
+    "storage_zones": [IndexModel([("facility_id", ASCENDING)], name="facility")],
+    "storage_bookings": [
+        IndexModel([("farmer_id", ASCENDING), ("updated_at", DESCENDING)], name="farmer_updated"),
+        IndexModel([("org_id", ASCENDING), ("updated_at", DESCENDING)], name="org_updated"),
+    ],
+    "notifications": [
+        IndexModel([("user_id", ASCENDING), ("created_at", DESCENDING)], name="user_created"),
+        IndexModel([("user_id", ASCENDING), ("read_at", ASCENDING)], name="user_unread"),
+    ],
 }
 
 

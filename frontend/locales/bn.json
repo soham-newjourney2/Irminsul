@@ -1,14 +1,40 @@
 {
   "_review": "Draft by Claude — owner review pending",
-  "app": { "name": "ইরমিনসুল" },
-  "nav": { "label": "প্রধান", "home": "হোম", "approvals": "অনুমোদন" },
+  "app": {
+    "name": "ইরমিনসুল"
+  },
+  "nav": {
+    "label": "প্রধান",
+    "home": "হোম",
+    "approvals": "অনুমোদন",
+    "farms": "খামার",
+    "sell": "বিক্রি",
+    "storage": "হিমঘর",
+    "market": "বাজার",
+    "deals": "লেনদেন",
+    "facilities": "হিমঘরসমূহ",
+    "bookings": "বুকিং"
+  },
   "common": {
     "logout": "লগ আউট",
     "loading": "লোড হচ্ছে…",
     "retry": "আবার চেষ্টা করুন",
     "language": "ভাষা",
     "online": "অনলাইন",
-    "offline": "অফলাইন"
+    "offline": "অফলাইন",
+    "choose": "বেছে নিন…",
+    "all": "সব",
+    "all_crops": "সব ফসল",
+    "all_districts": "সব জেলা",
+    "any": "যেকোনো",
+    "district": "জেলা",
+    "crop": "ফসল",
+    "quantity": "পরিমাণ",
+    "unit": "একক",
+    "note": "মন্তব্য",
+    "save": "সংরক্ষণ",
+    "saved": "সংরক্ষিত",
+    "contact": "যোগাযোগ"
   },
   "roles": {
     "farmer": "কৃষক",
@@ -16,7 +42,11 @@
     "storage_operator": "হিমঘর পরিচালক",
     "admin": "অ্যাডমিন"
   },
-  "status": { "active": "সক্রিয়", "pending": "অনুমোদনের অপেক্ষায়", "rejected": "প্রত্যাখ্যাত" },
+  "status": {
+    "active": "সক্রিয়",
+    "pending": "অনুমোদনের অপেক্ষায়",
+    "rejected": "প্রত্যাখ্যাত"
+  },
   "landing": {
     "title": "খেত থেকে বাজার, প্রতিটি ধাপের হিসাব সহ",
     "body": "ফসল বিক্রি করুন, হিমঘর বুক করুন, প্রতিটি ব্যাচের উৎস জানুন — পশ্চিমবঙ্গের কৃষক, পরিবেশক ও হিমঘর পরিচালকদের জন্য।",
@@ -82,7 +112,12 @@
     "target": "রেকর্ড",
     "reason": "কারণ"
   },
-  "audit": { "user": { "approve": "অ্যাকাউন্ট অনুমোদিত", "reject": "অ্যাকাউন্ট প্রত্যাখ্যাত" } },
+  "audit": {
+    "user": {
+      "approve": "অ্যাকাউন্ট অনুমোদিত",
+      "reject": "অ্যাকাউন্ট প্রত্যাখ্যাত"
+    }
+  },
   "validation": {
     "required": "অনুগ্রহ করে সব প্রয়োজনীয় ঘর পূরণ করুন।",
     "phone": "সঠিক ১০ অঙ্কের ভারতীয় মোবাইল নম্বর দিন।",
@@ -101,6 +136,275 @@
     "validation_error": "কিছু তথ্য সঠিক নয়। দেখে আবার চেষ্টা করুন।",
     "db_unavailable": "পরিষেবাটি সাময়িকভাবে বন্ধ আছে।",
     "not_pending": "এই অ্যাকাউন্ট আগেই যাচাই করা হয়েছে।",
-    "not_found": "পাওয়া যায়নি।"
+    "not_found": "পাওয়া যায়নি।",
+    "listing_unavailable": "এই তালিকা আর অনুরোধ নিচ্ছে না।",
+    "insufficient_quantity": "যথেষ্ট পরিমাণ বাকি নেই।",
+    "not_your_turn": "অন্য পক্ষের উত্তরের অপেক্ষায়।",
+    "invalid_transition": "বর্তমান অবস্থায় এই কাজ সম্ভব নয়।",
+    "conflict": "এর মধ্যে এটি বদলে গেছে। আবার লোড করে চেষ্টা করুন।",
+    "insufficient_capacity": "যথেষ্ট খালি জায়গা নেই।",
+    "capacity_below_usage": "ধারণক্ষমতা সংরক্ষিত ও ভর্তি পরিমাণের চেয়ে কম হতে পারে না।",
+    "commodity_not_supported": "এই হিমঘরে ওই ফসল রাখা হয় না।",
+    "request_in_progress": "এই অনুরোধটি প্রক্রিয়াধীন।",
+    "idempotency_key_reused": "আবার চেষ্টা করুন।",
+    "listing_closed": "এই তালিকা আর সম্পাদনা করা যাবে না।",
+    "no_organization": "আপনার অ্যাকাউন্টে কোনো প্রতিষ্ঠান নেই।",
+    "capacity_mismatch": "ধারণক্ষমতার হিসাবে গরমিল। অ্যাডমিনের সঙ্গে যোগাযোগ করুন।"
+  },
+  "units": {
+    "kg": "কেজি",
+    "quintal": "কুইন্টাল",
+    "tonne": "টন",
+    "per_quintal": "{price} / কুইন্টাল"
+  },
+  "commodities": {
+    "potato": "আলু",
+    "tomato": "টমেটো",
+    "rice": "ধান",
+    "jute": "পাট"
+  },
+  "badges": {
+    "demo": "ডেমো"
+  },
+  "prices": {
+    "asking": "চাওয়া দাম",
+    "offered": "প্রস্তাবিত দাম",
+    "agreed": "চূড়ান্ত দাম"
+  },
+  "map": {
+    "unavailable": "মানচিত্র পাওয়া যাচ্ছে না। স্থানাঙ্ক লিখে দিতে পারেন।",
+    "use_my_location": "আমার অবস্থান ব্যবহার করুন",
+    "pick_hint": "অবস্থান ঠিক করতে মানচিত্রে ট্যাপ করুন।",
+    "location_failed": "আপনার অবস্থান পাওয়া যায়নি",
+    "lat": "অক্ষাংশ",
+    "lng": "দ্রাঘিমাংশ"
+  },
+  "notifications": {
+    "title": "বিজ্ঞপ্তি",
+    "empty": "এখনও কোনো বিজ্ঞপ্তি নেই।",
+    "mark_all": "সব পড়া হয়েছে",
+    "request": {
+      "created": "{name} {commodity} {qty}-এর অনুরোধ পাঠিয়েছেন",
+      "countered": "{name} {commodity}-এর জন্য পাল্টা প্রস্তাব পাঠিয়েছেন",
+      "accepted": "{name} চুক্তি গ্রহণ করেছেন: {commodity} {qty}",
+      "rejected": "{commodity}-এর জন্য আপনার অনুরোধ প্রত্যাখ্যাত হয়েছে",
+      "withdrawn": "{commodity}-এর একটি অনুরোধ প্রত্যাহার করা হয়েছে",
+      "listing_cancelled": "আপনার অনুরোধ করা {commodity}-এর তালিকা বাতিল হয়েছে"
+    },
+    "order": {
+      "dispatched": "অর্ডার পাঠানো হয়েছে: {commodity} {qty}",
+      "delivered": "অর্ডার পৌঁছেছে: {commodity} {qty}",
+      "closed": "অর্ডার বন্ধ: {commodity}",
+      "cancelled": "অর্ডার বাতিল: {commodity} {qty}"
+    },
+    "booking": {
+      "requested": "{name} {facility}-এ {commodity} {qty} রাখার অনুরোধ করেছেন",
+      "accepted": "{facility}-এ হিমঘর বুকিং গৃহীত",
+      "rejected": "{facility}-এ হিমঘর বুকিং প্রত্যাখ্যাত",
+      "changes_requested": "{facility} আপনার বুকিংয়ে পরিবর্তন চেয়েছে",
+      "checked_in": "{facility}-এ {commodity} {qty} জমা হয়েছে",
+      "released": "{facility} থেকে {commodity} {qty} ছাড়া হয়েছে",
+      "cancelled": "{name} {facility}-এর একটি বুকিং বাতিল করেছেন"
+    }
+  },
+  "parties": {
+    "farmer": "কৃষক",
+    "distributor": "পরিবেশক",
+    "storage_operator": "হিমঘর পরিচালক",
+    "admin": "অ্যাডমিন",
+    "system": "সিস্টেম"
+  },
+  "history": {
+    "offer": "প্রস্তাব",
+    "counter": "পাল্টা প্রস্তাব",
+    "accept": "গৃহীত",
+    "reject": "প্রত্যাখ্যাত",
+    "withdraw": "প্রত্যাহার",
+    "listing_cancelled": "তালিকা বাতিল"
+  },
+  "status_listing": {
+    "draft": "খসড়া",
+    "active": "সক্রিয়",
+    "reserved": "সংরক্ষিত",
+    "partially_fulfilled": "আংশিক বিক্রি",
+    "sold": "বিক্রি হয়েছে",
+    "expired": "মেয়াদ শেষ",
+    "cancelled": "বাতিল"
+  },
+  "status_request": {
+    "pending": "কৃষকের উত্তরের অপেক্ষায়",
+    "accepted": "গৃহীত",
+    "rejected": "প্রত্যাখ্যাত",
+    "countered": "পাল্টা প্রস্তাব",
+    "withdrawn": "প্রত্যাহৃত"
+  },
+  "status_order": {
+    "confirmed": "নিশ্চিত",
+    "dispatched": "পাঠানো হয়েছে",
+    "delivered": "পৌঁছেছে",
+    "closed": "বন্ধ",
+    "cancelled": "বাতিল"
+  },
+  "status_booking": {
+    "requested": "অনুরোধ করা হয়েছে",
+    "accepted": "গৃহীত",
+    "rejected": "প্রত্যাখ্যাত",
+    "changes_requested": "পরিবর্তন চাওয়া হয়েছে",
+    "checked_in": "জমা হয়েছে",
+    "released": "ছাড়া হয়েছে",
+    "cancelled": "বাতিল"
+  },
+  "farms": {
+    "title": "আমার খামার",
+    "add": "খামার যোগ করুন",
+    "name": "খামারের নাম",
+    "village": "গ্রাম",
+    "area": "আয়তন",
+    "acres": "একর",
+    "area_acres": "আয়তন (একর)",
+    "location": "অবস্থান",
+    "save": "খামার সংরক্ষণ করুন",
+    "saved": "খামার সংরক্ষিত",
+    "empty": "এখনও কোনো খামার নেই। বিক্রি শুরু করতে প্রথম খামার যোগ করুন।"
+  },
+  "sell": {
+    "title": "ফসল বিক্রি",
+    "tab_listings": "আমার তালিকা",
+    "tab_requests": "অনুরোধ",
+    "tab_orders": "অর্ডার",
+    "need_farm": "আগে একটি খামার যোগ করুন।",
+    "new_listing": "নতুন তালিকা",
+    "farm": "খামার",
+    "variety": "জাত",
+    "grade": "গ্রেড",
+    "asking_price": "চাওয়া দাম (₹ প্রতি কুইন্টাল)",
+    "price_hint": "১ কুইন্টাল = ১০০ কেজি",
+    "harvest_date": "ফসল তোলার তারিখ",
+    "available_from": "কবে থেকে পাওয়া যাবে",
+    "available_until": "কবে পর্যন্ত পাওয়া যাবে",
+    "publish_now": "এখনই প্রকাশ করুন (না হলে খসড়া হিসেবে থাকবে)",
+    "create": "তালিকা তৈরি করুন",
+    "created": "তালিকা তৈরি হয়েছে",
+    "publish": "প্রকাশ করুন",
+    "cancel": "তালিকা বাতিল করুন",
+    "confirm_cancel": "এই তালিকা বাতিল করবেন? খোলা অনুরোধগুলো প্রত্যাখ্যাত হবে।",
+    "edit_price": "চাওয়া দাম বদলান",
+    "remaining": "বাকি",
+    "empty_listings": "এখনও কোনো তালিকা নেই।"
+  },
+  "deals": {
+    "title": "আমার লেনদেন",
+    "tab_requests": "অনুরোধ",
+    "tab_orders": "অর্ডার",
+    "qty_optional": "একই রাখতে ফাঁকা রাখুন",
+    "counter_price": "আপনার দাম (₹ প্রতি কুইন্টাল)",
+    "send_counter": "পাল্টা প্রস্তাব পাঠান",
+    "countered": "পাল্টা প্রস্তাব পাঠানো হয়েছে",
+    "counter": "পাল্টা প্রস্তাব",
+    "accept": "গ্রহণ করুন",
+    "accepted": "চুক্তি গৃহীত — অর্ডার তৈরি হয়েছে",
+    "reject": "প্রত্যাখ্যান করুন",
+    "confirm_reject": "এই অনুরোধ প্রত্যাখ্যান করবেন?",
+    "withdraw": "প্রত্যাহার করুন",
+    "confirm_withdraw": "এই অনুরোধ প্রত্যাহার করবেন?",
+    "delivery": "ডেলিভারি",
+    "mode_pickup": "ক্রেতা নিয়ে যাবেন",
+    "mode_delivery": "কৃষক পৌঁছে দেবেন",
+    "needed_by": "কবের মধ্যে দরকার",
+    "your_turn": "আপনার উত্তর দরকার।",
+    "their_turn": "অন্য পক্ষের উত্তরের অপেক্ষায়।",
+    "empty_requests": "এখনও কোনো ক্রয় অনুরোধ নেই।"
+  },
+  "orders": {
+    "dispatch": "পাঠানো হয়েছে চিহ্নিত করুন",
+    "deliver": "পৌঁছেছে চিহ্নিত করুন",
+    "close": "অর্ডার বন্ধ করুন",
+    "cancel": "অর্ডার বাতিল করুন",
+    "confirm_cancel": "এই অর্ডার বাতিল করবেন? পরিমাণটি তালিকায় ফিরে যাবে।",
+    "done_dispatch": "পাঠানো হয়েছে চিহ্নিত",
+    "done_deliver": "পৌঁছেছে চিহ্নিত",
+    "done_close": "অর্ডার বন্ধ হয়েছে",
+    "done_cancel": "অর্ডার বাতিল হয়েছে",
+    "total": "মোট মূল্য",
+    "offline_payment": "টাকা ক্রেতা ও বিক্রেতার মধ্যে সরাসরি মেটানো হয় (ইরমিনসুলের মাধ্যমে নয়)।",
+    "empty": "এখনও কোনো অর্ডার নেই।"
+  },
+  "storage": {
+    "title": "হিমঘর",
+    "meter": "{capacity}-এর মধ্যে {free} খালি",
+    "occupied": "ভর্তি",
+    "reserved": "সংরক্ষিত",
+    "free": "খালি",
+    "start_date": "থেকে",
+    "end_date": "পর্যন্ত",
+    "reason": "কারণ",
+    "facility": "হিমঘর",
+    "period": "সময়কাল",
+    "request_booking": "বুকিংয়ের অনুরোধ করুন",
+    "booking_sent": "বুকিং অনুরোধ পাঠানো হয়েছে",
+    "book_here": "এখানে জায়গা বুক করুন",
+    "my_bookings": "আমার বুকিং",
+    "empty_bookings": "এখনও কোনো বুকিং নেই।",
+    "empty_facilities": "এই ফিল্টারে কোনো হিমঘর পাওয়া যায়নি।",
+    "commodities": "যে ফসল রাখা হয়",
+    "facility_name": "হিমঘরের নাম",
+    "address": "ঠিকানা",
+    "contact_phone": "যোগাযোগের ফোন",
+    "capacity": "ধারণক্ষমতা",
+    "create_facility": "হিমঘর যোগ করুন",
+    "facility_created": "হিমঘর যোগ হয়েছে",
+    "status": "অবস্থা",
+    "status_active": "বুকিং চালু",
+    "status_inactive": "বুকিং বন্ধ",
+    "zone_name": "জোন / চেম্বারের নাম",
+    "zone_kind": "ধরন",
+    "zone_cold": "শীতল",
+    "zone_ambient": "সাধারণ তাপমাত্রা",
+    "add_zone": "জোন যোগ করুন",
+    "zones": "জোন",
+    "no_zones": "এখনও কোনো জোন নেই।",
+    "edit": "হিমঘর সম্পাদনা",
+    "my_facilities": "আমার হিমঘর",
+    "add_facility": "একটি হিমঘর যোগ করুন",
+    "no_facilities": "এখনও কোনো হিমঘর নেই।"
+  },
+  "bookings": {
+    "title": "বুকিং অনুরোধ",
+    "accept": "গ্রহণ করুন",
+    "request-changes": "পরিবর্তন চান",
+    "reject": "প্রত্যাখ্যান করুন",
+    "check-in": "জমা নিন",
+    "release": "ছেড়ে দিন",
+    "cancel": "বুকিং বাতিল করুন",
+    "resubmit": "নতুন অনুরোধ পাঠান",
+    "done_accept": "বুকিং গৃহীত — জায়গা সংরক্ষিত",
+    "done_request-changes": "পরিবর্তন চাওয়া হয়েছে",
+    "done_reject": "বুকিং প্রত্যাখ্যাত",
+    "done_check-in": "জমা নেওয়া হয়েছে",
+    "done_release": "ছেড়ে দেওয়া হয়েছে",
+    "done_cancel": "বুকিং বাতিল হয়েছে",
+    "done_resubmit": "নতুন অনুরোধ পাঠানো হয়েছে",
+    "no_zone": "নির্দিষ্ট জোন নয়",
+    "zone": "জোন",
+    "confirm_cancel": "এই বুকিং বাতিল করবেন?",
+    "empty": "এই ফিল্টারে কোনো বুকিং নেই।"
+  },
+  "market": {
+    "title": "বাজার",
+    "your_price": "আপনার প্রস্তাব (₹ প্রতি কুইন্টাল)",
+    "send_request": "অনুরোধ পাঠান",
+    "request_sent": "কৃষকের কাছে অনুরোধ পাঠানো হয়েছে",
+    "available": "পাওয়া যাবে",
+    "make_offer": "প্রস্তাব দিন",
+    "sort": "সাজান",
+    "sort_newest": "নতুন আগে",
+    "sort_price": "কম দাম আগে",
+    "sort_distance": "কাছের আগে",
+    "near_set": "আপনার অবস্থানের কাছে খোঁজা হচ্ছে",
+    "near_unset": "অবস্থান দেওয়া নেই — পুরো পশ্চিমবঙ্গ দেখানো হচ্ছে",
+    "max_price": "সর্বোচ্চ দাম (₹ প্রতি কুইন্টাল)",
+    "radius": "ব্যাসার্ধ (কিমি)",
+    "search": "খুঁজুন",
+    "empty": "এই ফিল্টারে কোনো ফসল নেই।"
   }
 }

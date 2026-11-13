@@ -4,6 +4,7 @@ from datetime import UTC, datetime
 from typing import Any
 
 from bson import ObjectId
+from pymongo.asynchronous.client_session import AsyncClientSession
 from pymongo.asynchronous.database import AsyncDatabase
 
 from backend.app.db.client import Doc
@@ -17,6 +18,7 @@ async def write_audit(
     target_type: str,
     target_id: ObjectId,
     details: dict[str, Any] | None = None,
+    session: AsyncClientSession | None = None,
 ) -> None:
     await db.audit_logs.insert_one(
         {
@@ -27,5 +29,6 @@ async def write_audit(
             "target_id": target_id,
             "details": details or {},
             "created_at": datetime.now(UTC),
-        }
+        },
+        session=session,
     )

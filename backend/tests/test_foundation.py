@@ -47,7 +47,11 @@ def _assert_envelope(body: dict[str, object], code: str) -> None:
     assert err["code"] == code
 
 
-async def test_health_without_db_reports_not_configured(client: httpx.AsyncClient) -> None:
+async def test_health_without_db_reports_not_configured(
+    client: httpx.AsyncClient, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(mongo, "client", None)
+    monkeypatch.setattr(mongo, "db", None)
     r = await client.get("/api/v1/health")
     assert r.status_code == 503
     assert r.json()["data"] == {"status": "degraded", "db": "not_configured"}
@@ -106,7 +110,7 @@ async def test_static_index_served(client: httpx.AsyncClient) -> None:
 @pytest.mark.usefixtures("test_db")
 async def test_real_db_ping_and_indexes(client: httpx.AsyncClient) -> None:
     assert mongo.db is not None
-    await ensure_indexes(mongo.db)
+    await ensure_indexes(mongo.db)  # idempotent
     r = await client.get("/api/v1/health")
     assert r.status_code == 200
     assert r.json()["data"]["db"] == "ok"

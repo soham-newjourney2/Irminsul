@@ -42,3 +42,41 @@ export function toast(message, kind = "ok") {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => node.remove(), 4000);
 }
+
+/** Render an async list with loading / empty / error states. Returns the data (or null). */
+export async function loadInto(container, fetcher, render, { emptyText, loadingText, retryText, errorText }) {
+  container.replaceChildren(loadingState(loadingText));
+  try {
+    const data = await fetcher();
+    container.replaceChildren(data.length ? render(data) : emptyState(emptyText));
+    return data;
+  } catch (err) {
+    if (err?.name === "AbortError") return null;
+    container.replaceChildren(
+      errorState(errorText(err), () => loadInto(container, fetcher, render, { emptyText, loadingText, retryText, errorText }), retryText),
+    );
+    return null;
+  }
+}
+
+/** Button that runs an async action, disabling itself meanwhile. */
+export function actionButton(label, run, { kind = "", onError } = {}) {
+  const b = el("button", { class: `btn${kind ? ` btn--${kind}` : ""}`, type: "button", text: label });
+  b.addEventListener("click", async () => {
+    b.disabled = true;
+    try {
+      await run();
+    } catch (err) {
+      onError?.(err);
+    } finally {
+      b.disabled = false;
+    }
+  });
+  return b;
+}
+
+export function field(labelText, input, hint) {
+  const id = input.id || `f-${Math.random().toString(36).slice(2, 9)}`;
+  input.id = id;
+  return el("div", { class: "field" }, el("label", { for: id, text: labelText }), input, hint ? el("span", { class: "hint", text: hint }) : null);
+}

@@ -1,8 +1,10 @@
 """MongoDB Atlas client (PyMongo Async). One client per process, opened in the app lifespan."""
 
+from collections.abc import Awaitable, Callable
 from typing import Any
 
 from pymongo import AsyncMongoClient
+from pymongo.asynchronous.client_session import AsyncClientSession
 from pymongo.asynchronous.database import AsyncDatabase
 
 from backend.app.config import Settings
@@ -42,6 +44,17 @@ class Mongo:
         except Exception:
             return False
         return True
+
+    async def transaction[T](self, fn: Callable[[AsyncClientSession], Awaitable[T]]) -> T:
+        """Run `fn` in a multi-document transaction (retries transient errors)."""
+        if self.client is None:
+            raise RuntimeError("Database is not connected")
+        async with self.client.start_session() as session:
+            return await session.with_transaction(lambda s: _as_coroutine(fn(s)))
+
+
+async def _as_coroutine[T](aw: Awaitable[T]) -> T:
+    return await aw
 
 
 mongo = Mongo()
