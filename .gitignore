@@ -1,0 +1,26 @@
+# Local toolchain (uv, python, caches, binaries)
+tools/
+.venv/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Data / models (fetched, not committed)
+ai/models/
+data/raw/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

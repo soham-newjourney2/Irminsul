@@ -1,0 +1,53 @@
+[project]
+name = "irminsul"
+version = "0.1.0"
+description = "Irminsul — farm-to-market, storage, and traceability platform for West Bengal (hackathon build)"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "fastapi>=0.162.6",
+    "httpx>=0.28.1",
+    "pydantic-settings>=2.16.3",
+    "pymongo>=4.20.0",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.414",
+    "pytest>=9.2.0",
+    "pytest-asyncio>=1.5.0",
+    "ruff>=0.17.5",
+]
+
+[tool.uv]
+package = false
+cache-dir = "tools/uv-cache"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["tools", "ai/models", "data/raw"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "ASYNC", "S", "RUF"]
+ignore = ["B008"]  # FastAPI Depends() in defaults
+
+[tool.ruff.lint.per-file-ignores]
+"backend/tests/**" = ["S101"]
+
+[tool.pyright]
+include = ["backend", "scripts"]
+exclude = ["tools", ".venv", "ai/models", "data/raw"]
+pythonVersion = "3.12"
+venvPath = "."
+venv = ".venv"
+typeCheckingMode = "standard"
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+asyncio_default_test_loop_scope = "session"
+addopts = "-q"
+pythonpath = ["."]
