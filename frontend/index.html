@@ -3,13 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
   <title>Irminsul</title>
 </head>
 <body>
-  <!-- Placeholder until the shared shell lands in M1. -->
-  <main>
-    <h1>Irminsul</h1>
-    <p><a href="/docs">API docs</a> · <a href="/api/v1/health">Health</a></p>
+  <header id="app-header"></header>
+  <main id="app-main" class="container narrow stack">
+    <h1 data-i18n="landing.title"></h1>
+    <p class="muted" data-i18n="landing.body"></p>
+    <div class="stack">
+      <a class="btn btn--primary btn--block" href="/login.html" data-i18n="landing.login"></a>
+      <a class="btn btn--block" href="/register.html" data-i18n="landing.register"></a>
+    </div>
   </main>
+  <script type="module" src="/js/pages/landing.js"></script>
 </body>
 </html>

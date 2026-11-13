@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <title>Irminsul</title>
+</head>
+<body data-role="admin">
+  <header id="app-header"></header>
+  <main id="app-main" class="container stack">
+    <h1 data-i18n="admin.title"></h1>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" id="tab-pending" aria-controls="panel" aria-selected="true" data-tab="pending" data-i18n="admin.tab_pending"></button>
+      <button type="button" role="tab" id="tab-users" aria-controls="panel" aria-selected="false" data-tab="users" data-i18n="admin.tab_users"></button>
+      <button type="button" role="tab" id="tab-audit" aria-controls="panel" aria-selected="false" data-tab="audit" data-i18n="admin.tab_audit"></button>
+    </div>
+    <div class="row" id="users-filter" hidden>
+      <label for="status-filter" data-i18n="admin.filter_status"></label>
+      <select class="select select--compact" id="status-filter">
+        <option value="" data-i18n="admin.all"></option>
+        <option value="active" data-i18n="status.active"></option>
+        <option value="pending" data-i18n="status.pending"></option>
+        <option value="rejected" data-i18n="status.rejected"></option>
+      </select>
+    </div>
+    <section id="panel" role="tabpanel" aria-live="polite"></section>
+  </main>
+  <script type="module" src="/js/pages/admin.js"></script>
+</body>
+</html>

@@ -5,9 +5,11 @@ description = "Irminsul — farm-to-market, storage, and traceability platform f
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
+    "argon2-cffi>=25.1.0",
     "fastapi>=0.162.6",
     "httpx>=0.28.1",
     "pydantic-settings>=2.16.3",
+    "pyjwt>=2.15.1",
     "pymongo>=4.20.0",
     "uvicorn[standard]>=0.54.0",
 ]

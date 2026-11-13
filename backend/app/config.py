@@ -21,7 +21,15 @@ class Settings(BaseSettings):
     mongodb_test_db: str = "irminsul_test"
     mongodb_timeout_ms: int = 5000
 
+    jwt_secret: SecretStr | None = None
+    session_cookie_name: str = "irminsul_session"
+    session_ttl_hours: int = 12
+
     frontend_dir: Path = REPO_ROOT / "frontend"
+
+    @property
+    def cookie_secure(self) -> bool:
+        return self.environment == "production"
 
 
 @lru_cache

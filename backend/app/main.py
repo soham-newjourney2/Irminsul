@@ -11,7 +11,10 @@ from backend.app.config import get_settings
 from backend.app.core.errors import install_error_handlers
 from backend.app.db.client import mongo
 from backend.app.db.indexes import ensure_indexes
+from backend.app.modules.admin.router import router as admin_router
+from backend.app.modules.auth.router import router as auth_router
 from backend.app.modules.health.router import router as health_router
+from backend.app.modules.users.router import router as users_router
 
 log = logging.getLogger("irminsul")
 
@@ -37,7 +40,8 @@ def create_app() -> FastAPI:
     settings = get_settings()
     app = FastAPI(title="Irminsul API", version="0.1.0", lifespan=lifespan)
     install_error_handlers(app)
-    app.include_router(health_router, prefix="/api/v1")
+    for router in (health_router, auth_router, users_router, admin_router):
+        app.include_router(router, prefix="/api/v1")
     if settings.frontend_dir.is_dir():
         app.mount("/", StaticFiles(directory=settings.frontend_dir, html=True), name="frontend")
     return app

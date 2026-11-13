@@ -1,0 +1,105 @@
+{
+  "app": { "name": "Irminsul" },
+  "nav": { "label": "Main", "home": "Home", "approvals": "Approvals" },
+  "common": {
+    "logout": "Log out",
+    "loading": "Loading…",
+    "retry": "Try again",
+    "language": "Language",
+    "online": "Online",
+    "offline": "Offline"
+  },
+  "roles": {
+    "farmer": "Farmer",
+    "distributor": "Distributor",
+    "storage_operator": "Cold-storage operator",
+    "admin": "Admin"
+  },
+  "status": { "active": "Active", "pending": "Awaiting approval", "rejected": "Rejected" },
+  "landing": {
+    "title": "From field to market, with every step on record",
+    "body": "Sell produce, book cold storage, and trace each batch — for farmers, distributors, and storage operators in West Bengal.",
+    "login": "Log in",
+    "register": "Create an account"
+  },
+  "login": {
+    "title": "Log in",
+    "phone": "Mobile number",
+    "password": "Password",
+    "submit": "Log in",
+    "no_account": "New here?",
+    "register_link": "Create an account"
+  },
+  "register": {
+    "title": "Create an account",
+    "role": "I am a",
+    "role_farmer_desc": "Sell produce, book storage, check crops and prices",
+    "role_distributor_desc": "Buy produce from farmers. Needs admin approval",
+    "role_storage_desc": "Run a cold store and accept bookings. Needs admin approval",
+    "name": "Full name",
+    "phone": "Mobile number",
+    "phone_hint": "10-digit Indian mobile number",
+    "password": "Password",
+    "password_hint": "At least 8 characters",
+    "org_name_distributor": "Business name",
+    "org_name_storage": "Cold-storage / facility name",
+    "pending_note": "An admin will review your account before you can use it.",
+    "submit": "Create account",
+    "have_account": "Already registered?",
+    "login_link": "Log in"
+  },
+  "home": {
+    "welcome": "Welcome, {name}",
+    "account": "Your account",
+    "phone": "Mobile",
+    "role": "Role",
+    "org": "Organisation",
+    "status": "Status"
+  },
+  "pending": {
+    "title": "Account awaiting approval",
+    "body": "Thanks for registering. An admin is reviewing your details. You can use Irminsul as soon as your account is approved."
+  },
+  "admin": {
+    "title": "Account approvals",
+    "tab_pending": "Pending",
+    "tab_users": "All users",
+    "tab_audit": "Audit log",
+    "filter_status": "Status",
+    "all": "All",
+    "registered": "Registered",
+    "approve": "Approve",
+    "reject": "Reject",
+    "reject_reason": "Reason for rejection (optional)",
+    "confirm_reject": "Reject the account of {name}?",
+    "approved_toast": "{name} approved",
+    "rejected_toast": "{name} rejected",
+    "empty_pending": "No accounts are waiting for approval.",
+    "empty_users": "No users match this filter.",
+    "empty_audit": "No audit entries yet.",
+    "actor": "By",
+    "target": "Record",
+    "reason": "Reason"
+  },
+  "audit": { "user": { "approve": "Account approved", "reject": "Account rejected" } },
+  "validation": {
+    "required": "Please fill in all required fields.",
+    "phone": "Enter a valid 10-digit Indian mobile number.",
+    "password": "Password must be at least 8 characters."
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "network_error": "No connection. Check your internet and try again.",
+    "invalid_credentials": "Mobile number or password is incorrect.",
+    "rate_limited": "Too many attempts. Please wait a minute and try again.",
+    "phone_taken": "An account with this mobile number already exists.",
+    "account_rejected": "This account registration was rejected.",
+    "account_pending": "Your account is awaiting admin approval.",
+    "unauthenticated": "Please log in.",
+    "forbidden": "You do not have access to this page.",
+    "validation_error": "Some details are invalid. Please check and try again.",
+    "db_unavailable": "The service is temporarily unavailable.",
+    "not_pending": "This account has already been reviewed.",
+    "not_found": "Not found."
+  }
+}

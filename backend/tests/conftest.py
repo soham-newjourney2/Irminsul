@@ -4,7 +4,9 @@ import httpx
 import pytest
 
 from backend.app.config import get_settings
+from backend.app.core.ratelimit import login_limiter
 from backend.app.db.client import mongo
+from backend.app.db.indexes import ensure_indexes
 from backend.app.main import app
 
 
@@ -23,7 +25,10 @@ async def test_db() -> AsyncIterator[None]:
     if settings.mongodb_uri is None:
         pytest.skip("MONGODB_URI not set")
     await mongo.connect(settings, db_name=settings.mongodb_test_db)
+    login_limiter.reset()
     try:
+        assert mongo.db is not None
+        await ensure_indexes(mongo.db)
         yield
     finally:
         if mongo.client is not None:
