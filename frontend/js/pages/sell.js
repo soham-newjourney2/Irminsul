@@ -7,6 +7,7 @@ import { mountShell } from "../ui/shell.js";
 import { setupTabs } from "../ui/tabs.js";
 import { commoditySelect, done, fail, input, list, newIdempotencyKey, unitSelect } from "./common.js";
 import { orderCard, requestCard } from "./deals.js";
+import { batchSelect } from "./chain-ui.js";
 
 const me = await mountShell({ role: "farmer" });
 const panel = document.getElementById("panel");
@@ -14,7 +15,7 @@ let idemKey = newIdempotencyKey();
 let reloadList = null;
 
 async function listingForm(reload) {
-  const farms = (await api("/farms")).data;
+  const [farms, batches] = await Promise.all([api("/farms").then((r) => r.data), api("/batches").then((r) => r.data).catch(() => [])]);
   if (!farms.length) {
     return el("div", { class: "alert alert--info" }, t("sell.need_farm"), " ", el("a", { href: "/farmer/farms.html", text: t("nav.farms") }));
   }
@@ -30,6 +31,7 @@ async function listingForm(reload) {
   const price = input("asking_price_per_quintal", { type: "number", min: "1", step: "0.01", required: true });
   const note = input("note", { maxlength: "500" });
   const publish = el("input", { type: "checkbox", name: "publish", checked: true });
+  const batch = batchSelect(batches);
   const form = el(
     "form",
     { class: "form-grid" },
@@ -43,6 +45,7 @@ async function listingForm(reload) {
     field(t("sell.available_from"), from),
     field(t("sell.available_until"), until),
     field(t("common.note"), note),
+    field(t("chain.link_batch"), batch, t("chain.link_hint")),
     el("label", { class: "row span-2" }, publish, t("sell.publish_now")),
     el("button", { class: "btn btn--primary span-2", type: "submit", text: t("sell.create") }),
   );
@@ -66,6 +69,7 @@ async function listingForm(reload) {
           asking_price_per_quintal: price.value,
           note: note.value || null,
           publish: publish.checked,
+          batch_id: batch.value || null,
         },
       });
       idemKey = newIdempotencyKey();

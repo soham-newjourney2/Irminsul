@@ -27,6 +27,7 @@ class ListingIn(BaseModel):
     asking_price_per_quintal: PriceIn
     note: str | None = Field(default=None, max_length=500)
     publish: bool = True
+    batch_id: str | None = None
 
     @model_validator(mode="after")
     def _dates(self) -> Self:

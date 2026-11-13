@@ -13,6 +13,7 @@ from backend.app.core.audit import write_audit
 from backend.app.core.errors import AppError
 from backend.app.core.units import rupees_to_paise, to_kg, total_paise
 from backend.app.db.client import Doc, mongo
+from backend.app.modules.batches.service import emit
 from backend.app.modules.listings.schemas import OPEN_FOR_REQUESTS
 from backend.app.modules.listings.service import refresh_status
 from backend.app.modules.notifications.service import notify
@@ -106,6 +107,7 @@ async def _order_views(db: AsyncDatabase[Doc], rows: list[Doc]) -> list[OrderOut
             id=str(r["_id"]),
             listing_id=str(r["listing_id"]),
             request_id=str(r["request_id"]),
+            batch_id=str(r["batch_id"]) if r.get("batch_id") else None,
             commodity=r["commodity"],
             variety=r.get("variety"),
             district=r["district"],
@@ -336,6 +338,7 @@ async def accept(db: AsyncDatabase[Doc], user: Doc, request_id: ObjectId) -> Ord
             "schema_version": 1,
             "listing_id": doc["listing_id"],
             "request_id": doc["_id"],
+            "batch_id": listing.get("batch_id"),
             "farmer_id": doc["farmer_id"],
             "distributor_id": doc["distributor_id"],
             "commodity": doc["commodity"],
@@ -370,6 +373,14 @@ async def accept(db: AsyncDatabase[Doc], user: Doc, request_id: ObjectId) -> Ord
         return order
 
     order = await mongo.transaction(txn)
+    await emit(
+        db,
+        order.get("batch_id"),
+        "request_accepted",
+        user,
+        {"order_id": str(order["_id"]), "request_id": str(doc["_id"]), "qty_kg": qty_kg},
+        source="user",
+    )
     other = doc["distributor_id"] if side == "farmer" else doc["farmer_id"]
     await notify(
         db,
@@ -475,6 +486,7 @@ async def order_action(
         return updated
 
     updated = await mongo.transaction(txn)
+    await _emit_order_event(db, doc, target, user)
     params = {"commodity": doc["commodity"], "qty_kg": doc["qty_kg"]}
     for uid, role, link in (
         (doc["farmer_id"], "farmer", FARMER_LINK),
@@ -483,3 +495,31 @@ async def order_action(
         if role != side:
             await notify(db, [uid], f"order.{target}", params, link)
     return (await _order_views(db, [updated]))[0]
+
+
+async def _emit_order_event(db: AsyncDatabase[Doc], order: Doc, target: str, actor: Doc) -> None:
+    """Chain dispatch/delivery on the linked batch. Custody moves only for whole-batch orders."""
+    batch_id = order.get("batch_id")
+    if batch_id is None or target not in ("dispatched", "delivered"):
+        return
+    batch = await db.produce_batches.find_one({"_id": batch_id}, {"qty_kg": 1})
+    whole = batch is not None and order["qty_kg"] >= batch["qty_kg"]
+    changes: Doc | None = None
+    if whole and target == "dispatched":
+        changes = {"status": "in_transit"}
+    elif whole and target == "delivered":
+        entry = (await parties(db, [order["distributor_id"]])).get(order["distributor_id"])
+        name = (entry[1] or {}).get("name") or entry[0].get("name") if entry else None
+        changes = {
+            "status": "delivered",
+            "custodian": {"type": "distributor", "id": order["distributor_id"], "name": name},
+        }
+    await emit(
+        db,
+        batch_id,
+        target,
+        actor,
+        {"order_id": str(order["_id"]), "qty_kg": order["qty_kg"], "partial": not whole},
+        source="user",
+        batch_changes=changes,
+    )

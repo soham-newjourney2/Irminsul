@@ -75,6 +75,7 @@ class OrderOut(BaseModel):
     id: str
     listing_id: str
     request_id: str
+    batch_id: str | None
     commodity: Commodity
     variety: str | None
     district: str

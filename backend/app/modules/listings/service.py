@@ -11,6 +11,7 @@ from backend.app.core.geo import GeoPoint, point_out
 from backend.app.core.schemas import parse_object_id
 from backend.app.core.units import rupees_to_paise, to_kg
 from backend.app.db.client import Doc
+from backend.app.modules.batches.service import emit, owned_open_batch
 from backend.app.modules.farms.service import get_owned as get_owned_farm
 from backend.app.modules.listings.schemas import (
     OPEN_FOR_REQUESTS,
@@ -112,6 +113,13 @@ async def create(db: AsyncDatabase[Doc], farmer: Doc, data: ListingIn) -> Listin
         price = rupees_to_paise(data.asking_price_per_quintal)
     except ValueError as exc:
         raise AppError(422, "validation_error", str(exc)) from None
+    batch = None
+    if data.batch_id:
+        batch = await owned_open_batch(
+            db, farmer, parse_object_id(data.batch_id, "batch"), data.commodity
+        )
+        if qty_kg > batch["qty_kg"]:
+            raise AppError(422, "validation_error", "Listing quantity exceeds the batch quantity")
     now = datetime.now(UTC)
     doc: Doc = {
         "schema_version": 1,
@@ -130,7 +138,7 @@ async def create(db: AsyncDatabase[Doc], farmer: Doc, data: ListingIn) -> Listin
         "currency": "INR",
         "district": farm["district"],
         "location": farm["location"],
-        "batch_id": None,
+        "batch_id": batch["_id"] if batch else None,
         "status": "active" if data.publish else "draft",
         "note": data.note,
         "is_demo": False,
@@ -138,6 +146,19 @@ async def create(db: AsyncDatabase[Doc], farmer: Doc, data: ListingIn) -> Listin
         "updated_at": now,
     }
     doc["_id"] = (await db.produce_listings.insert_one(doc)).inserted_id
+    if batch is not None:
+        await emit(
+            db,
+            batch["_id"],
+            "listed",
+            farmer,
+            {
+                "listing_id": str(doc["_id"]),
+                "qty_kg": qty_kg,
+                "asking_price_paise_per_quintal": price,
+            },
+            source="user",
+        )
     return (await _with_farmers(db, [doc], farmer))[0]
 
 

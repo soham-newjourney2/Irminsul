@@ -56,6 +56,22 @@ INDEXES: dict[str, list[IndexModel]] = {
         IndexModel([("farmer_id", ASCENDING), ("updated_at", DESCENDING)], name="farmer_updated"),
         IndexModel([("org_id", ASCENDING), ("updated_at", DESCENDING)], name="org_updated"),
     ],
+    # KrishiChain (M3)
+    "produce_batches": [
+        IndexModel([("batch_code", ASCENDING)], unique=True, name="batch_code_unique"),
+        IndexModel([("farmer_id", ASCENDING), ("created_at", DESCENDING)], name="farmer_created"),
+    ],
+    "batch_events": [
+        IndexModel([("batch_id", ASCENDING), ("seq", ASCENDING)], unique=True, name="batch_seq")
+    ],
+    "batch_lineage": [
+        IndexModel([("parent_id", ASCENDING)], name="parent"),
+        IndexModel([("child_id", ASCENDING)], name="child"),
+    ],
+    "batch_qr_tokens": [
+        IndexModel([("token", ASCENDING)], unique=True, name="token_unique"),
+        IndexModel([("batch_id", ASCENDING)], name="batch"),
+    ],
     "notifications": [
         IndexModel([("user_id", ASCENDING), ("created_at", DESCENDING)], name="user_created"),
         IndexModel([("user_id", ASCENDING), ("read_at", ASCENDING)], name="user_unread"),

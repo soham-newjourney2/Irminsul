@@ -7,6 +7,7 @@ import { createMap } from "../ui/map.js";
 import { mountShell } from "../ui/shell.js";
 import { commoditySelect, done, fail, list, newIdempotencyKey } from "./common.js";
 import { bookingCard, capacityMeter, datesForm, liveMeters } from "./facility-ui.js";
+import { batchSelect } from "./chain-ui.js";
 
 const me = await mountShell({ role: "farmer" });
 const root = document.getElementById("root");
@@ -14,12 +15,15 @@ const meters = liveMeters();
 let mapCtx = null;
 let markers = [];
 
+let myBatches = [];
+
 function bookForm(f, reloadBookings) {
   let key = newIdempotencyKey();
+  const batch = batchSelect(myBatches);
   const crop = el("select", { class: "select", name: "commodity" }, f.commodities.map((c) => el("option", { value: c, text: commodity(c) })));
-  return datesForm(t("storage.request_booking"), { start: todayISO(1), end: todayISO(60), extra: [field(t("common.crop"), crop)] }, async (body, form) => {
+  return datesForm(t("storage.request_booking"), { start: todayISO(1), end: todayISO(60), extra: [field(t("common.crop"), crop), field(t("chain.link_batch"), batch, t("chain.link_hint"))] }, async (body, form) => {
     try {
-      await api("/storage/bookings", { method: "POST", idempotencyKey: key, body: { ...body, facility_id: f.id, commodity: crop.value } });
+      await api("/storage/bookings", { method: "POST", idempotencyKey: key, body: { ...body, facility_id: f.id, commodity: crop.value, batch_id: batch.value || null } });
       key = newIdempotencyKey();
       done("storage.booking_sent");
       form.closest("details").open = false;
@@ -73,6 +77,7 @@ async function render() {
     bookingsHost,
   );
   mapCtx = await createMap(mapEl);
+  myBatches = await api("/batches").then((r) => r.data).catch(() => []);
 
   const loadBookings = () =>
     list(bookingsHost, async () => (await api("/storage/bookings")).data, (rows) => el("ul", { class: "item-list" }, rows.map((b) => bookingCard(b, "farmer", loadBookings))), "storage.empty_bookings");

@@ -20,6 +20,7 @@ from backend.app.core.schemas import parse_object_id
 from backend.app.core.units import to_kg
 from backend.app.core.ws import hub
 from backend.app.db.client import Doc, mongo
+from backend.app.modules.batches.service import emit, owned_open_batch
 from backend.app.modules.notifications.service import notify, org_member_ids
 from backend.app.modules.storage.schemas import (
     BookingFacility,
@@ -315,6 +316,7 @@ async def _booking_views(db: AsyncDatabase[Doc], rows: list[Doc], viewer: Doc) -
                 start_date=date.fromisoformat(r["start_date"]),
                 end_date=date.fromisoformat(r["end_date"]),
                 listing_id=str(r["listing_id"]) if r.get("listing_id") else None,
+                batch_id=str(r["batch_id"]) if r.get("batch_id") else None,
                 note=r.get("note"),
                 status=r["status"],
                 zone_id=str(r["zone_id"]) if r.get("zone_id") else None,
@@ -347,6 +349,14 @@ async def create_booking(db: AsyncDatabase[Doc], farmer: Doc, data: BookingIn) -
             == 0
         ):
             raise AppError(404, "not_found", "Listing not found")
+    batch_id = None
+    if data.batch_id:
+        batch = await owned_open_batch(
+            db, farmer, parse_object_id(data.batch_id, "batch"), data.commodity
+        )
+        if qty_kg > batch["qty_kg"]:
+            raise AppError(422, "validation_error", "Booking quantity exceeds the batch quantity")
+        batch_id = batch["_id"]
     now = datetime.now(UTC)
     doc: Doc = {
         "schema_version": 1,
@@ -354,6 +364,7 @@ async def create_booking(db: AsyncDatabase[Doc], farmer: Doc, data: BookingIn) -
         "org_id": f["org_id"],
         "farmer_id": farmer["_id"],
         "listing_id": listing_id,
+        "batch_id": batch_id,
         "commodity": data.commodity,
         "qty_kg": qty_kg,
         "display_unit": data.unit,
@@ -532,6 +543,7 @@ async def booking_action(
     if facility is not None:
         await hub.broadcast(capacity_message(facility))
     f = facility or await db.storage_facilities.find_one({"_id": b["facility_id"]}) or {}
+    await _emit_booking_event(db, updated, action, user, f)
     params = {"commodity": b["commodity"], "qty_kg": updated["qty_kg"], "facility": f.get("name")}
     if by == "storage_operator":
         await notify(db, [b["farmer_id"]], f"booking.{target}", params, FARMER_LINK)
@@ -541,3 +553,45 @@ async def booking_action(
             db, await org_member_ids(db, b["org_id"]), f"booking.{target}", params, OPERATOR_LINK
         )
     return (await _booking_views(db, [updated], user))[0]
+
+
+BOOKING_EVENTS = {"accept": "booking_confirmed", "check-in": "checked_in", "release": "released"}
+
+
+async def _emit_booking_event(
+    db: AsyncDatabase[Doc], booking: Doc, action: str, actor: Doc, facility: Doc
+) -> None:
+    """Chain storage milestones on the linked batch; custody moves only for whole batches."""
+    event = BOOKING_EVENTS.get(action)
+    batch_id = booking.get("batch_id")
+    if event is None or batch_id is None:
+        return
+    batch = await db.produce_batches.find_one({"_id": batch_id})
+    if batch is None:
+        return
+    whole = booking["qty_kg"] >= batch["qty_kg"]
+    payload: Doc = {
+        "booking_id": str(booking["_id"]),
+        "facility_id": str(booking["facility_id"]),
+        "facility_name": facility.get("name"),
+        "district": facility.get("district"),
+        "qty_kg": booking["qty_kg"],
+        "partial": not whole,
+    }
+    changes: Doc | None = None
+    if whole and event == "checked_in":
+        changes = {
+            "status": "in_storage",
+            "custodian": {
+                "type": "facility",
+                "id": booking["facility_id"],
+                "name": facility.get("name"),
+            },
+            "location": facility.get("location", batch["location"]),
+        }
+    elif whole and event == "released":
+        changes = {
+            "status": "active",
+            "custodian": {"type": "farmer", "id": batch["farmer_id"], "name": None},
+        }
+    await emit(db, batch_id, event, actor, payload, source="user", batch_changes=changes)

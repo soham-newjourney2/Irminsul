@@ -13,6 +13,8 @@ from backend.app.db.client import mongo
 from backend.app.db.indexes import ensure_indexes
 from backend.app.modules.admin.router import router as admin_router
 from backend.app.modules.auth.router import router as auth_router
+from backend.app.modules.batches.router import public_router as qr_router
+from backend.app.modules.batches.router import router as batches_router
 from backend.app.modules.farms.router import router as farms_router
 from backend.app.modules.health.router import router as health_router
 from backend.app.modules.listings.router import router as listings_router
@@ -57,6 +59,8 @@ def create_app() -> FastAPI:
         orders_router,
         storage_router,
         notifications_router,
+        batches_router,
+        qr_router,
     )
     for router in api_routers:
         app.include_router(router, prefix="/api/v1")

@@ -176,6 +176,7 @@ export function bookingCard(b, role, reload, zonesFor) {
       b.zone_name ? [el("dt", { text: t("bookings.zone") }), el("dd", { text: b.zone_name })] : null,
     ),
     contact,
+    b.batch_id ? el("a", { href: `/batch.html?id=${b.batch_id}`, text: t("chain.trace") }) : null,
     historyList(b.history, "booking"),
     actions.childElementCount ? actions : null,
     ...forms,

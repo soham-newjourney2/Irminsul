@@ -120,6 +120,7 @@ class BookingIn(_Dates):
     qty: QtyIn
     unit: Unit
     listing_id: str | None = None
+    batch_id: str | None = None
     note: str | None = Field(default=None, max_length=500)
 
 
@@ -164,6 +165,7 @@ class BookingOut(BaseModel):
     start_date: date
     end_date: date
     listing_id: str | None
+    batch_id: str | None
     note: str | None
     status: BookingStatus
     zone_id: str | None

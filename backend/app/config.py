@@ -25,6 +25,8 @@ class Settings(BaseSettings):
     session_cookie_name: str = "irminsul_session"
     session_ttl_hours: int = 12
 
+    public_base_url: str | None = None  # used in QR codes; falls back to request URL
+
     frontend_dir: Path = REPO_ROOT / "frontend"
 
     @property

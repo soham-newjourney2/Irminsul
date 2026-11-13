@@ -159,6 +159,7 @@ export function orderCard(o, side, reload) {
       el("dd", { text: t(`deals.mode_${o.delivery_mode}`) }),
     ),
     priceBlock("prices.agreed", o.agreed_price_paise_per_quintal, true),
+    o.batch_id ? el("a", { href: `/batch.html?id=${o.batch_id}`, text: t("chain.trace") }) : null,
     el("p", { class: "hint", text: t("orders.offline_payment") }),
     contactBlock(other),
     historyList(o.history, "order"),

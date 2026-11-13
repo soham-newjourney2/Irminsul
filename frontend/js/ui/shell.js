@@ -10,6 +10,7 @@ const NAV = {
   farmer: [
     { href: "/farmer/", key: "nav.home" },
     { href: "/farmer/farms.html", key: "nav.farms" },
+    { href: "/farmer/batches.html", key: "nav.batches" },
     { href: "/farmer/sell.html", key: "nav.sell" },
     { href: "/farmer/storage.html", key: "nav.storage" },
   ],
