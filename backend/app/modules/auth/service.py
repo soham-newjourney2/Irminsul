@@ -3,8 +3,8 @@ from datetime import UTC, datetime
 from pymongo.asynchronous.database import AsyncDatabase
 from pymongo.errors import DuplicateKeyError
 
+from backend.app.core import ratelimit
 from backend.app.core.errors import AppError
-from backend.app.core.ratelimit import login_limiter
 from backend.app.core.security import hash_password, verify_password
 from backend.app.db.client import Doc
 from backend.app.modules.auth.schemas import LoginIn, RegisterIn
@@ -64,7 +64,9 @@ async def login(db: AsyncDatabase[Doc], data: LoginIn, client_ip: str) -> Doc:
         phone = normalize_phone(data.phone)
     except ValueError:
         raise _INVALID from None
-    if not login_limiter.hit(f"{phone}|{client_ip}"):
+    if not ratelimit.login_ip_limiter.hit(client_ip) or not ratelimit.login_limiter.hit(
+        f"{phone}|{client_ip}"
+    ):
         raise AppError(429, "rate_limited", "Too many login attempts. Try again in a minute")
     user = await db.users.find_one({"phone": phone})
     password_ok = await verify_password(user["password_hash"] if user else None, data.password)

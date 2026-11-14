@@ -13,6 +13,9 @@ const NAV = {
     { href: "/farmer/batches.html", key: "nav.batches" },
     { href: "/farmer/sell.html", key: "nav.sell" },
     { href: "/farmer/storage.html", key: "nav.storage" },
+    { href: "/farmer/screen.html", key: "nav.screen" },
+    { href: "/farmer/weather.html", key: "nav.weather" },
+    { href: "/farmer/prices.html", key: "nav.prices" },
   ],
   distributor: [
     { href: "/distributor/", key: "nav.home" },

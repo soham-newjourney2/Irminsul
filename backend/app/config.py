@@ -27,6 +27,9 @@ class Settings(BaseSettings):
 
     public_base_url: str | None = None  # used in QR codes; falls back to request URL
 
+    data_gov_in_api_key: SecretStr | None = None
+    http_timeout_s: float = 20.0
+
     frontend_dir: Path = REPO_ROOT / "frontend"
 
     @property

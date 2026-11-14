@@ -25,8 +25,20 @@ export async function logout() {
   }
 }
 
-/** Only same-origin relative paths are accepted as a post-login redirect. */
+/**
+ * Post-login redirect target. Parsed as a URL (browsers treat \\ and tabs like /),
+ * so only same-origin paths survive; anything else falls back to defaultPath.
+ */
+export function sameOriginPath(next, origin, defaultPath) {
+  if (!next || !next.startsWith("/") || /[\\\u0000-\u001f]/.test(next)) return defaultPath;
+  try {
+    const url = new URL(next, origin);
+    return url.origin === origin ? url.pathname + url.search + url.hash : defaultPath;
+  } catch {
+    return defaultPath;
+  }
+}
+
 export function safeNext(defaultPath) {
-  const next = new URLSearchParams(location.search).get("next");
-  return next && next.startsWith("/") && !next.startsWith("//") ? next : defaultPath;
+  return sameOriginPath(new URLSearchParams(location.search).get("next"), location.origin, defaultPath);
 }

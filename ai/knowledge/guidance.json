@@ -1,0 +1,379 @@
+{
+  "meta": {
+    "schema_version": 1,
+    "review_status": "not expert-reviewed",
+    "retrieved": "2026-11-14",
+    "policy": "Text quoted or closely condensed from the linked government source. No doses are given. Chemical names are listed only as they appear in the source; always follow the product label and confirm with your local KVK or agriculture officer.",
+    "translation_status": "bn/hi drafted by Claude, owner review pending",
+    "not_covered": [
+      "tomato.bacterial_spot",
+      "tomato.leaf_mold",
+      "tomato.spider_mites",
+      "tomato.target_spot",
+      "tomato.mosaic_virus",
+      "potato.healthy",
+      "tomato.healthy"
+    ]
+  },
+  "entries": {
+    "potato.late_blight": {
+      "crop": "potato",
+      "disease": "late_blight",
+      "pathogen": "Phytophthora infestans",
+      "name": { "en": "Late blight", "bn": "নাবি ধসা", "hi": "पछेती झुलसा" },
+      "symptoms": {
+        "en": [
+          "Water-soaked spots appear on leaves, increase in size, turn purple-brown and finally black.",
+          "White growth develops on the under surface of leaves.",
+          "The stem breaks at these points and the plant topples over.",
+          "Affected tubers show rusty brown necrosis spreading from the surface to the centre."
+        ],
+        "bn": [
+          "পাতায় জলে-ভেজা দাগ দেখা দেয়, বড় হয়, বেগুনি-বাদামি ও শেষে কালো হয়ে যায়।",
+          "পাতার নিচের দিকে সাদা আস্তরণ তৈরি হয়।",
+          "এই জায়গাগুলিতে কাণ্ড ভেঙে গাছ হেলে পড়ে।",
+          "আক্রান্ত আলুর গায়ে মরচে-বাদামি পচন উপর থেকে ভিতরের দিকে ছড়ায়।"
+        ],
+        "hi": [
+          "पत्तियों पर पानी से भीगे जैसे धब्बे दिखते हैं, बढ़ते हैं, बैंगनी-भूरे और अंत में काले हो जाते हैं।",
+          "पत्तियों की निचली सतह पर सफ़ेद परत बनती है।",
+          "इन जगहों पर तना टूट जाता है और पौधा गिर जाता है।",
+          "प्रभावित कंदों में जंग जैसी भूरी सड़न सतह से भीतर तक फैलती है।"
+        ]
+      },
+      "favourable_conditions": {
+        "en": [
+          "Relative humidity above 90%, temperature 10–25 °C, night temperature around 10 °C.",
+          "Cloudiness before rainfall, rainfall of at least 0.1 mm, and the days that follow.",
+          "Infected tubers and infected soil are the main sources of infection; spores spread through the air."
+        ],
+        "bn": [
+          "আপেক্ষিক আর্দ্রতা ৯০%-এর বেশি, তাপমাত্রা ১০–২৫ °সে, রাতের তাপমাত্রা প্রায় ১০ °সে।",
+          "বৃষ্টির আগে মেঘলা আবহাওয়া, অন্তত ০.১ মিমি বৃষ্টি এবং তার পরের দিনগুলি।",
+          "আক্রান্ত আলু ও মাটি থেকেই প্রধানত সংক্রমণ হয়; রেণু বাতাসে ছড়ায়।"
+        ],
+        "hi": [
+          "सापेक्ष आर्द्रता 90% से अधिक, तापमान 10–25 °C, रात का तापमान लगभग 10 °C।",
+          "बारिश से पहले बादल, कम से कम 0.1 मिमी बारिश और उसके बाद के दिन।",
+          "संक्रमित कंद और मिट्टी संक्रमण के मुख्य स्रोत हैं; बीजाणु हवा से फैलते हैं।"
+        ]
+      },
+      "cultural_measures": {
+        "en": [
+          "Avoid injuring tubers at harvest; do not store visibly infected tubers.",
+          "Destroying the foliage a few days before harvest is beneficial.",
+          "Infected tubers carry the disease from crop to crop — do not plant them."
+        ],
+        "bn": [
+          "তোলার সময় আলুতে আঘাত এড়ান; দেখে আক্রান্ত মনে হলে সেই আলু মজুত করবেন না।",
+          "তোলার কয়েক দিন আগে গাছের উপরের অংশ নষ্ট করে ফেলা উপকারী।",
+          "আক্রান্ত আলু এক ফসল থেকে পরের ফসলে রোগ নিয়ে যায় — সেগুলি লাগাবেন না।"
+        ],
+        "hi": [
+          "खुदाई के समय कंदों को चोट न लगने दें; दिखने में संक्रमित कंद भंडार न करें।",
+          "खुदाई से कुछ दिन पहले ऊपरी पौधा नष्ट करना लाभदायक है।",
+          "संक्रमित कंद रोग को अगली फसल तक ले जाते हैं — उन्हें न बोएँ।"
+        ]
+      },
+      "resistant_varieties": ["Kufri Naveen", "Kufri Jeevan", "Kufri Alenkar", "Kufri Khasi Garo", "Kufri Moti"],
+      "resistant_varieties_note": "As listed by the source; check suitability for West Bengal with your KVK.",
+      "chemical_names_in_source": ["Mancozeb", "Zineb"],
+      "sources": [
+        {
+          "org": "TNAU Agritech Portal (Tamil Nadu Agricultural University)",
+          "url": "https://agritech.tnau.ac.in/crop_protection/crop_prot_crop%20diseases_veg_potato_1.html",
+          "retrieved": "2026-11-14"
+        }
+      ]
+    },
+    "potato.early_blight": {
+      "crop": "potato",
+      "disease": "early_blight",
+      "pathogen": "Alternaria solani",
+      "name": { "en": "Early blight", "bn": "আগাম ধসা", "hi": "अगेती झुलसा" },
+      "symptoms": {
+        "en": [
+          "Brown-black dead spots, angular to oval, with concentric rings.",
+          "Spots merge and spread across the leaf."
+        ],
+        "bn": [
+          "কৌণিক থেকে ডিম্বাকার বাদামি-কালো মৃত দাগ, তাতে এককেন্দ্রিক বলয়।",
+          "দাগগুলি জুড়ে গিয়ে পুরো পাতায় ছড়িয়ে পড়ে।"
+        ],
+        "hi": [
+          "कोणीय से अंडाकार भूरे-काले मृत धब्बे, जिनमें गोल छल्ले होते हैं।",
+          "धब्बे आपस में मिलकर पूरी पत्ती पर फैल जाते हैं।"
+        ]
+      },
+      "favourable_conditions": {
+        "en": [
+          "Dry, warm weather with intermittent rain; temperature 25–30 °C.",
+          "Weak plants and poorly manured crops.",
+          "Spores in soil or plant debris can stay viable for more than 17 months; wind, rain and insects spread them."
+        ],
+        "bn": [
+          "মাঝে মাঝে বৃষ্টিসহ শুকনো গরম আবহাওয়া; তাপমাত্রা ২৫–৩০ °সে।",
+          "দুর্বল গাছ ও কম সার দেওয়া ফসল।",
+          "মাটি বা গাছের অবশেষে রেণু ১৭ মাসেরও বেশি বেঁচে থাকতে পারে; বাতাস, বৃষ্টি ও পোকা এগুলি ছড়ায়।"
+        ],
+        "hi": [
+          "बीच-बीच में बारिश के साथ सूखा, गर्म मौसम; तापमान 25–30 °C।",
+          "कमज़ोर पौधे और कम खाद वाली फसल।",
+          "मिट्टी या पौधों के अवशेष में बीजाणु 17 महीने से अधिक जीवित रह सकते हैं; हवा, बारिश और कीट इन्हें फैलाते हैं।"
+        ]
+      },
+      "cultural_measures": {
+        "en": [
+          "Use disease-free seed tubers for planting.",
+          "Remove and destroy infected plant debris."
+        ],
+        "bn": [
+          "রোপণের জন্য রোগমুক্ত বীজ আলু ব্যবহার করুন।",
+          "আক্রান্ত গাছের অবশেষ তুলে নষ্ট করুন।"
+        ],
+        "hi": [
+          "बुवाई के लिए रोगमुक्त बीज कंद इस्तेमाल करें।",
+          "संक्रमित पौधों के अवशेष हटाकर नष्ट करें।"
+        ]
+      },
+      "resistant_varieties": ["Kufri Sindhuri"],
+      "resistant_varieties_note": "The source says this variety has a fair degree of resistance; check local suitability with your KVK.",
+      "chemical_names_in_source": ["Zineb", "Captan"],
+      "sources": [
+        {
+          "org": "TNAU Agritech Portal (Tamil Nadu Agricultural University)",
+          "url": "https://agritech.tnau.ac.in/crop_protection/crop_prot_crop%20diseases_veg_potato_2.html",
+          "retrieved": "2026-11-14"
+        }
+      ]
+    },
+    "tomato.early_blight": {
+      "crop": "tomato",
+      "disease": "early_blight",
+      "pathogen": "Alternaria solani",
+      "name": { "en": "Early blight", "bn": "আগাম ধসা", "hi": "अगेती झुलसा" },
+      "symptoms": {
+        "en": [
+          "Brown spots with concentric rings in a bull's-eye pattern with a yellow margin.",
+          "Fruit gets infected through the calyx or stem attachment; brown concentric rings on fruits."
+        ],
+        "bn": [
+          "হলুদ কিনারাসহ বাদামি দাগ, ভিতরে ষাঁড়ের চোখের মতো এককেন্দ্রিক বলয়।",
+          "বৃতি বা বোঁটার জায়গা দিয়ে ফল আক্রান্ত হয়; ফলে বাদামি এককেন্দ্রিক বলয়।"
+        ],
+        "hi": [
+          "पीले किनारे वाले भूरे धब्बे, जिनमें निशाने जैसे गोल छल्ले होते हैं।",
+          "फल बाह्यदल या डंठल के जोड़ से संक्रमित होते हैं; फलों पर भूरे गोल छल्ले।"
+        ]
+      },
+      "favourable_conditions": {
+        "en": [
+          "Warm, humid (24–29 °C), rainy and wet weather.",
+          "Survives in infected plant debris; first spread by infected seed, then by rain and wind."
+        ],
+        "bn": [
+          "গরম, আর্দ্র (২৪–২৯ °সে), বৃষ্টিভেজা আবহাওয়া।",
+          "আক্রান্ত গাছের অবশেষে বেঁচে থাকে; প্রথমে আক্রান্ত বীজ, পরে বৃষ্টি ও বাতাসে ছড়ায়।"
+        ],
+        "hi": [
+          "गर्म, नम (24–29 °C), बरसाती और गीला मौसम।",
+          "संक्रमित पौधों के अवशेष में जीवित रहता है; पहले संक्रमित बीज से, फिर बारिश और हवा से फैलता है।"
+        ]
+      },
+      "cultural_measures": {
+        "en": [
+          "Crop rotation.",
+          "Remove and destroy crop debris.",
+          "Seed treatment with the bio-agent Trichoderma asperellum (as named by the source)."
+        ],
+        "bn": [
+          "শস্য পর্যায় (ফসল ঘোরানো)।",
+          "ফসলের অবশেষ তুলে নষ্ট করুন।",
+          "জৈব উপাদান ট্রাইকোডার্মা অ্যাস্পেরেলাম দিয়ে বীজ শোধন (উৎসে যেমন বলা আছে)।"
+        ],
+        "hi": [
+          "फसल चक्र।",
+          "फसल अवशेष हटाकर नष्ट करें।",
+          "जैव एजेंट ट्राइकोडर्मा एस्पेरेलम से बीज उपचार (स्रोत के अनुसार)।"
+        ]
+      },
+      "resistant_varieties": [],
+      "chemical_names_in_source": [
+        "Iprodione",
+        "Azoxystrobin",
+        "Mancozeb",
+        "Metiram",
+        "Pyraclostrobin",
+        "Zineb",
+        "Azoxystrobin + Difenoconazole",
+        "Metiram + Pyraclostrobin",
+        "Tebuconazole + Trifloxystrobin"
+      ],
+      "sources": [
+        {
+          "org": "TNAU Agritech Portal (Tamil Nadu Agricultural University)",
+          "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_2.html",
+          "retrieved": "2026-11-14"
+        }
+      ]
+    },
+    "tomato.late_blight": {
+      "crop": "tomato",
+      "disease": "late_blight",
+      "pathogen": "Phytophthora infestans",
+      "name": { "en": "Late blight", "bn": "নাবি ধসা", "hi": "पछेती झुलसा" },
+      "symptoms": {
+        "en": [
+          "Water-soaked black lesions on leaves and stems that expand rapidly until the whole leaf dies.",
+          "Dark brown lesions on fruit, followed by soft rot."
+        ],
+        "bn": [
+          "পাতা ও কাণ্ডে জলে-ভেজা কালো ক্ষত দ্রুত বাড়ে, শেষে পুরো পাতা মরে যায়।",
+          "ফলে গাঢ় বাদামি ক্ষত, তারপর নরম পচন।"
+        ],
+        "hi": [
+          "पत्तियों और तनों पर पानी से भीगे जैसे काले घाव तेज़ी से बढ़ते हैं और पूरी पत्ती मर जाती है।",
+          "फल पर गहरे भूरे घाव, फिर नरम सड़न।"
+        ]
+      },
+      "favourable_conditions": {
+        "en": [
+          "Cool nights, warm days and long wet spells from rain and fog.",
+          "Best spore formation at 18–22 °C; survives in infected debris and spreads by wind."
+        ],
+        "bn": [
+          "ঠান্ডা রাত, গরম দিন এবং বৃষ্টি ও কুয়াশায় দীর্ঘ ভেজা সময়।",
+          "১৮–২২ °সে-তে সবচেয়ে বেশি রেণু তৈরি হয়; আক্রান্ত অবশেষে বেঁচে থাকে ও বাতাসে ছড়ায়।"
+        ],
+        "hi": [
+          "ठंडी रातें, गर्म दिन और बारिश व कोहरे से लंबा गीला समय।",
+          "18–22 °C पर सबसे ज़्यादा बीजाणु बनते हैं; संक्रमित अवशेष में जीवित रहता है और हवा से फैलता है।"
+        ]
+      },
+      "cultural_measures": {
+        "en": [
+          "Proper drainage.",
+          "Crop rotation.",
+          "Soil application of the bio-agent Trichoderma asperellum (as named by the source)."
+        ],
+        "bn": [
+          "ঠিকমতো জল নিকাশ।",
+          "শস্য পর্যায় (ফসল ঘোরানো)।",
+          "মাটিতে জৈব উপাদান ট্রাইকোডার্মা অ্যাস্পেরেলাম প্রয়োগ (উৎসে যেমন বলা আছে)।"
+        ],
+        "hi": [
+          "उचित जल निकास।",
+          "फसल चक्र।",
+          "मिट्टी में जैव एजेंट ट्राइकोडर्मा एस्पेरेलम का प्रयोग (स्रोत के अनुसार)।"
+        ]
+      },
+      "resistant_varieties": [],
+      "chemical_names_in_source": ["Cyazofamid", "Azoxystrobin", "Mancozeb", "Zineb", "Azoxystrobin + Difenoconazole"],
+      "sources": [
+        {
+          "org": "TNAU Agritech Portal (Tamil Nadu Agricultural University)",
+          "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_8.html",
+          "retrieved": "2026-11-14"
+        }
+      ]
+    },
+    "tomato.septoria_leaf_spot": {
+      "crop": "tomato",
+      "disease": "septoria_leaf_spot",
+      "pathogen": null,
+      "name": { "en": "Septoria leaf spot", "bn": "সেপ্টোরিয়া পাতার দাগ", "hi": "सेप्टोरिया पत्ती धब्बा" },
+      "symptoms": {
+        "en": [
+          "Small, round to irregular spots with a grey centre and dark margin on leaves.",
+          "Spots join, leaves are blighted, and plants can lose all their leaves; stems and flowers are also affected."
+        ],
+        "bn": [
+          "পাতায় ধূসর মাঝ ও গাঢ় কিনারাসহ ছোট, গোল থেকে অনিয়মিত দাগ।",
+          "দাগ জুড়ে পাতা ঝলসে যায়, গাছের সব পাতা ঝরে যেতে পারে; কাণ্ড ও ফুলও আক্রান্ত হয়।"
+        ],
+        "hi": [
+          "पत्तियों पर धूसर बीच और गहरे किनारे वाले छोटे, गोल से अनियमित धब्बे।",
+          "धब्बे मिलकर पत्तियाँ झुलसा देते हैं, सारी पत्तियाँ झड़ सकती हैं; तने और फूल भी प्रभावित होते हैं।"
+        ]
+      },
+      "favourable_conditions": {
+        "en": [
+          "High humidity.",
+          "Survives in infected plant debris; spreads by rain splash or wind."
+        ],
+        "bn": ["উচ্চ আর্দ্রতা।", "আক্রান্ত গাছের অবশেষে বেঁচে থাকে; বৃষ্টির ছিটে বা বাতাসে ছড়ায়।"],
+        "hi": ["अधिक नमी।", "संक्रमित पौधों के अवशेष में जीवित रहता है; बारिश की छींटों या हवा से फैलता है।"]
+      },
+      "cultural_measures": {
+        "en": [
+          "Remove and destroy affected plant parts.",
+          "Seed treatment with the bio-agent Trichoderma asperellum (as named by the source)."
+        ],
+        "bn": [
+          "আক্রান্ত অংশ তুলে নষ্ট করুন।",
+          "জৈব উপাদান ট্রাইকোডার্মা অ্যাস্পেরেলাম দিয়ে বীজ শোধন (উৎসে যেমন বলা আছে)।"
+        ],
+        "hi": [
+          "प्रभावित हिस्से हटाकर नष्ट करें।",
+          "जैव एजेंट ट्राइकोडर्मा एस्पेरेलम से बीज उपचार (स्रोत के अनुसार)।"
+        ]
+      },
+      "resistant_varieties": [],
+      "chemical_names_in_source": [],
+      "sources": [
+        {
+          "org": "TNAU Agritech Portal (Tamil Nadu Agricultural University)",
+          "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_4.html",
+          "retrieved": "2026-11-14"
+        }
+      ]
+    },
+    "tomato.yellow_leaf_curl_virus": {
+      "crop": "tomato",
+      "disease": "yellow_leaf_curl_virus",
+      "pathogen": "Leaf curl begomovirus, spread by whitefly (Bemisia tabaci)",
+      "name": { "en": "Leaf curl (virus)", "bn": "পাতা কোঁকড়ানো রোগ (ভাইরাস)", "hi": "पत्ती मरोड़ रोग (विषाणु)" },
+      "mapping_note": "The model's class is 'Tomato Yellow Leaf Curl Virus'; the source covers the whitefly-borne tomato leaf curl disease, managed the same way through the vector.",
+      "symptoms": {
+        "en": ["Chlorotic spots, yellowing, and downward curling and drying of leaves."],
+        "bn": ["পাতায় হলদেটে দাগ, হলুদ হয়ে যাওয়া, নিচের দিকে কুঁকড়ে শুকিয়ে যাওয়া।"],
+        "hi": ["पत्तियों पर पीलापन लिए धब्बे, पीला पड़ना, नीचे की ओर मुड़ना और सूखना।"]
+      },
+      "favourable_conditions": {
+        "en": ["Spread by whitefly, the vector of tomato leaf curl disease."],
+        "bn": ["সাদা মাছি (হোয়াইটফ্লাই) এই রোগ ছড়ায়।"],
+        "hi": ["सफ़ेद मक्खी (व्हाइटफ्लाई) इस रोग को फैलाती है।"]
+      },
+      "cultural_measures": {
+        "en": [
+          "Uproot and destroy diseased leaf-curl plants.",
+          "Remove the alternate weed host Abutilon indicum.",
+          "Install yellow sticky traps to attract adult whiteflies.",
+          "Use nitrogen and irrigation judiciously."
+        ],
+        "bn": [
+          "রোগাক্রান্ত গাছ উপড়ে নষ্ট করুন।",
+          "বিকল্প আগাছা-আশ্রয় Abutilon indicum সরিয়ে ফেলুন।",
+          "পূর্ণবয়স্ক সাদা মাছি ধরতে হলুদ আঠালো ফাঁদ বসান।",
+          "নাইট্রোজেন সার ও সেচ বুঝেশুনে দিন।"
+        ],
+        "hi": [
+          "रोगग्रस्त पौधों को उखाड़कर नष्ट करें।",
+          "वैकल्पिक खरपतवार मेज़बान Abutilon indicum हटाएँ।",
+          "वयस्क सफ़ेद मक्खियों के लिए पीले चिपचिपे जाल लगाएँ।",
+          "नाइट्रोजन और सिंचाई सोच-समझकर दें।"
+        ]
+      },
+      "resistant_varieties": [],
+      "chemical_names_in_source": [],
+      "chemical_note": "The source lists insecticides for the whitefly vector; see the source page and follow the label.",
+      "sources": [
+        {
+          "org": "TNAU Agritech Portal (Tamil Nadu Agricultural University) — whitefly page",
+          "url": "https://agritech.tnau.ac.in/crop_protection/tomato/tomato_4.html",
+          "retrieved": "2026-11-14"
+        }
+      ]
+    }
+  }
+}

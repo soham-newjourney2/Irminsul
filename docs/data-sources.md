@@ -12,8 +12,21 @@ Checked 2026-11-13. "Verified live" means an actual request was made from this m
 | Field names / types, WB commodity spellings (Potato, Tomato, Rice, Jute) | **UNVERIFIED** — needs owner's key. data.gov.in web pages return 403 to automated fetches |
 | Price unit (assumed ₹/quintal) | **UNVERIFIED** |
 
-To verify once `DATA_GOV_IN_API_KEY` is in `.env`: request `limit=5` with a West Bengal filter, record the exact keys and one sample row here, then confirm commodity names.
-Fallback: owner-downloaded, dated Agmarknet CSV → `data/mandi_snapshot_YYYY-MM-DD.csv` (columns recorded here when it arrives).
+**2026-11-14 re-check:** the key is valid (an invalid key gets 403 in 0.4 s, no key gets 400; ours passes the gateway), but every authenticated query returns **502 after ~60 s** (gateway timeout) — filtered or not, 1 row, JSON or CSV. Their data service is down; live ingestion stays blocked until it recovers.
+
+### Snapshot actually used (verified 2026-11-14)
+| Item | Value |
+|---|---|
+| Original data | AGMARKNET, Ministry of Agriculture & Farmers Welfare, GoI — data.gov.in "Variety-wise Daily Market Prices Data of Commodity" |
+| Compiled by | Manas Khandelwal, *Daily Market Prices of Commodity India (2001–2026)*, Kaggle, DOI 10.34740/kaggle/dsv/15888319 |
+| Downloaded from | Hugging Face mirror `DHIVAKARNAIDUSUNKARI/mandi-india-daily-prices-2001-2026`, pinned revision `62ad5b49bc00c60b6303ddf3d74ea0718addb59b` (yearly Parquet, 2025 + 2026 files) |
+| Licence | Government Open Data License – India (GODL-India) — reuse with attribution |
+| Columns (verified) | `State, District, Market, Commodity, Variety, Grade, Arrival_Date, Min_Price, Max_Price, Modal_Price` (+ `Commodity_Code`); no arrivals quantity |
+| Price unit | ₹ per quintal (AGMARKNET convention; sample values plausible, e.g. potato modal ₹850/q) |
+| WB commodity names | `Potato`, `Tomato`, `Rice`, `Paddy (Dhan)(Common)`, `Paddy (Common)`, `Jute` |
+| WB coverage | 2025-01-01 → **2026-04-20**; potato 142 markets, rice 108, tomato 86, jute 40 |
+| Output | `data/mandi_snapshot_2026-04-20.csv` (62,951 rows) + `.json` provenance (source, licence, SHA-256 of inputs) — built by `scripts/build_mandi_snapshot.py` |
+| Caveat | Snapshot, not live: the newest price is from 2026-04-20. The UI must show the arrival date with every price. Market coordinates are **not** in the data. |
 
 ## 2. Weather — Open-Meteo (no key)
 

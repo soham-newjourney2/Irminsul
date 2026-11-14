@@ -32,4 +32,5 @@ class RateLimiter:
         self._hits.clear()
 
 
-login_limiter = RateLimiter(limit=5, window_s=60)
+login_limiter = RateLimiter(limit=5, window_s=60)  # per phone + IP
+login_ip_limiter = RateLimiter(limit=30, window_s=60)  # per IP, any phone

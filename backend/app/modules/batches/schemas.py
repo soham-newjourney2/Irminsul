@@ -1,7 +1,8 @@
+import re
 from datetime import date, datetime
 from typing import Any, Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 from backend.app.core.geo import GeoPoint
 from backend.app.core.reference import Commodity
@@ -42,9 +43,23 @@ class SplitIn(BaseModel):
     unit: Unit
 
 
+CorrectedValue = str | int | float | bool | None
+_FIELD_NAME = re.compile(r"^[a-z_][a-z0-9_]{0,39}$")
+
+
 class CorrectionIn(BaseModel):
     reason: str = Field(min_length=3, max_length=300)
-    corrected: dict[str, Any] = Field(default_factory=dict)
+    corrected: dict[str, CorrectedValue] = Field(default_factory=dict, max_length=10)
+
+    @field_validator("corrected")
+    @classmethod
+    def _flat_and_small(cls, v: dict[str, CorrectedValue]) -> dict[str, CorrectedValue]:
+        for key, value in v.items():
+            if not _FIELD_NAME.fullmatch(key):
+                raise ValueError("Field names must be lowercase letters, digits, _")
+            if isinstance(value, str) and len(value) > 200:
+                raise ValueError("Corrected text values are limited to 200 characters")
+        return v
 
 
 class Custodian(BaseModel):

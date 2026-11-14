@@ -1,0 +1,32 @@
+{
+  "file": "mandi_snapshot_2026-04-20.csv",
+  "rows": 62951,
+  "state": "West Bengal",
+  "crops": [
+    "jute",
+    "potato",
+    "rice",
+    "tomato"
+  ],
+  "arrival_date_range": [
+    "2025-01-01",
+    "2026-04-20"
+  ],
+  "price_unit": "INR per quintal (AGMARKNET convention)",
+  "built_at": "2026-11-14T16:39:41.810372+00:00",
+  "source": {
+    "original": "AGMARKNET, Ministry of Agriculture & Farmers Welfare, Government of India",
+    "original_dataset": "https://www.data.gov.in/resource/variety-wise-daily-market-prices-data-commodity",
+    "compiled_by": "Manas Khandelwal, Daily Market Prices of Commodity India (2001-2026), Kaggle",
+    "doi": "https://doi.org/10.34740/kaggle/dsv/15888319",
+    "mirror": "https://huggingface.co/datasets/DHIVAKARNAIDUSUNKARI/mandi-india-daily-prices-2001-2026",
+    "mirror_revision": "62ad5b49bc00c60b6303ddf3d74ea0718addb59b",
+    "licence": "Government Open Data License - India (GODL-India), https://www.data.gov.in/Godl",
+    "input_sha256": {
+      "mandi_daily_2025.parquet": "65a848dfc4be3f84a911e5375abfa5d67481cf547c6a9ae382932d9166bb5e93",
+      "mandi_daily_2026.parquet": "3f768db13bf083749611bc12d4766cf04ab4b307e30429f05794552ad6ea8fe2"
+    }
+  },
+  "is_snapshot": true,
+  "note": "Dated snapshot, not live prices. Show the arrival date with every price."
+}

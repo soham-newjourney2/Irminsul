@@ -1,0 +1,1519 @@
+{
+ "source": "OpenStreetMap Nominatim geocoding of AGMARKNET market names",
+ "attribution": "Data © OpenStreetMap contributors, ODbL 1.0 (https://www.openstreetmap.org/copyright)",
+ "note": "Approximate. 'district' precision means the district's position was used.",
+ "geocoded_at": "2026-11-14",
+ "markets": [
+  {
+   "key": "Alipurduar|Alipurduar",
+   "district": "Alipurduar",
+   "market": "Alipurduar",
+   "aliases": [
+    "Alipurduar",
+    "Alipurduar APMC"
+   ],
+   "crops": [
+    "potato",
+    "tomato"
+   ],
+   "location": {
+    "lat": 26.48516,
+    "lng": 89.52469
+   },
+   "precision": "market",
+   "matched": "Alipurduar, Alipurduar - I, Alipurduar, West Bengal, 736121, India"
+  },
+  {
+   "key": "Alipurduar|Falakata",
+   "district": "Alipurduar",
+   "market": "Falakata",
+   "aliases": [
+    "Falakata",
+    "Falakata APMC"
+   ],
+   "crops": [
+    "potato",
+    "tomato"
+   ],
+   "location": {
+    "lat": 26.60072,
+    "lng": 89.12809
+   },
+   "precision": "market",
+   "matched": "Falakata, Alipurduar, West Bengal, India"
+  },
+  {
+   "key": "Bankura|Bankura Sadar",
+   "district": "Bankura",
+   "market": "Bankura Sadar",
+   "aliases": [
+    "Bankura Sadar",
+    "Bankura Sadar APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 23.13238,
+    "lng": 87.20819
+   },
+   "precision": "district",
+   "matched": "Bankura, West Bengal, India"
+  },
+  {
+   "key": "Bankura|Bishnupur",
+   "district": "Bankura",
+   "market": "Bishnupur",
+   "aliases": [
+    "Bishnupur (Bankura)",
+    "Bishnupur (Bankura) APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 23.07573,
+    "lng": 87.31463
+   },
+   "precision": "market",
+   "matched": "Bishnupur, Vishnupur, Bankura, West Bengal, India"
+  },
+  {
+   "key": "Bankura|Indus",
+   "district": "Bankura",
+   "market": "Indus",
+   "aliases": [
+    "Indus (Bankura Sadar)",
+    "Indus (Bankura Sadar) APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 23.12951,
+    "lng": 87.61517
+   },
+   "precision": "market",
+   "matched": "Indus, Bankura, West Bengal, India"
+  },
+  {
+   "key": "Bankura|Khatra",
+   "district": "Bankura",
+   "market": "Khatra",
+   "aliases": [
+    "Khatra",
+    "Khatra APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.97754,
+    "lng": 86.87723
+   },
+   "precision": "market",
+   "matched": "Khatra, Bankura, West Bengal, 722140, India"
+  },
+  {
+   "key": "Birbhum|Birbhum",
+   "district": "Birbhum",
+   "market": "Birbhum",
+   "aliases": [
+    "Birbhum",
+    "Birbhum APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 24.0,
+    "lng": 87.58333
+   },
+   "precision": "market",
+   "matched": "Bīrbhūm, Birbhum, West Bengal, 731132, India"
+  },
+  {
+   "key": "Birbhum|Bishnupur",
+   "district": "Birbhum",
+   "market": "Bishnupur",
+   "aliases": [
+    "Bishnupur APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 23.07573,
+    "lng": 87.31463
+   },
+   "precision": "market",
+   "matched": "Bishnupur, Vishnupur, Bankura, West Bengal, India"
+  },
+  {
+   "key": "Birbhum|Bolpur",
+   "district": "Birbhum",
+   "market": "Bolpur",
+   "aliases": [
+    "Bolpur",
+    "Bolpur APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 23.66115,
+    "lng": 87.69624
+   },
+   "precision": "market",
+   "matched": "Bolpur, Bolpur Sriniketan, Birbhum, West Bengal, 731204, India"
+  },
+  {
+   "key": "Birbhum|Rampurhat",
+   "district": "Birbhum",
+   "market": "Rampurhat",
+   "aliases": [
+    "Rampurhat",
+    "Rampurhat APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 24.17631,
+    "lng": 87.78596
+   },
+   "precision": "market",
+   "matched": "Rampurhat, Rampurhat - I, Birbhum, West Bengal, 731224, India"
+  },
+  {
+   "key": "Birbhum|Sainthia",
+   "district": "Birbhum",
+   "market": "Sainthia",
+   "aliases": [
+    "Sainthia",
+    "Sainthia APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 23.94969,
+    "lng": 87.68294
+   },
+   "precision": "market",
+   "matched": "Sainthia, Birbhum, West Bengal, 731234, India"
+  },
+  {
+   "key": "Burdwan|Guskara",
+   "district": "Burdwan",
+   "market": "Guskara",
+   "aliases": [
+    "Guskara APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 23.48922,
+    "lng": 87.74667
+   },
+   "precision": "market",
+   "matched": "Guskara Purnananda Public Institution, SH14, Guskara, Ausgram - I, Purba Bardhaman, West Bengal, 713128, India"
+  },
+  {
+   "key": "Coochbehar|Baxirhat",
+   "district": "Coochbehar",
+   "market": "Baxirhat",
+   "aliases": [
+    "Baxirhat",
+    "Baxirhat APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 26.34062,
+    "lng": 89.48122
+   },
+   "precision": "district",
+   "matched": "Coochbehar Industrial Park Phase-I, Railway Colony, Cooch Behar - II, Cooch Behar, West Bengal, India"
+  },
+  {
+   "key": "Coochbehar|Coochbehar",
+   "district": "Coochbehar",
+   "market": "Coochbehar",
+   "aliases": [
+    "Coochbehar",
+    "Coochbehar APMC"
+   ],
+   "crops": [
+    "potato",
+    "tomato"
+   ],
+   "location": {
+    "lat": 26.31366,
+    "lng": 89.4514
+   },
+   "precision": "market",
+   "matched": "AIIT COMPUTER STUDY CENTER COOCHBEHAR, Bengchatra Road, Koch Bihar, Cooch Behar - I, Cooch Behar, West Bengal, 736101, India"
+  },
+  {
+   "key": "Coochbehar|Dinhata",
+   "district": "Coochbehar",
+   "market": "Dinhata",
+   "aliases": [
+    "Dinhata",
+    "Dinhata APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 26.12384,
+    "lng": 89.4681
+   },
+   "precision": "market",
+   "matched": "Dinhata, Sahebgaunj Road, Dinhata, Dinhata - I, Cooch Behar, West Bengal, 736135, India"
+  },
+  {
+   "key": "Coochbehar|Haldibari",
+   "district": "Coochbehar",
+   "market": "Haldibari",
+   "aliases": [
+    "Haldibari",
+    "Haldibari APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 26.33528,
+    "lng": 88.78247
+   },
+   "precision": "market",
+   "matched": "Haldibari, MDR, Haldibari, Cooch Behar, West Bengal, 735122, India"
+  },
+  {
+   "key": "Coochbehar|Mathabhanga",
+   "district": "Coochbehar",
+   "market": "Mathabhanga",
+   "aliases": [
+    "Mathabhanga",
+    "Mathabhanga APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 26.36439,
+    "lng": 89.19941
+   },
+   "precision": "market",
+   "matched": "Matabhanga, SH12A, Matabhanga, Mathabhanga - I, Cooch Behar, West Bengal, 736146, India"
+  },
+  {
+   "key": "Coochbehar|Mekhliganj",
+   "district": "Coochbehar",
+   "market": "Mekhliganj",
+   "aliases": [
+    "Mekhliganj",
+    "Mekhliganj APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 26.34631,
+    "lng": 88.90775
+   },
+   "precision": "market",
+   "matched": "Mekhliganj Police Station, Ward No-7, MDR, Mekhliganj, Mekliganj, Cooch Behar, West Bengal, 735304, India"
+  },
+  {
+   "key": "Coochbehar|Pundibari",
+   "district": "Coochbehar",
+   "market": "Pundibari",
+   "aliases": [
+    "Pundibari",
+    "Pundibari APMC"
+   ],
+   "crops": [
+    "potato",
+    "tomato"
+   ],
+   "location": {
+    "lat": 26.41316,
+    "lng": 89.39406
+   },
+   "precision": "market",
+   "matched": "Pundibari, NH17, Railway Colony, Cooch Behar - II, Cooch Behar, West Bengal, 736179, India"
+  },
+  {
+   "key": "Coochbehar|Toofanganj",
+   "district": "Coochbehar",
+   "market": "Toofanganj",
+   "aliases": [
+    "Toofanganj",
+    "Toofanganj APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 26.34062,
+    "lng": 89.48122
+   },
+   "precision": "district",
+   "matched": "Coochbehar Industrial Park Phase-I, Railway Colony, Cooch Behar - II, Cooch Behar, West Bengal, India"
+  },
+  {
+   "key": "Dakshin Dinajpur|Balurghat",
+   "district": "Dakshin Dinajpur",
+   "market": "Balurghat",
+   "aliases": [
+    "Balurghat",
+    "Balurghat APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 25.22344,
+    "lng": 88.77807
+   },
+   "precision": "market",
+   "matched": "Balurghat, Dakshin Dinajpur, West Bengal, 733101, India"
+  },
+  {
+   "key": "Dakshin Dinajpur|Gangarampur",
+   "district": "Dakshin Dinajpur",
+   "market": "Gangarampur",
+   "aliases": [
+    "Gangarampur (Dakshin Dinajpur)",
+    "Gangarampur (Dakshin Dinajpur) APMC"
+   ],
+   "crops": [
+    "potato",
+    "tomato"
+   ],
+   "location": {
+    "lat": 25.40709,
+    "lng": 88.51612
+   },
+   "precision": "market",
+   "matched": "Gangarampur, Dakshin Dinajpur, West Bengal, 733124, India"
+  },
+  {
+   "key": "Darjeeling|Darjeeling",
+   "district": "Darjeeling",
+   "market": "Darjeeling",
+   "aliases": [
+    "Darjeeling",
+    "Darjeeling APMC"
+   ],
+   "crops": [
+    "potato",
+    "tomato"
+   ],
+   "location": {
+    "lat": 27.03776,
+    "lng": 88.26318
+   },
+   "precision": "market",
+   "matched": "Darjeeling, Darjeeling Pulbazar, Darjeeling, West Bengal, 734101, India"
+  },
+  {
+   "key": "Darjeeling|Karsiyang",
+   "district": "Darjeeling",
+   "market": "Karsiyang",
+   "aliases": [
+    "Karsiyang (Matigara)",
+    "Karsiyang (Matigara) APMC"
+   ],
+   "crops": [
+    "potato",
+    "tomato"
+   ],
+   "location": {
+    "lat": 26.83616,
+    "lng": 88.30589
+   },
+   "precision": "district",
+   "matched": "Darjeeling, West Bengal, India"
+  },
+  {
+   "key": "Darjeeling|Siliguri",
+   "district": "Darjeeling",
+   "market": "Siliguri",
+   "aliases": [
+    "Siliguri",
+    "Siliguri APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 26.71641,
+    "lng": 88.43099
+   },
+   "precision": "market",
+   "matched": "Siliguri, Matigara block, Darjeeling, West Bengal, India"
+  },
+  {
+   "key": "Hooghly|Champadanga",
+   "district": "Hooghly",
+   "market": "Champadanga",
+   "aliases": [
+    "Champadanga",
+    "Champadanga APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.83899,
+    "lng": 87.97143
+   },
+   "precision": "market",
+   "matched": "Champadanga, Tarakeswar, Hooghly, West Bengal, 712401, India"
+  },
+  {
+   "key": "Hooghly|Kalipur",
+   "district": "Hooghly",
+   "market": "Kalipur",
+   "aliases": [
+    "Kalipur",
+    "Kalipur APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.68374,
+    "lng": 88.27699
+   },
+   "precision": "market",
+   "matched": "Kalipur Sporting Club Football Playground., SH15, Chanditala, Greater Kolkata, Chanditala - II, Hooghly, West Bengal, 712702, India"
+  },
+  {
+   "key": "Hooghly|Pandua",
+   "district": "Hooghly",
+   "market": "Pandua",
+   "aliases": [
+    "Pandua",
+    "Pandua APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 23.07027,
+    "lng": 88.25834
+   },
+   "precision": "market",
+   "matched": "Pandua, Hooghly, West Bengal, India"
+  },
+  {
+   "key": "Hooghly|Sheoraphuly",
+   "district": "Hooghly",
+   "market": "Sheoraphuly",
+   "aliases": [
+    "Sheoraphuly",
+    "Sheoraphuly APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.77106,
+    "lng": 88.32078
+   },
+   "precision": "market",
+   "matched": "Sheoraphuly Netaji Vidyamandir Boys, Old Delhi Road, Serampore, Greater Kolkata, Serampur Uttarpara, Hooghly, West Bengal, 712203, India"
+  },
+  {
+   "key": "Howrah|Ramkrishanpur",
+   "district": "Howrah",
+   "market": "Ramkrishanpur",
+   "aliases": [
+    "Ramkrishanpur (Howrah)",
+    "Ramkrishanpur (Howrah) APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.49557,
+    "lng": 88.03815
+   },
+   "precision": "district",
+   "matched": "Howrah, West Bengal, India"
+  },
+  {
+   "key": "Howrah|Uluberia",
+   "district": "Howrah",
+   "market": "Uluberia",
+   "aliases": [
+    "Uluberia",
+    "Uluberia APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.47003,
+    "lng": 88.10111
+   },
+   "precision": "market",
+   "matched": "Uluberia, Greater Kolkata, Uluberia - I, Howrah, West Bengal, 711315, India"
+  },
+  {
+   "key": "Jalpaiguri|Belacoba",
+   "district": "Jalpaiguri",
+   "market": "Belacoba",
+   "aliases": [
+    "Belacoba",
+    "Belacoba APMC"
+   ],
+   "crops": [
+    "potato",
+    "tomato"
+   ],
+   "location": {
+    "lat": 26.62628,
+    "lng": 88.73345
+   },
+   "precision": "district",
+   "matched": "Jalpaiguri, West Bengal, India"
+  },
+  {
+   "key": "Jalpaiguri|Dhupguri",
+   "district": "Jalpaiguri",
+   "market": "Dhupguri",
+   "aliases": [
+    "Dhupguri",
+    "Dhupguri APMC"
+   ],
+   "crops": [
+    "potato",
+    "tomato"
+   ],
+   "location": {
+    "lat": 26.5889,
+    "lng": 89.00697
+   },
+   "precision": "market",
+   "matched": "Dhupguri, Jalpaiguri, West Bengal, India"
+  },
+  {
+   "key": "Jalpaiguri|Jalpaiguri Sadar",
+   "district": "Jalpaiguri",
+   "market": "Jalpaiguri Sadar",
+   "aliases": [
+    "Jalpaiguri Sadar",
+    "Jalpaiguri Sadar APMC"
+   ],
+   "crops": [
+    "potato",
+    "tomato"
+   ],
+   "location": {
+    "lat": 26.53439,
+    "lng": 88.72165
+   },
+   "precision": "market",
+   "matched": "State Bank of India, Netaji Subhash Chandra Bose Road, Rajbari Para, Jalpaiguri, West Bengal, 735101, India"
+  },
+  {
+   "key": "Jalpaiguri|Moynaguri",
+   "district": "Jalpaiguri",
+   "market": "Moynaguri",
+   "aliases": [
+    "Moynaguri",
+    "Moynaguri APMC"
+   ],
+   "crops": [
+    "potato",
+    "tomato"
+   ],
+   "location": {
+    "lat": 26.62628,
+    "lng": 88.73345
+   },
+   "precision": "district",
+   "matched": "Jalpaiguri, West Bengal, India"
+  },
+  {
+   "key": "Jhargram|Jhargram",
+   "district": "Jhargram",
+   "market": "Jhargram",
+   "aliases": [
+    "Jhargram",
+    "Jhargram APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 22.45385,
+    "lng": 86.99495
+   },
+   "precision": "market",
+   "matched": "Jhārgrām, Jhargram, West Bengal, 721507, India"
+  },
+  {
+   "key": "Kalimpong|Kalimpong",
+   "district": "Kalimpong",
+   "market": "Kalimpong",
+   "aliases": [
+    "Kalimpong",
+    "Kalimpong APMC"
+   ],
+   "crops": [
+    "potato",
+    "tomato"
+   ],
+   "location": {
+    "lat": 27.07029,
+    "lng": 88.47237
+   },
+   "precision": "market",
+   "matched": "Kalimpong, Kalimpong -I, Kalimpong, West Bengal, 734316, India"
+  },
+  {
+   "key": "Kolkata|Bara Bazar",
+   "district": "Kolkata",
+   "market": "Bara Bazar",
+   "aliases": [
+    "Bara Bazar (Posta Bazar)",
+    "Bara Bazar (Posta Bazar) APMC"
+   ],
+   "crops": [
+    "potato"
+   ],
+   "location": {
+    "lat": 22.58018,
+    "lng": 88.35281
+   },
+   "precision": "market",
+   "matched": "Bara Bazar, Kolkata, Greater Kolkata, Kolkata, West Bengal, 700007, India"
+  },
+  {
+   "key": "Kolkata|Sealdah Koley Market",
+   "district": "Kolkata",
+   "market": "Sealdah Koley Market",
+   "aliases": [
+    "Sealdah Koley Market",
+    "Sealdah Koley Market APMC"
+   ],
+   "crops": [
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.53543,
+    "lng": 88.36331
+   },
+   "precision": "district",
+   "matched": "Kolkata, West Bengal, India"
+  },
+  {
+   "key": "Malda|English Bazar",
+   "district": "Malda",
+   "market": "English Bazar",
+   "aliases": [
+    "English Bazar",
+    "English Bazar APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 25.00574,
+    "lng": 88.13985
+   },
+   "precision": "market",
+   "matched": "Malda, English Bazar, Maldah, West Bengal, 732101, India"
+  },
+  {
+   "key": "Malda|Gajol",
+   "district": "Malda",
+   "market": "Gajol",
+   "aliases": [
+    "Gajol",
+    "Gajol APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 25.21589,
+    "lng": 88.1933
+   },
+   "precision": "market",
+   "matched": "Gazole, Maldah, West Bengal, 732124, India"
+  },
+  {
+   "key": "Malda|Samsi",
+   "district": "Malda",
+   "market": "Samsi",
+   "aliases": [
+    "Samsi",
+    "Samsi APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 25.27627,
+    "lng": 88.01012
+   },
+   "precision": "market",
+   "matched": "Samsi, NH31, Binodpur Balia, Ratua - I, Maldah, West Bengal, India"
+  },
+  {
+   "key": "Medinipur (E)|Egra contai",
+   "district": "Medinipur (E)",
+   "market": "Egra contai",
+   "aliases": [
+    "Egra/contai",
+    "Egra/contai APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.4207,
+    "lng": 87.327
+   },
+   "precision": "district",
+   "matched": "Medinipur, Midnapore, Paschim Medinipur, West Bengal, 721101, India"
+  },
+  {
+   "key": "Medinipur (E)|Kolaghat",
+   "district": "Medinipur (E)",
+   "market": "Kolaghat",
+   "aliases": [
+    "Kolaghat",
+    "Kolaghat APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 22.44043,
+    "lng": 87.81916
+   },
+   "precision": "market",
+   "matched": "Kolaghat, Purba Medinipur, West Bengal, India"
+  },
+  {
+   "key": "Medinipur (E)|Tamluk",
+   "district": "Medinipur (E)",
+   "market": "Tamluk",
+   "aliases": [
+    "Tamluk (Medinipur E)",
+    "Tamluk (Medinipur E) APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 22.2897,
+    "lng": 87.92559
+   },
+   "precision": "market",
+   "matched": "Tamluk, Purba Medinipur, West Bengal, 721600, India"
+  },
+  {
+   "key": "Medinipur (W)|Garbeta",
+   "district": "Medinipur (W)",
+   "market": "Garbeta",
+   "aliases": [
+    "Garbeta (Medinipur)",
+    "Garbeta (Medinipur) APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.84446,
+    "lng": 87.3209
+   },
+   "precision": "market",
+   "matched": "Garbeta, Gatebazar - Railway Station Road, Amlogara, Garhbeta, Garbeta-I, Paschim Medinipur, West Bengal, 721127, India"
+  },
+  {
+   "key": "Medinipur (W)|Ghatal",
+   "district": "Medinipur (W)",
+   "market": "Ghatal",
+   "aliases": [
+    "Ghatal",
+    "Ghatal APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.66453,
+    "lng": 87.73386
+   },
+   "precision": "market",
+   "matched": "Ghatal, Paschim Medinipur, West Bengal, 721212, India"
+  },
+  {
+   "key": "Medinipur (W)|Medinipur",
+   "district": "Medinipur (W)",
+   "market": "Medinipur",
+   "aliases": [
+    "Medinipur (West)",
+    "Medinipur (West) APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.4207,
+    "lng": 87.327
+   },
+   "precision": "market",
+   "matched": "Medinipur, Midnapore, Paschim Medinipur, West Bengal, 721101, India"
+  },
+  {
+   "key": "Murshidabad|Beldanga",
+   "district": "Murshidabad",
+   "market": "Beldanga",
+   "aliases": [
+    "Beldanga",
+    "Beldanga APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 23.93962,
+    "lng": 88.24958
+   },
+   "precision": "market",
+   "matched": "Beldanga, Beldanga - I, Murshidabad, West Bengal, 742189, India"
+  },
+  {
+   "key": "Murshidabad|Jangipur",
+   "district": "Murshidabad",
+   "market": "Jangipur",
+   "aliases": [
+    "Jangipur",
+    "Jangipur APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 24.45615,
+    "lng": 88.1074
+   },
+   "precision": "market",
+   "matched": "Jangipur, Raghunathganj - II, Murshidabad, West Bengal, 742213, India"
+  },
+  {
+   "key": "Murshidabad|Jiaganj",
+   "district": "Murshidabad",
+   "market": "Jiaganj",
+   "aliases": [
+    "Jiaganj",
+    "Jiaganj APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 24.24426,
+    "lng": 88.27715
+   },
+   "precision": "market",
+   "matched": "Jiaganj, NH312, Jiaganj, Murshidabad, Murshidabad Jiaganj, Murshidabad, West Bengal, 742149, India"
+  },
+  {
+   "key": "Murshidabad|Kandi",
+   "district": "Murshidabad",
+   "market": "Kandi",
+   "aliases": [
+    "Kandi",
+    "Kandi APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 23.95786,
+    "lng": 88.04224
+   },
+   "precision": "market",
+   "matched": "Kandi, Murshidabad, West Bengal, 742137, India"
+  },
+  {
+   "key": "Murshidabad|Kasimbazar",
+   "district": "Murshidabad",
+   "market": "Kasimbazar",
+   "aliases": [
+    "Kasimbazar",
+    "Kasimbazar APMC"
+   ],
+   "crops": [
+    "jute",
+    "rice"
+   ],
+   "location": {
+    "lat": 24.2904,
+    "lng": 88.36643
+   },
+   "precision": "district",
+   "matched": "Murshidabad, West Bengal, India"
+  },
+  {
+   "key": "Murshidabad|Lalbagh",
+   "district": "Murshidabad",
+   "market": "Lalbagh",
+   "aliases": [
+    "Lalbagh",
+    "Lalbagh APMC"
+   ],
+   "crops": [
+    "jute",
+    "rice"
+   ],
+   "location": {
+    "lat": 24.1996,
+    "lng": 88.2688
+   },
+   "precision": "market",
+   "matched": "Lalbagh, Murshidabad Jiaganj, Murshidabad, West Bengal, 742149, India"
+  },
+  {
+   "key": "Nadia|Bethuadahari",
+   "district": "Nadia",
+   "market": "Bethuadahari",
+   "aliases": [
+    "Bethuadahari",
+    "Bethuadahari APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 23.61127,
+    "lng": 88.38452
+   },
+   "precision": "market",
+   "matched": "Bethuadahari, Birpur Road to Hospital Road Connector, Bethuadahari, Nakashipara, Nadia, West Bengal, 741126, India"
+  },
+  {
+   "key": "Nadia|Chakdah",
+   "district": "Nadia",
+   "market": "Chakdah",
+   "aliases": [
+    "Chakdah",
+    "Chakdah APMC"
+   ],
+   "crops": [
+    "potato",
+    "tomato"
+   ],
+   "location": {
+    "lat": 23.06538,
+    "lng": 88.53006
+   },
+   "precision": "market",
+   "matched": "CHAKDAH PURBACHAL VIDYAPITH, Mahatma Gandhi Avenue, Chakdaha  City, Chakdaha, Nadia, West Bengal, 741222, India"
+  },
+  {
+   "key": "Nadia|Kalyani",
+   "district": "Nadia",
+   "market": "Kalyani",
+   "aliases": [
+    "Kalyani",
+    "Kalyani APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 22.97497,
+    "lng": 88.43459
+   },
+   "precision": "market",
+   "matched": "Kalyani City, Greater Kolkata, Kalyani, Nadia, West Bengal, India"
+  },
+  {
+   "key": "Nadia|Karimpur",
+   "district": "Nadia",
+   "market": "Karimpur",
+   "aliases": [
+    "Karimpur",
+    "Karimpur APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 23.9816,
+    "lng": 88.62961
+   },
+   "precision": "market",
+   "matched": "Karimpur, Karimpur-I, Nadia, West Bengal, 741152, India"
+  },
+  {
+   "key": "Nadia|Nadia",
+   "district": "Nadia",
+   "market": "Nadia",
+   "aliases": [
+    "Nadia",
+    "Nadia APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 22.97551,
+    "lng": 88.52974
+   },
+   "precision": "market",
+   "matched": "All India Institute of Medical Sciences, Kalyani, Kalyani Road, Greater Kolkata, Kalyani, Nadia, West Bengal, 741245, India"
+  },
+  {
+   "key": "Nadia|Ranaghat",
+   "district": "Nadia",
+   "market": "Ranaghat",
+   "aliases": [
+    "Ranaghat",
+    "Ranaghat APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 23.17381,
+    "lng": 88.56368
+   },
+   "precision": "market",
+   "matched": "Ranaghat, Ranaghat - II, Nadia, West Bengal, 741200, India"
+  },
+  {
+   "key": "North 24 Parganas|Barasat",
+   "district": "North 24 Parganas",
+   "market": "Barasat",
+   "aliases": [
+    "Barasat",
+    "Barasat APMC"
+   ],
+   "crops": [
+    "potato",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.71911,
+    "lng": 88.48262
+   },
+   "precision": "market",
+   "matched": "Barasat, Barasat - I, North 24 Parganas, West Bengal, 700124, India"
+  },
+  {
+   "key": "North 24 Parganas|Habra",
+   "district": "North 24 Parganas",
+   "market": "Habra",
+   "aliases": [
+    "Habra",
+    "Habra APMC"
+   ],
+   "crops": [
+    "potato",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.84006,
+    "lng": 88.66307
+   },
+   "precision": "market",
+   "matched": "Habra, Habra - I, North 24 Parganas, West Bengal, 743263, India"
+  },
+  {
+   "key": "Paschim Bardhaman|Asansol",
+   "district": "Paschim Bardhaman",
+   "market": "Asansol",
+   "aliases": [
+    "Asansol",
+    "Asansol APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 23.68686,
+    "lng": 86.97456
+   },
+   "precision": "market",
+   "matched": "Asansol, Asansol Kulti Township, Paschim Bardhaman, West Bengal, India"
+  },
+  {
+   "key": "Paschim Bardhaman|Durgapur",
+   "district": "Paschim Bardhaman",
+   "market": "Durgapur",
+   "aliases": [
+    "Durgapur",
+    "Durgapur APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 23.53505,
+    "lng": 87.33804
+   },
+   "precision": "market",
+   "matched": "Durgapur, Faridpur Durgapur, Paschim Bardhaman, West Bengal, 713200, India"
+  },
+  {
+   "key": "Purba Bardhaman|Burdwan",
+   "district": "Purba Bardhaman",
+   "market": "Burdwan",
+   "aliases": [
+    "Burdwan",
+    "Burdwan APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 23.24957,
+    "lng": 87.86818
+   },
+   "precision": "market",
+   "matched": "Bardhaman, Burdwan - I, Purba Bardhaman, West Bengal, India"
+  },
+  {
+   "key": "Purba Bardhaman|Guskara",
+   "district": "Purba Bardhaman",
+   "market": "Guskara",
+   "aliases": [
+    "Guskara",
+    "Guskara APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 23.49262,
+    "lng": 87.7371
+   },
+   "precision": "market",
+   "matched": "Guskara, Ausgram - I, Purba Bardhaman, West Bengal, 713128, India"
+  },
+  {
+   "key": "Purba Bardhaman|Kalna",
+   "district": "Purba Bardhaman",
+   "market": "Kalna",
+   "aliases": [
+    "Kalna",
+    "Kalna APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 23.22112,
+    "lng": 88.35919
+   },
+   "precision": "market",
+   "matched": "Kalna, Kalna - I, Purba Bardhaman, West Bengal, 713409, India"
+  },
+  {
+   "key": "Purba Bardhaman|Katwa",
+   "district": "Purba Bardhaman",
+   "market": "Katwa",
+   "aliases": [
+    "Katwa",
+    "Katwa APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 23.64428,
+    "lng": 88.12873
+   },
+   "precision": "market",
+   "matched": "Katwa, Katwa - I, Purba Bardhaman, West Bengal, 713130, India"
+  },
+  {
+   "key": "Purba Bardhaman|Memari",
+   "district": "Purba Bardhaman",
+   "market": "Memari",
+   "aliases": [
+    "Memari",
+    "Memari APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 23.17773,
+    "lng": 88.09662
+   },
+   "precision": "market",
+   "matched": "Memari, Memari - I, Purba Bardhaman, West Bengal, 713146, India"
+  },
+  {
+   "key": "Puruliya|Balarampur",
+   "district": "Puruliya",
+   "market": "Balarampur",
+   "aliases": [
+    "Balarampur",
+    "Balarampur APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 23.11453,
+    "lng": 86.22576
+   },
+   "precision": "market",
+   "matched": "Balarampur, Purulia, West Bengal, 723143, India"
+  },
+  {
+   "key": "Puruliya|Kasipur",
+   "district": "Puruliya",
+   "market": "Kasipur",
+   "aliases": [
+    "Kasipur",
+    "Kasipur APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.44067,
+    "lng": 88.55997
+   },
+   "precision": "market",
+   "matched": "Dakshin Kasipur, Greater Kolkata, Bhangar - I, South 24 Parganas, West Bengal, 743330, India"
+  },
+  {
+   "key": "Puruliya|Purulia",
+   "district": "Puruliya",
+   "market": "Purulia",
+   "aliases": [
+    "Purulia",
+    "Purulia APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 23.32919,
+    "lng": 86.36724
+   },
+   "precision": "market",
+   "matched": "Purulia, Purulia - II, Purulia, West Bengal, 723101, India"
+  },
+  {
+   "key": "Sounth 24 Parganas|Baruipur",
+   "district": "Sounth 24 Parganas",
+   "market": "Baruipur",
+   "aliases": [
+    "Baruipur (Canning)",
+    "Baruipur (Canning) APMC"
+   ],
+   "crops": [
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.36072,
+    "lng": 88.43256
+   },
+   "precision": "market",
+   "matched": "Baruipur, Greater Kolkata, Baruipur, South 24 Parganas, West Bengal, 700144, India"
+  },
+  {
+   "key": "Sounth 24 Parganas|Diamond Harbour",
+   "district": "Sounth 24 Parganas",
+   "market": "Diamond Harbour",
+   "aliases": [
+    "Diamond Harbour (South 24-pgs)",
+    "Diamond Harbour (South 24-pgs) APMC"
+   ],
+   "crops": [
+    "potato",
+    "rice",
+    "tomato"
+   ],
+   "location": {
+    "lat": 22.19269,
+    "lng": 88.18949
+   },
+   "precision": "market",
+   "matched": "Diamond Harbour, Diamond Harbour - I, South 24 Parganas, West Bengal, 743331, India"
+  },
+  {
+   "key": "Uttar Dinajpur|Islampur",
+   "district": "Uttar Dinajpur",
+   "market": "Islampur",
+   "aliases": [
+    "Islampur",
+    "Islampur APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 26.25637,
+    "lng": 88.18605
+   },
+   "precision": "market",
+   "matched": "Islampur, Uttar Dinajpur, West Bengal, 733202, India"
+  },
+  {
+   "key": "Uttar Dinajpur|Kaliaganj",
+   "district": "Uttar Dinajpur",
+   "market": "Kaliaganj",
+   "aliases": [
+    "Kaliaganj",
+    "Kaliaganj APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 25.87214,
+    "lng": 87.96199
+   },
+   "precision": "district",
+   "matched": "Uttar Dinajpur, West Bengal, India"
+  },
+  {
+   "key": "Uttar Dinajpur|Raiganj",
+   "district": "Uttar Dinajpur",
+   "market": "Raiganj",
+   "aliases": [
+    "Raiganj",
+    "Raiganj APMC"
+   ],
+   "crops": [
+    "jute",
+    "potato",
+    "rice"
+   ],
+   "location": {
+    "lat": 25.6272,
+    "lng": 88.1318
+   },
+   "precision": "market",
+   "matched": "Raiganj, Uttar Dinajpur, West Bengal, 733134, India"
+  }
+ ]
+}

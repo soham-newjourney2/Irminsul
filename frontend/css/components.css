@@ -595,3 +595,44 @@ details.panel > .panel__body {
 .app-header__inner {
   position: relative;
 }
+
+/* Tables, images (no inline styles: CSP blocks style attributes) */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: var(--sp-2);
+  border-bottom: 1px solid var(--c-border);
+  vertical-align: top;
+}
+
+.table td.num,
+.table th.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.preview-img {
+  max-width: 100%;
+  max-height: 320px;
+  border-radius: var(--radius-sm);
+}
+
+.thumb {
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.chart-box {
+  position: relative;
+  height: 260px;
+}

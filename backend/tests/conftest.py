@@ -7,11 +7,12 @@ import pytest
 from fastapi import FastAPI
 
 from backend.app.config import get_settings
-from backend.app.core.ratelimit import login_limiter
+from backend.app.core.ratelimit import login_ip_limiter, login_limiter
 from backend.app.core.security import create_session_token
 from backend.app.db.client import Doc, mongo
 from backend.app.db.indexes import ensure_indexes
 from backend.app.main import app
+from backend.app.modules.screening.service import screening_limiter
 
 
 def _client(target: FastAPI = app) -> httpx.AsyncClient:
@@ -50,6 +51,8 @@ async def test_db(_db_session: bool) -> AsyncIterator[None]:
     if not _db_session:
         pytest.skip("MONGODB_URI not set")
     login_limiter.reset()
+    login_ip_limiter.reset()
+    screening_limiter.reset()
     try:
         yield
     finally:

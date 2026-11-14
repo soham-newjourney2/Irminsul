@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "retrieved": "2026-11-14",
+  "review_status": "not expert-reviewed",
+  "note": "Weather conditions come from the cited sources. How many hours of those conditions trigger an advisory is an Irminsul assumption (listed per rule), not an agronomic standard.",
+  "rules": [
+    {
+      "id": "heavy_rain",
+      "kind": "weather_alert",
+      "crops": null,
+      "metric": "daily_precipitation_mm",
+      "bands": [
+        { "min": 64.5, "severity": "warning", "label": "heavy" },
+        { "min": 115.6, "severity": "critical", "label": "very_heavy" },
+        { "min": 204.5, "severity": "critical", "label": "extremely_heavy" }
+      ],
+      "source": {
+        "org": "India Meteorological Department (IMD) rainfall intensity categories (per 24 h)",
+        "urls": [
+          "https://www.moes.gov.in/sites/default/files/RS-in-25-27-07-2023.pdf",
+          "https://internal.imd.gov.in/press_release/20241022_pr_3353.pdf"
+        ],
+        "quote": "Heavy 64.5-115.5 mm; very heavy 115.6-204.4 mm; extremely heavy >= 204.5 mm"
+      },
+      "verified": false,
+      "verification_note": "IMD/MoES documents block automated download (HTTP 403); the bands were confirmed only via search snippets of several IMD documents. Owner to confirm against the PDF.",
+      "assumptions": ["Open-Meteo daily precipitation_sum is used as the 24 h amount for the farm's grid cell."]
+    },
+    {
+      "id": "potato_late_blight_risk",
+      "kind": "crop_advisory",
+      "crops": ["potato"],
+      "metric": "hours_matching",
+      "window_hours": 48,
+      "hourly_condition": { "rh_min": 90, "temp_min": 10, "temp_max": 25 },
+      "trigger_hours": 10,
+      "severity": "warning",
+      "disease": "late_blight",
+      "source": {
+        "org": "TNAU Agritech Portal — Late blight of potato",
+        "urls": ["https://agritech.tnau.ac.in/crop_protection/crop_prot_crop%20diseases_veg_potato_1.html"],
+        "quote": "RH->90% , Temp.-10-25°C and Night temperature:10°C."
+      },
+      "verified": true,
+      "assumptions": ["Advisory when at least 10 of the next 48 forecast hours have RH > 90% and 10–25 °C (trigger count is Irminsul's assumption)."]
+    },
+    {
+      "id": "potato_early_blight_risk",
+      "kind": "crop_advisory",
+      "crops": ["potato"],
+      "metric": "hours_matching_with_rain",
+      "window_hours": 48,
+      "hourly_condition": { "temp_min": 25, "temp_max": 30 },
+      "trigger_hours": 12,
+      "rain_mm_min": 0.1,
+      "severity": "info",
+      "disease": "early_blight",
+      "source": {
+        "org": "TNAU Agritech Portal — Early blight of potato",
+        "urls": ["https://agritech.tnau.ac.in/crop_protection/crop_prot_crop%20diseases_veg_potato_2.html"],
+        "quote": "Dry warm weather with intermittent rain. Poor vigor. Temperature: 25-30°C."
+      },
+      "verified": true,
+      "assumptions": ["Advisory when at least 12 of the next 48 hours are 25–30 °C and some rain (≥ 0.1 mm) is forecast in the window."]
+    },
+    {
+      "id": "tomato_late_blight_risk",
+      "kind": "crop_advisory",
+      "crops": ["tomato"],
+      "metric": "hours_matching",
+      "window_hours": 48,
+      "hourly_condition": { "rh_min": 90, "temp_min": 18, "temp_max": 22 },
+      "trigger_hours": 8,
+      "severity": "warning",
+      "disease": "late_blight",
+      "source": {
+        "org": "TNAU Agritech Portal — Late blight of tomato",
+        "urls": ["https://agritech.tnau.ac.in/crop_protection/tomato_diseases_8.html"],
+        "quote": "Cool nights, warm days and extended wet conditions from rain and fog; Optimum temp for sporulation is 18 - 22oC"
+      },
+      "verified": true,
+      "assumptions": ["'Extended wet conditions' approximated as RH ≥ 90%; advisory when at least 8 of the next 48 hours have RH ≥ 90% and 18–22 °C."]
+    },
+    {
+      "id": "tomato_early_blight_risk",
+      "kind": "crop_advisory",
+      "crops": ["tomato"],
+      "metric": "hours_matching_with_rain",
+      "window_hours": 48,
+      "hourly_condition": { "rh_min": 80, "temp_min": 24, "temp_max": 29 },
+      "trigger_hours": 12,
+      "rain_mm_min": 0.1,
+      "severity": "info",
+      "disease": "early_blight",
+      "source": {
+        "org": "TNAU Agritech Portal — Early blight of tomato",
+        "urls": ["https://agritech.tnau.ac.in/crop_protection/tomato_diseases_2.html"],
+        "quote": "Warm, humid (24-29 degree C), rainy and wet weather."
+      },
+      "verified": true,
+      "assumptions": ["'Humid' approximated as RH ≥ 80%; advisory when at least 12 of the next 48 hours have RH ≥ 80% and 24–29 °C and some rain is forecast."]
+    }
+  ]
+}

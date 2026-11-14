@@ -72,6 +72,39 @@ INDEXES: dict[str, list[IndexModel]] = {
         IndexModel([("token", ASCENDING)], unique=True, name="token_unique"),
         IndexModel([("batch_id", ASCENDING)], name="batch"),
     ],
+    # Farmer intelligence (M4)
+    "crop_screenings": [
+        IndexModel([("farmer_id", ASCENDING), ("created_at", DESCENDING)], name="farmer_created")
+    ],
+    "weather_cache": [
+        IndexModel([("key", ASCENDING)], unique=True, name="key_unique"),
+        IndexModel([("fetched_at", ASCENDING)], expireAfterSeconds=6 * 3600, name="ttl_6h"),
+    ],
+    "price_observations": [
+        IndexModel(
+            [
+                ("source", ASCENDING),
+                ("market_key", ASCENDING),
+                ("commodity", ASCENDING),
+                ("variety", ASCENDING),
+                ("grade", ASCENDING),
+                ("arrival_date", ASCENDING),
+            ],
+            unique=True,
+            name="obs_unique",
+        ),
+        IndexModel([("crop", ASCENDING), ("arrival_date", DESCENDING)], name="crop_date"),
+        IndexModel([("arrival_date", DESCENDING)], name="arrival_date"),
+        IndexModel(
+            [("crop", ASCENDING), ("market_key", ASCENDING), ("arrival_date", DESCENDING)],
+            name="crop_market_date",
+        ),
+    ],
+    "markets": [
+        IndexModel([("key", ASCENDING)], unique=True, name="key_unique"),
+        IndexModel([("location", GEOSPHERE)], name="location_2dsphere"),
+    ],
+    "route_cache": [IndexModel([("key", ASCENDING)], unique=True, name="key_unique")],
     "notifications": [
         IndexModel([("user_id", ASCENDING), ("created_at", DESCENDING)], name="user_created"),
         IndexModel([("user_id", ASCENDING), ("read_at", ASCENDING)], name="user_unread"),
