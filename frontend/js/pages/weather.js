@@ -68,7 +68,7 @@ async function advisoryCard(a) {
     el("p", { text: evidenceText(a) }),
     a.rule_id === "heavy_rain" ? null : el("p", { text: t("advisory.action") }),
     el("p", { class: "hint" }, `${t("guidance.source")}: `, el("a", { href: a.source.urls[0], target: "_blank", rel: "noopener noreferrer", text: a.source.org }), ` — “${a.source.quote}”`),
-    el("details", {}, el("summary", { class: "hint", text: t("advisory.assumptions") }), el("ul", { class: "history" }, a.assumptions.map((x) => el("li", { text: x })))),
+    el("details", {}, el("summary", { class: "hint", text: `${t("advisory.assumptions")} (${t("common.english_source")})` }), el("ul", { class: "history" }, a.assumptions.map((x) => el("li", { text: x })))),
   );
   if (a.guidance_key) {
     const holder = el("details", {}, el("summary", { text: t("advisory.open_guidance") }));

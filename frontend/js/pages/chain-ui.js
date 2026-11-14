@@ -30,7 +30,7 @@ export function detailLines(type, p = {}) {
   if (p.kind) lines.push(`${t("freshtrack.condition")}: ${t(`freshtrack.kind_${p.kind}`)}${p.severity ? ` (${t(`severity.${p.severity}`)})` : ""}`);
   if (p.result) lines.push(`${t("freshtrack.inspection")}: ${t(`freshtrack.result_${p.result}`)}${p.corrective_action ? ` — ${p.corrective_action}` : ""}`);
   if (type === "observation_summary" && p.status) lines.push(`${t("freshtrack.summary")}: ${t(`freshtrack.summary_${p.status}`)}${p.temp_in_band_pct != null ? ` · ${p.temp_in_band_pct}% ${t("freshtrack.in_band")}` : ""}${p.readings ? ` · ${p.readings} ${t("freshtrack.readings")}` : ""}`);
-  if (p.label) lines.push(`${t("chain.screening")}: ${p.label}${p.confidence !== undefined ? ` (${Math.round(p.confidence * 100)}%)` : ""}`);
+  if (p.label) lines.push(`${t("chain.screening")}: ${p.label === "unsure" ? t("screen.unsure_title") : t(`diseases.${p.label}`)}${p.confidence !== undefined ? ` (${Math.round(p.confidence * 100)}%)` : ""}`);
   return lines;
 }
 

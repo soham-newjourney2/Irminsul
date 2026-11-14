@@ -117,7 +117,7 @@ function zonesBlock(f) {
   const profile = el("select", { class: "select", name: "rule_profile" }, el("option", { value: "", text: t("freshtrack.profile_default") }));
   api("/freshtrack/rules").then(({ data }) => {
     const fill = () => {
-      profile.replaceChildren(el("option", { value: "", text: t("freshtrack.profile_default") }), ...Object.entries(data.profiles).filter(([, p]) => !crop.value || p.commodity === crop.value).map(([id, p]) => el("option", { value: id, text: `${p.label}${p.verified ? "" : ` (${t("badges.unverified_source")})`}` })));
+      profile.replaceChildren(el("option", { value: "", text: t("freshtrack.profile_default") }), ...Object.entries(data.profiles).filter(([, p]) => !crop.value || p.commodity === crop.value).map(([id, p]) => el("option", { value: id, text: `${t(`freshtrack.profile_${id}`)}${p.verified ? "" : ` (${t("badges.unverified_source")})`}` })));
     };
     crop.addEventListener("change", fill);
     fill();

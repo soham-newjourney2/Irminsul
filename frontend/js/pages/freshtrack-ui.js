@@ -21,7 +21,7 @@ export function explain(a) {
     peak: a.peak != null ? fmtNum(a.peak, 1) : "—",
     minutes: fmtNum(a.duration_min, 0),
     band,
-    profile: p.label ?? "—",
+    profile: p.id ? t(`freshtrack.profile_${p.id}`) : (p.label ?? "—"),
     start: fmtDateTime(a.started_at),
     latest: fmtDateTime(a.latest_at),
     mean: a.details?.mean != null ? fmtNum(a.details.mean, 2) : "—",

@@ -15,7 +15,7 @@ function plotMap(ctx, exp, plans, rain) {
   const { L, map } = ctx;
   const ring = exp.event.geometry.coordinates[0].map(([lng, lat]) => [lat, lng]);
   const poly = L.polygon(ring, { color: "#b42318", weight: 2, fillOpacity: 0.15, dashArray: "6 4" }).addTo(map);
-  poly.bindPopup(el("div", {}, el("strong", { text: exp.event.name }), el("br"), t("emergency.simulated_label")));
+  poly.bindPopup(el("div", {}, el("strong", { text: t(`emergency.scenario_${exp.event.scenario_id}`) }), el("br"), t("emergency.simulated_label")));
   const pts = [];
   for (const f of exp.farms) {
     L.circleMarker([f.location.lat, f.location.lng], { radius: 7, color: "#2f6b3a", fillOpacity: 0.8 }).addTo(map).bindPopup(el("div", { text: `${t("emergency.farm")}: ${f.name}` }));
@@ -113,13 +113,13 @@ async function showEvent(host, ev) {
         ? actionButton(t("emergency.close"), async () => (await api(`/emergencies/${ev.id}/close`, { method: "POST" }), done("emergency.closed"), render()), { onError: fail })
         : null;
       host.replaceChildren(
-        el("div", { class: "alert alert--warn" }, el("strong", { text: t("emergency.simulated_label") }), el("p", { text: exp.event.note })),
+        el("div", { class: "alert alert--warn" }, el("strong", { text: t("emergency.simulated_label") }), el("p", { text: t("emergency.simulated_note") })),
         el("p", { class: "muted", text: t("emergency.summary", { farms: exp.farms.length, stores: exp.facilities.length, lots: exp.stored_lots.length, upcoming: exp.upcoming_bookings.length, time: fmtDateTime(exp.event.created_at) }) }),
         mapEl,
         el("p", { class: "hint", text: t("emergency.legend") }),
         el("h2", { text: t("emergency.relocations") }),
-        el("p", { class: "hint", text: `${plans.meta.ranking} ${plans.meta.urgency_assumption}` }),
-        el("div", { class: "row" }, field(t("net.rate"), rate, plans.meta.cost), el("button", { class: "btn", type: "button", text: t("emergency.update_costs"), onclick: load })),
+        el("p", { class: "hint", text: `${t("emergency.ranking_note")} ${t("emergency.urgency_note")}` }),
+        el("div", { class: "row" }, field(t("net.rate"), rate, t("emergency.cost_note")), el("button", { class: "btn", type: "button", text: t("emergency.update_costs"), onclick: load })),
         plans.data.length ? el("ul", { class: "item-list" }, plans.data.map((p) => planCard(p, load))) : el("div", { class: "state", text: t("emergency.no_lots") }),
         closeBtn,
       );
@@ -139,7 +139,7 @@ async function render() {
     root.replaceChildren(el("h1", { text: t("emergency.title") }), el("div", { class: "state", text: t("emergency.none") }));
     return;
   }
-  const select = el("select", { class: "select" }, events.map((e) => el("option", { value: e.id, text: `${e.name} · ${t(`emergency.status_${e.status}`)} · ${fmtDateTime(e.created_at)}` })));
+  const select = el("select", { class: "select" }, events.map((e) => el("option", { value: e.id, text: `${t(`emergency.scenario_${e.scenario_id}`)} · ${t(`emergency.status_${e.status}`)} · ${fmtDateTime(e.created_at)}` })));
   const host = el("div", { class: "stack" });
   select.addEventListener("change", () => showEvent(host, events.find((e) => e.id === select.value)));
   root.replaceChildren(el("h1", { text: t("emergency.title") }), field(t("emergency.event"), select), host);

@@ -19,7 +19,7 @@ function profileCard(p) {
   return el(
     "div",
     { class: "card stack" },
-    el("div", { class: "item__head" }, el("strong", { text: `${t("freshtrack.safe_band")}: ${p.label}` }), p.verified ? el("span", { class: "badge", dataset: { tone: "ok" }, text: t("badges.cited") }) : el("span", { class: "badge", dataset: { tone: "warn" }, text: t("badges.unverified_source") })),
+    el("div", { class: "item__head" }, el("strong", { text: `${t("freshtrack.safe_band")}: ${t(`freshtrack.profile_${p.id}`)}` }), p.verified ? el("span", { class: "badge", dataset: { tone: "ok" }, text: t("badges.cited") }) : el("span", { class: "badge", dataset: { tone: "warn" }, text: t("badges.unverified_source") })),
     el("p", { text: `${band} · ${rh}` }),
     el("p", { class: "hint" }, `${t("guidance.source")}: `, el("a", { href: p.source.url, target: "_blank", rel: "noopener noreferrer", text: p.source.org }), p.source.pages ? ` (p. ${p.source.pages})` : "", p.source.quote ? ` — “${p.source.quote}”` : ""),
     p.verification_note ? el("p", { class: "hint", text: p.verification_note }) : null,

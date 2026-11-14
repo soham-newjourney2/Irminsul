@@ -1,0 +1,14 @@
+{
+  "name": "plantvillage-mobilenetv2",
+  "revision": "9e3c97cf1e63e2a665a27c7bccd0ac067a2dbe5d",
+  "dir": "9e3c97c",
+  "bucket": "model_files",
+  "database": "irminsul",
+  "files": {
+    "model.onnx": "b222b194faf40dbe5d7849f8df705f092ffb69adf224a836891c3852b678de10",
+    "preprocess.json": "9659275c96342666d965962d604e586321fde6e35bc9954c730f9c4af3fa4e71",
+    "class_map.json": "e1325089f5555cb8b001a4c95a634967b9bf5d1122387e789009ec4bcffa085a",
+    "thresholds.json": "e0b427ada686fa8573bd3ff008bb2e0cfeb21222721bcaa7908627f76b25ec63",
+    "manifest.json": "484a04b8186b6a4ec97004b8feac07695e4f44382b56db5d9017f586371713bf"
+  }
+}

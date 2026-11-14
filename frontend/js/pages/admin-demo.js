@@ -66,7 +66,7 @@ export async function renderDemo(panel) {
 
 async function floodSection() {
   const scenarios = (await api("/admin/demo/flood/scenarios").catch(() => ({ data: [] }))).data;
-  const sel = el("select", { class: "select" }, scenarios.map((s) => el("option", { value: s.id, text: s.name })));
+  const sel = el("select", { class: "select" }, scenarios.map((s) => el("option", { value: s.id, text: t(`emergency.scenario_${s.id}`) })));
   const result = el("div");
   return el(
     "section",

@@ -39,7 +39,8 @@
     "note": "Note",
     "save": "Save",
     "saved": "Saved",
-    "contact": "Contact"
+    "contact": "Contact",
+    "english_source": "English source text"
   },
   "roles": {
     "farmer": "Farmer",
@@ -733,7 +734,14 @@
     "result_resolved": "resolved",
     "summary_within_band": "within the safe band",
     "summary_excursions": "some readings outside the band",
-    "summary_no_readings": "no readings"
+    "summary_no_readings": "no readings",
+    "profile_potato_table": "Table potato",
+    "profile_potato_seed": "Seed potato",
+    "profile_potato_processing": "Processing potato (chips / French fries)",
+    "profile_tomato_ripe": "Ripe tomato",
+    "profile_tomato_mature_green": "Mature-green tomato",
+    "profile_jute_bales": "Jute bales (ambient godown)",
+    "profile_rice_no_band": "Rice / paddy (ambient warehouse)"
   },
   "demo": {
     "intro": "Demo controls create simulated readings and alerts, clearly labelled. Every action is recorded in the audit log.",
@@ -795,6 +803,12 @@
     "status_active": "active",
     "status_closed": "closed",
     "moved": "Relocation",
-    "move_planned": "requested, not yet moved"
+    "move_planned": "requested, not yet moved",
+    "scenario_hooghly_riverside": "Hooghly riverside flooding (simulated)",
+    "scenario_ganga_murshidabad_malda": "Ganga belt, Murshidabad–Malda (simulated)",
+    "simulated_note": "Illustrative polygon drawn for this demonstration. It is not a flood forecast, a hazard map, or a real flood extent.",
+    "ranking_note": "Options are cold stores outside the scenario area that take this crop and have enough free space, nearest by road first.",
+    "urgency_note": "Lots are ordered by perishability (tomato, then potato, then rice/jute) — an Irminsul assumption.",
+    "cost_note": "Cost is shown only when you enter your own transport rate."
   }
 }
