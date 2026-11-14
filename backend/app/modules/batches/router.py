@@ -89,5 +89,5 @@ async def batch_qr_png(batch_id: str, request: Request, user: Owner, db: Db) -> 
 
 @public_router.get("/{token}", response_model=Envelope[PublicBatchOut])
 async def public_batch(token: str, db: Db) -> Envelope[PublicBatchOut]:
-    """No login: what a phone sees after scanning the QR code."""
+    """No login: what a mobile browser sees after scanning the QR code."""
     return Envelope(data=await service.public_view(db, token[:64]))

@@ -14,7 +14,7 @@ function render() {
     text: t(`status.${me.status}`),
   });
   const rows = [
-    ["home.phone", me.phone],
+    ["home.email", me.email],
     ["home.role", t(`roles.${me.role}`)],
     me.org ? ["home.org", me.org.name] : null,
     ["home.status", badge],

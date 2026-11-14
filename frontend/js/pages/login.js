@@ -18,13 +18,13 @@ function showError(message) {
 form.addEventListener("submit", async (ev) => {
   ev.preventDefault();
   errorBox.hidden = true;
-  const phone = form.phone.value.trim();
+  const email = form.email.value.trim().toLowerCase();
   const password = form.password.value;
-  if (!phone || !password) return showError(t("validation.required"));
+  if (!email || !password) return showError(t("validation.required"));
 
   submit.disabled = true;
   try {
-    const { data } = await api("/auth/login", { method: "POST", body: { phone, password } });
+    const { data } = await api("/auth/login", { method: "POST", body: { email, password } });
     location.replace(safeNext(HOME[data.role]));
   } catch (err) {
     showError(errorMessage(err));

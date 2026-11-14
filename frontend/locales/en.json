@@ -58,11 +58,11 @@
   },
   "login": {
     "title": "Log in",
-    "phone": "Mobile number",
     "password": "Password",
     "submit": "Log in",
     "no_account": "New here?",
-    "register_link": "Create an account"
+    "register_link": "Create an account",
+    "email": "Email"
   },
   "register": {
     "title": "Create an account",
@@ -71,8 +71,6 @@
     "role_distributor_desc": "Buy produce from farmers. Needs admin approval",
     "role_storage_desc": "Run a cold store and accept bookings. Needs admin approval",
     "name": "Full name",
-    "phone": "Mobile number",
-    "phone_hint": "10-digit Indian mobile number",
     "password": "Password",
     "password_hint": "At least 8 characters",
     "org_name_distributor": "Business name",
@@ -80,15 +78,17 @@
     "pending_note": "An admin will review your account before you can use it.",
     "submit": "Create account",
     "have_account": "Already registered?",
-    "login_link": "Log in"
+    "login_link": "Log in",
+    "email": "Email",
+    "email_hint": "You will use this to log in."
   },
   "home": {
     "welcome": "Welcome, {name}",
     "account": "Your account",
-    "phone": "Mobile",
     "role": "Role",
     "org": "Organisation",
-    "status": "Status"
+    "status": "Status",
+    "email": "Email"
   },
   "pending": {
     "title": "Account awaiting approval",
@@ -123,15 +123,14 @@
   },
   "validation": {
     "required": "Please fill in all required fields.",
-    "phone": "Enter a valid 10-digit Indian mobile number.",
-    "password": "Password must be at least 8 characters."
+    "password": "Password must be at least 8 characters.",
+    "email": "Enter a valid email address."
   },
   "errors": {
     "generic": "Something went wrong. Please try again.",
     "network_error": "No connection. Check your internet and try again.",
-    "invalid_credentials": "Mobile number or password is incorrect.",
+    "invalid_credentials": "Email or password is incorrect.",
     "rate_limited": "Too many attempts. Please wait a minute and try again.",
-    "phone_taken": "An account with this mobile number already exists.",
     "account_rejected": "This account registration was rejected.",
     "account_pending": "Your account is awaiting admin approval.",
     "unauthenticated": "Please log in.",
@@ -162,7 +161,8 @@
     "weather_unavailable": "Weather is unavailable right now. Try again later.",
     "guidance_not_available": "No sourced guidance for this yet.",
     "snapshot_missing": "Price data is not loaded yet.",
-    "payload_too_large": "That upload is too large."
+    "payload_too_large": "That upload is too large.",
+    "email_taken": "An account with this email already exists."
   },
   "units": {
     "kg": "kg",
@@ -391,7 +391,6 @@
     "commodities": "Crops stored",
     "facility_name": "Facility name",
     "address": "Address",
-    "contact_phone": "Contact phone",
     "capacity": "Capacity",
     "create_facility": "Add facility",
     "facility_created": "Facility added",
@@ -408,7 +407,8 @@
     "edit": "Edit facility",
     "my_facilities": "My facilities",
     "add_facility": "Add a facility",
-    "no_facilities": "No facilities yet."
+    "no_facilities": "No facilities yet.",
+    "contact_email": "Contact email"
   },
   "bookings": {
     "title": "Booking requests",

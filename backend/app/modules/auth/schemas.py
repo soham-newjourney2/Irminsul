@@ -2,21 +2,21 @@ from typing import Self
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
-from backend.app.modules.users.schemas import PENDING_ROLES, Language, SignupRole, normalize_phone
+from backend.app.modules.users.schemas import PENDING_ROLES, Language, SignupRole, normalize_email
 
 
 class RegisterIn(BaseModel):
-    phone: str
+    email: str = Field(max_length=254)
     password: str = Field(min_length=8, max_length=128)
     name: str = Field(min_length=1, max_length=80)
     role: SignupRole
     language: Language = "en"
     org_name: str | None = Field(default=None, max_length=120)
 
-    @field_validator("phone")
+    @field_validator("email")
     @classmethod
-    def _phone(cls, v: str) -> str:
-        return normalize_phone(v)
+    def _email(cls, v: str) -> str:
+        return normalize_email(v)
 
     @field_validator("name", "org_name")
     @classmethod
@@ -36,5 +36,5 @@ class RegisterIn(BaseModel):
 
 
 class LoginIn(BaseModel):
-    phone: str = Field(max_length=20)
+    email: str = Field(max_length=254)
     password: str = Field(min_length=1, max_length=128)

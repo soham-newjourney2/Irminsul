@@ -149,11 +149,11 @@ export function bookingCard(b, role, reload, zonesFor) {
   const party = role === "farmer" ? null : b.farmer;
   const contact =
     role === "farmer"
-      ? b.facility.contact_phone
-        ? el("div", { class: "contact" }, `${t("common.contact")}: ${b.facility.name} · `, el("a", { href: `tel:${b.facility.contact_phone}`, text: b.facility.contact_phone }))
+      ? b.facility.contact_email
+        ? el("div", { class: "contact" }, `${t("common.contact")}: ${b.facility.name} · `, el("a", { href: `mailto:${b.facility.contact_email}`, text: b.facility.contact_email }))
         : null
-      : party?.phone
-        ? el("div", { class: "contact" }, `${t("common.contact")}: ${party.name} · `, el("a", { href: `tel:${party.phone}`, text: party.phone }))
+      : party?.email
+        ? el("div", { class: "contact" }, `${t("common.contact")}: ${party.name} · `, el("a", { href: `mailto:${party.email}`, text: party.email }))
         : null;
 
   return el(

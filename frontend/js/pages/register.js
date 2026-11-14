@@ -13,7 +13,7 @@ const orgLabel = document.getElementById("org-label");
 const submit = form.querySelector("button[type=submit]");
 
 // UX-only checks; the server is the source of truth.
-const PHONE = /^(\+?91|0)?[6-9]\d{9}$/;
+const EMAIL = /^[a-z0-9._%+-]{1,64}@(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}$/;
 const ORG_LABEL = {
   distributor: "register.org_name_distributor",
   storage_operator: "register.org_name_storage",
@@ -48,13 +48,13 @@ form.addEventListener("submit", async (ev) => {
   const body = {
     role,
     name: form.name.value.trim(),
-    phone: form.phone.value.replace(/[\s-]/g, ""),
+    email: form.email.value.trim().toLowerCase(),
     password: form.password.value,
     language: currentLang(),
     org_name: ORG_LABEL[role] ? form.org_name.value.trim() : null,
   };
   if (!body.name || (ORG_LABEL[role] && !body.org_name)) return showError(t("validation.required"));
-  if (!PHONE.test(body.phone)) return showError(t("validation.phone"));
+  if (!EMAIL.test(body.email)) return showError(t("validation.email"));
   if (body.password.length < 8) return showError(t("validation.password"));
 
   submit.disabled = true;

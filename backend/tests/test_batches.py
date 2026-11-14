@@ -161,7 +161,7 @@ async def test_storage_events_and_custody(make_user: UserFactory) -> None:
                 "location": {"lat": 22.88, "lng": 88.4},
                 "commodities": ["potato"],
                 "capacity": "2",
-                "contact_phone": "9830000003",
+                "contact_email": "cold@example.org",
             },
         )
     ).json()["data"]
@@ -288,7 +288,7 @@ async def test_qr_public_view_hides_personal_data(make_user: UserFactory) -> Non
     assert data["chain"]["valid"] is True
     text = pub.text
     assert "Gopal" not in text
-    assert "+91" not in text
+    assert "@" not in text  # no email addresses
     assert "lat" not in text
     assert (await farmer.get("/api/v1/qr/not-a-token")).status_code == 404
 

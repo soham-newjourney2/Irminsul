@@ -62,13 +62,13 @@ async def test_listing_create_units_and_search(make_user: UserFactory) -> None:
     assert listing["display_unit"] == "quintal"
     assert listing["asking_price_paise_per_quintal"] == 120000
     assert listing["status"] == "active"
-    assert listing["farmer"]["phone"] is None
+    assert listing["farmer"]["email"] is None
 
     near = await dist.get("/api/v1/listings", params={"near": KOLKATA, "radius_km": 60})
     rows = near.json()["data"]
     assert [x["id"] for x in rows] == [listing["id"]]
     assert 30 < rows[0]["distance_km"] < 45
-    assert rows[0]["farmer"]["phone"] is None
+    assert rows[0]["farmer"]["email"] is None
     far = await dist.get("/api/v1/listings", params={"near": KOLKATA, "radius_km": 10})
     assert far.json()["data"] == []
     other = await dist.get("/api/v1/listings", params={"commodity": "rice"})
@@ -132,7 +132,7 @@ async def test_request_counter_accept_creates_order(make_user: UserFactory) -> N
 
     inbox = (await farmer.get("/api/v1/purchase-requests")).json()["data"]
     assert inbox[0]["counterparty"]["org_name"] == "Ria Traders"
-    assert inbox[0]["counterparty"]["phone"] is None  # not revealed before acceptance
+    assert inbox[0]["counterparty"]["email"] is None  # not revealed before acceptance
 
     # Distributor cannot accept own offer; farmer counters on price.
     assert (await dist.post(f"/api/v1/purchase-requests/{req['id']}/accept")).status_code == 409
@@ -150,8 +150,8 @@ async def test_request_counter_accept_creates_order(make_user: UserFactory) -> N
     assert order["qty_kg"] == 400
     assert order["agreed_price_paise_per_quintal"] == 115000
     assert order["total_paise"] == 460000  # 4 q x Rs 1,150
-    assert order["farmer"]["phone"] is not None
-    assert order["distributor"]["phone"] is not None
+    assert order["farmer"]["email"] is not None
+    assert order["distributor"]["email"] is not None
 
     doc = await _listing_doc(listing["id"])
     assert doc["remaining_kg"] == 600
@@ -159,7 +159,7 @@ async def test_request_counter_accept_creates_order(make_user: UserFactory) -> N
 
     hist = (await dist.get(f"/api/v1/purchase-requests/{req['id']}")).json()["data"]
     assert [h["action"] for h in hist["history"]] == ["offer", "counter", "accept"]
-    assert hist["counterparty"]["phone"] is not None
+    assert hist["counterparty"]["email"] is not None
 
     assert mongo.db is not None
     kinds = {n["kind"] async for n in mongo.db.notifications.find()}

@@ -54,7 +54,7 @@ async def test_notifications_pushed_and_listed(make_user: UserFactory) -> None:
                     "location": {"lat": 22.9, "lng": 88.4},
                     "commodities": ["potato"],
                     "capacity": "1",
-                    "contact_phone": "9830000002",
+                    "contact_email": "f@example.org",
                 },
             )
         ).json()["data"]

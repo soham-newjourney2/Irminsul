@@ -66,12 +66,12 @@ export function historyList(entries, kind) {
 }
 
 export function contactBlock(party) {
-  if (!party?.phone) return null;
+  if (!party?.email) return null;
   return el(
     "div",
     { class: "contact" },
     `${t("common.contact")}: ${party.name}${party.org_name ? ` (${party.org_name})` : ""} · `,
-    el("a", { href: `tel:${party.phone}`, text: party.phone }),
+    el("a", { href: `mailto:${party.email}`, text: party.email }),
   );
 }
 

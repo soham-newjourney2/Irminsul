@@ -61,7 +61,7 @@ async def test_db(_db_session: bool) -> AsyncIterator[None]:
             await mongo.db[name].delete_many({})
 
 
-_phones = itertools.count(7000000000)
+_emails = itertools.count(1)
 UserFactory = Callable[..., Awaitable[tuple[httpx.AsyncClient, Doc]]]
 
 
@@ -82,7 +82,7 @@ async def make_user(test_db: None) -> AsyncIterator[UserFactory]:
         now = datetime.now(UTC)
         user: Doc = {
             "schema_version": 1,
-            "phone": f"+91{next(_phones)}",
+            "email": f"user{next(_emails)}@test.irminsul.test",
             "name": name or f"Test {role}",
             "role": role,
             "status": status,

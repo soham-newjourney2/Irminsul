@@ -81,14 +81,14 @@ async def test_correction_values_are_bounded(make_user: UserFactory) -> None:
 
 
 @pytest.mark.usefixtures("test_db")
-async def test_login_limited_per_ip_across_phones(
+async def test_login_limited_per_ip_across_accounts(
     client: httpx.AsyncClient, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     monkeypatch.setattr(ratelimit, "login_ip_limiter", RateLimiter(limit=3, window_s=60))
     codes = []
     for i in range(4):
         r = await client.post(
-            "/api/v1/auth/login", json={"phone": f"98765{i:05d}", "password": "wrong-pass"}
+            "/api/v1/auth/login", json={"email": f"u{i}@example.org", "password": "wrong-pass"}
         )
         codes.append(r.status_code)
     assert codes == [401, 401, 401, 429]

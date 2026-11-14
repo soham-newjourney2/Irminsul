@@ -20,8 +20,8 @@ function userItem(u, { actions }) {
   const details = el(
     "dl",
     { class: "dl" },
-    el("dt", { text: t("home.phone") }),
-    el("dd", { text: u.phone }),
+    el("dt", { text: t("home.email") }),
+    el("dd", { text: u.email }),
     el("dt", { text: t("home.role") }),
     el("dd", { text: t(`roles.${u.role}`) }),
     u.org ? [el("dt", { text: t("home.org") }), el("dd", { text: u.org.name })] : null,

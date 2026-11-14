@@ -49,5 +49,5 @@ def party_out(
         name=user["name"],
         org_name=org["name"] if org else None,
         district=district,
-        phone=user["phone"] if reveal else None,
+        email=user["email"] if reveal else None,
     )

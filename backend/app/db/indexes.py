@@ -8,7 +8,13 @@ from backend.app.db.client import Doc
 INDEXES: dict[str, list[IndexModel]] = {
     # Identity (M1)
     "users": [
-        IndexModel([("phone", ASCENDING)], unique=True, name="phone_unique"),
+        # Partial: accounts created before the email switch have no email and are ignored.
+        IndexModel(
+            [("email", ASCENDING)],
+            unique=True,
+            name="email_unique",
+            partialFilterExpression={"email": {"$type": "string"}},
+        ),
         IndexModel([("status", ASCENDING), ("created_at", DESCENDING)], name="status_created"),
     ],
     "organizations": [IndexModel([("status", ASCENDING)], name="status")],
@@ -112,6 +118,19 @@ INDEXES: dict[str, list[IndexModel]] = {
 }
 
 
+# Indexes removed by later changes; dropped if present (dropping an index deletes no data).
+OBSOLETE: dict[str, list[str]] = {
+    # Login moved from phone to email (owner decision 2026-11-14). A unique phone index would
+    # reject the second phone-less account, so it must go.
+    "users": ["phone_unique"],
+}
+
+
 async def ensure_indexes(db: AsyncDatabase[Doc]) -> None:
+    for collection, names in OBSOLETE.items():
+        existing = {i["name"] async for i in await db[collection].list_indexes()}
+        for name in names:
+            if name in existing:
+                await db[collection].drop_index(name)
     for collection, models in INDEXES.items():
         await db[collection].create_indexes(models)

@@ -8,9 +8,9 @@ from backend.app.core.errors import AppError
 from backend.app.core.security import hash_password, verify_password
 from backend.app.db.client import Doc
 from backend.app.modules.auth.schemas import LoginIn, RegisterIn
-from backend.app.modules.users.schemas import PENDING_ROLES, normalize_phone
+from backend.app.modules.users.schemas import PENDING_ROLES, normalize_email
 
-_INVALID = AppError(401, "invalid_credentials", "Phone number or password is incorrect")
+_INVALID = AppError(401, "invalid_credentials", "Email or password is incorrect")
 
 
 async def register(db: AsyncDatabase[Doc], data: RegisterIn) -> Doc:
@@ -18,7 +18,7 @@ async def register(db: AsyncDatabase[Doc], data: RegisterIn) -> Doc:
     pending = data.role in PENDING_ROLES
     user: Doc = {
         "schema_version": 1,
-        "phone": data.phone,
+        "email": data.email,
         "name": data.name,
         "role": data.role,
         "status": "pending" if pending else "active",
@@ -31,7 +31,7 @@ async def register(db: AsyncDatabase[Doc], data: RegisterIn) -> Doc:
     try:
         result = await db.users.insert_one(user)
     except DuplicateKeyError:
-        raise AppError(409, "phone_taken", "An account with this phone number exists") from None
+        raise AppError(409, "email_taken", "An account with this email already exists") from None
     user["_id"] = result.inserted_id
 
     if pending and data.org_name:
@@ -61,14 +61,14 @@ async def register(db: AsyncDatabase[Doc], data: RegisterIn) -> Doc:
 
 async def login(db: AsyncDatabase[Doc], data: LoginIn, client_ip: str) -> Doc:
     try:
-        phone = normalize_phone(data.phone)
+        email = normalize_email(data.email)
     except ValueError:
         raise _INVALID from None
     if not ratelimit.login_ip_limiter.hit(client_ip) or not ratelimit.login_limiter.hit(
-        f"{phone}|{client_ip}"
+        f"{email}|{client_ip}"
     ):
         raise AppError(429, "rate_limited", "Too many login attempts. Try again in a minute")
-    user = await db.users.find_one({"phone": phone})
+    user = await db.users.find_one({"email": email})
     password_ok = await verify_password(user["password_hash"] if user else None, data.password)
     if user is None or not password_ok:
         raise _INVALID

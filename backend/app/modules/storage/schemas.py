@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field, field_validator, model_validator
 from backend.app.core.geo import GeoPoint
 from backend.app.core.reference import Commodity, validate_district
 from backend.app.core.units import QtyIn, Unit
-from backend.app.modules.users.schemas import PartyOut, normalize_phone
+from backend.app.modules.users.schemas import PartyOut, normalize_email
 
 FacilityStatus = Literal["active", "inactive"]
 BookingStatus = Literal[
@@ -24,17 +24,17 @@ class FacilityIn(BaseModel):
     commodities: list[Commodity] = Field(min_length=1, max_length=4)
     capacity: QtyIn
     capacity_unit: Unit = "tonne"
-    contact_phone: str
+    contact_email: str = Field(max_length=254)
 
     @field_validator("district")
     @classmethod
     def _district(cls, v: str) -> str:
         return validate_district(v)
 
-    @field_validator("contact_phone")
+    @field_validator("contact_email")
     @classmethod
-    def _phone(cls, v: str) -> str:
-        return normalize_phone(v)
+    def _email(cls, v: str) -> str:
+        return normalize_email(v)
 
     @field_validator("commodities")
     @classmethod
@@ -49,12 +49,12 @@ class FacilityUpdate(BaseModel):
     capacity: QtyIn | None = None
     capacity_unit: Unit = "tonne"
     status: FacilityStatus | None = None
-    contact_phone: str | None = None
+    contact_email: str | None = Field(default=None, max_length=254)
 
-    @field_validator("contact_phone")
+    @field_validator("contact_email")
     @classmethod
-    def _phone(cls, v: str | None) -> str | None:
-        return normalize_phone(v) if v is not None else None
+    def _email(cls, v: str | None) -> str | None:
+        return normalize_email(v) if v is not None else None
 
 
 class FacilityOut(BaseModel):
@@ -70,7 +70,7 @@ class FacilityOut(BaseModel):
     occupied_kg: int
     free_kg: int
     status: FacilityStatus
-    contact_phone: str | None  # only for the operator's own facilities
+    contact_email: str | None  # only for the operator's own facilities
     is_mine: bool
     is_demo: bool
     distance_km: float | None = None
@@ -152,7 +152,7 @@ class BookingFacility(BaseModel):
     district: str
     location: GeoPoint
     org_name: str | None
-    contact_phone: str | None  # revealed once accepted
+    contact_email: str | None  # revealed once accepted
 
 
 class BookingOut(BaseModel):

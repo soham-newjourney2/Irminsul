@@ -132,7 +132,7 @@ class PublicEventOut(BaseModel):
 
 
 class PublicBatchOut(BaseModel):
-    """Public QR view: no names, phones, or exact coordinates (planning §4.2, §11)."""
+    """Public QR view: no names, contact details, or exact coordinates (planning §4.2, §11)."""
 
     batch_code: str
     commodity: Commodity

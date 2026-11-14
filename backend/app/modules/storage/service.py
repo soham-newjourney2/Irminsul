@@ -77,7 +77,7 @@ async def _facility_views(
                 occupied_kg=r["occupied_kg"],
                 free_kg=_free(r),
                 status=r["status"],
-                contact_phone=r.get("contact_phone") if mine else None,
+                contact_email=r.get("contact_email") if mine else None,
                 is_mine=mine,
                 is_demo=r.get("is_demo", False),
                 distance_km=round(r["distance_m"] / 1000, 1) if "distance_m" in r else None,
@@ -116,7 +116,7 @@ async def create_facility(db: AsyncDatabase[Doc], operator: Doc, data: FacilityI
         "reserved_kg": 0,
         "occupied_kg": 0,
         "status": "active",
-        "contact_phone": data.contact_phone,
+        "contact_email": data.contact_email,
         "created_by": operator["_id"],
         "is_demo": False,
         "created_at": now,
@@ -138,7 +138,7 @@ async def update_facility(
 ) -> FacilityOut:
     await _own_facility(db, operator, facility_id)
     changes: Doc = {}
-    for field in ("name", "address", "status", "contact_phone"):
+    for field in ("name", "address", "status", "contact_email"):
         value = getattr(data, field)
         if value is not None:
             changes[field] = value
@@ -307,7 +307,7 @@ async def _booking_views(db: AsyncDatabase[Doc], rows: list[Doc], viewer: Doc) -
                     district=f["district"],
                     location=point_out(f["location"]),
                     org_name=org["name"] if org else None,
-                    contact_phone=f.get("contact_phone") if revealed else None,
+                    contact_email=f.get("contact_email") if revealed else None,
                 ),
                 farmer=party_out(people.get(r["farmer_id"]), reveal=revealed),
                 commodity=r["commodity"],

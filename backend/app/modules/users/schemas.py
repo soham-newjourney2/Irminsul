@@ -13,21 +13,20 @@ Language = Literal["en", "bn", "hi"]
 
 PENDING_ROLES: frozenset[str] = frozenset({"distributor", "storage_operator"})
 
-_INDIAN_MOBILE = re.compile(r"^[6-9]\d{9}$")
+# Practical address check (no extra dependency): local@domain.tld, lower-cased. Local part is
+# limited to a-z 0-9 . _ % + - so a stored address can never inject mailto: parameters (? & =).
+_EMAIL = re.compile(
+    r"^[a-z0-9._%+-]{1,64}@"
+    r"(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}$"
+)
 
 
-def normalize_phone(raw: str) -> str:
-    """Accepts 10-digit Indian mobiles with optional +91 / 91 / 0 prefix → '+91XXXXXXXXXX'."""
-    digits = re.sub(r"[\s\-()]", "", raw)
-    if digits.startswith("+91"):
-        digits = digits[3:]
-    elif len(digits) == 12 and digits.startswith("91"):
-        digits = digits[2:]
-    elif len(digits) == 11 and digits.startswith("0"):
-        digits = digits[1:]
-    if not _INDIAN_MOBILE.fullmatch(digits):
-        raise ValueError("Enter a valid 10-digit Indian mobile number")
-    return f"+91{digits}"
+def normalize_email(raw: str) -> str:
+    """Trim + lower-case; reject anything that is not a plausible single address."""
+    v = raw.strip().lower()
+    if len(v) > 254 or ".." in v or v.startswith(".") or ".@" in v or not _EMAIL.fullmatch(v):
+        raise ValueError("Enter a valid email address")
+    return v
 
 
 class OrgOut(BaseModel):
@@ -39,7 +38,7 @@ class OrgOut(BaseModel):
 
 class UserOut(BaseModel):
     id: str
-    phone: str
+    email: str
     name: str
     role: Role
     status: UserStatus
@@ -55,7 +54,7 @@ class UserUpdateIn(BaseModel):
 def user_out(user: Doc, org: Doc | None = None) -> UserOut:
     return UserOut(
         id=str(user["_id"]),
-        phone=user["phone"],
+        email=user["email"],
         name=user["name"],
         role=user["role"],
         status=user["status"],
@@ -70,10 +69,10 @@ def user_out(user: Doc, org: Doc | None = None) -> UserOut:
 
 
 class PartyOut(BaseModel):
-    """Counterparty view. `phone` is only filled once contact reveal is allowed."""
+    """Counterparty view. `email` is only filled once contact reveal is allowed."""
 
     id: str
     name: str
     org_name: str | None = None
     district: str | None = None
-    phone: str | None = None
+    email: str | None = None

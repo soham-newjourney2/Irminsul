@@ -29,7 +29,7 @@ function createForm(reload) {
   const address = input("address", { maxlength: "300" });
   const cap = input("capacity", { type: "number", min: "0.001", step: "any", required: true });
   const unit = unitSelect({ value: "tonne" });
-  const phone = input("contact_phone", { type: "tel", required: true, inputmode: "numeric" });
+  const contactEmail = input("contact_email", { type: "email", required: true, inputmode: "email", maxlength: "254", autocapitalize: "none" });
   const lat = input("lat", { type: "number", step: "any", required: true });
   const lng = input("lng", { type: "number", step: "any", required: true });
   const picker = el("div", { class: "span-2" });
@@ -40,7 +40,7 @@ function createForm(reload) {
     field(t("storage.facility_name"), name),
     field(t("common.district"), district),
     field(t("storage.address"), address),
-    field(t("storage.contact_phone"), phone),
+    field(t("storage.contact_email"), contactEmail),
     el("div", { class: "inline-fields" }, field(t("storage.capacity"), cap), field(t("common.unit"), unit)),
     el("div", { class: "span-2" }, checks),
     field(t("map.lat"), lat),
@@ -62,7 +62,7 @@ function createForm(reload) {
           commodities: checked(form),
           capacity: cap.value,
           capacity_unit: unit.value,
-          contact_phone: phone.value,
+          contact_email: contactEmail.value.trim().toLowerCase(),
         },
       });
       done("storage.facility_created");
@@ -81,14 +81,14 @@ function editForm(f, reload) {
   const unit = unitSelect({ value: "tonne" });
   const status = el("select", { class: "select", name: "status" }, ["active", "inactive"].map((s) => el("option", { value: s, text: t(`storage.status_${s}`) })));
   status.value = f.status;
-  const phone = input("contact_phone", { type: "tel", value: f.contact_phone ?? "" });
+  const contactEmail = input("contact_email", { type: "email", maxlength: "254", autocapitalize: "none", value: f.contact_email ?? "" });
   const checks = commodityChecks(f.commodities);
   const form = el(
     "form",
     { class: "stack" },
     el("div", { class: "inline-fields" }, field(t("storage.capacity"), cap), field(t("common.unit"), unit)),
     field(t("storage.status"), status),
-    field(t("storage.contact_phone"), phone),
+    field(t("storage.contact_email"), contactEmail),
     checks,
     el("button", { class: "btn btn--primary", type: "submit", text: t("common.save") }),
   );
@@ -97,7 +97,7 @@ function editForm(f, reload) {
     try {
       await api(`/storage/facilities/${f.id}`, {
         method: "PATCH",
-        body: { capacity: cap.value, capacity_unit: unit.value, status: status.value, contact_phone: phone.value || null, commodities: checked(form) },
+        body: { capacity: cap.value, capacity_unit: unit.value, status: status.value, contact_email: contactEmail.value.trim().toLowerCase() || null, commodities: checked(form) },
       });
       done("common.saved");
       reload();

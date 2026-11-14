@@ -23,7 +23,7 @@ async def _facility(c: httpx.AsyncClient, **kw: Any) -> dict[str, Any]:
         "commodities": ["potato", "tomato"],
         "capacity": "1",
         "capacity_unit": "tonne",
-        "contact_phone": "9830000001",
+        "contact_email": "Store@Example.org",
     } | kw
     r = await c.post("/api/v1/storage/facilities", json=body)
     assert r.status_code == 201, r.text
@@ -57,12 +57,12 @@ async def test_facility_create_search_and_privacy(make_user: UserFactory) -> Non
     fac = await _facility(op)
     assert fac["capacity_kg"] == 1000
     assert fac["free_kg"] == 1000
-    assert fac["contact_phone"] == "+919830000001"
+    assert fac["contact_email"] == "store@example.org"
     assert fac["is_mine"] is True
 
     found = (await farmer.get("/api/v1/storage/facilities", params={"near": "22.57,88.36"})).json()
     assert found["data"][0]["id"] == fac["id"]
-    assert found["data"][0]["contact_phone"] is None
+    assert found["data"][0]["contact_email"] is None
     assert found["data"][0]["distance_km"] is not None
     none = await farmer.get("/api/v1/storage/facilities", params={"commodity": "jute"})
     assert none.json()["data"] == []
@@ -80,16 +80,16 @@ async def test_booking_lifecycle_moves_capacity(make_user: UserFactory) -> None:
     )
     assert zone.status_code == 201
     b = await _booking(farmer, fac["id"])
-    assert b["facility"]["contact_phone"] is None
+    assert b["facility"]["contact_email"] is None
 
     listed = (await op.get("/api/v1/storage/bookings")).json()["data"]
     assert [x["id"] for x in listed] == [b["id"]]
-    assert listed[0]["farmer"]["phone"] is None
+    assert listed[0]["farmer"]["email"] is None
 
     acc = await op.post(f"/api/v1/storage/bookings/{b['id']}/accept", json={})
     assert acc.status_code == 200, acc.text
-    assert acc.json()["data"]["facility"]["contact_phone"] == "+919830000001"
-    assert acc.json()["data"]["farmer"]["phone"] is not None
+    assert acc.json()["data"]["facility"]["contact_email"] == "store@example.org"
+    assert acc.json()["data"]["farmer"]["email"] is not None
     f = await _fac_doc(fac["id"])
     assert (f["reserved_kg"], f["occupied_kg"]) == (300, 0)
 

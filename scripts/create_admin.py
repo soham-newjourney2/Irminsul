@@ -1,6 +1,6 @@
 """Create or promote the admin account (admins are never self-registered).
 
-Usage: uv run python scripts/create_admin.py --phone 98XXXXXXXX --name "Admin"
+Usage: uv run python scripts/create_admin.py --email admin@example.org --name "Admin"
 Password comes from ADMIN_PASSWORD or an interactive prompt; it is never hard-coded.
 """
 
@@ -18,16 +18,16 @@ from backend.app.config import get_settings
 from backend.app.core.security import hash_password
 from backend.app.db.client import mongo
 from backend.app.db.indexes import ensure_indexes
-from backend.app.modules.users.schemas import normalize_phone
+from backend.app.modules.users.schemas import normalize_email
 
 
 async def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--phone", required=True)
+    parser.add_argument("--email", required=True)
     parser.add_argument("--name", default="Admin")
     args = parser.parse_args()
 
-    phone = normalize_phone(args.phone)
+    email = normalize_email(args.email)
     password = os.environ.get("ADMIN_PASSWORD") or getpass.getpass("Admin password: ")
     if len(password) < 8:
         print("Password must be at least 8 characters", file=sys.stderr)
@@ -42,7 +42,7 @@ async def main() -> int:
         await ensure_indexes(mongo.db)
         now = datetime.now(UTC)
         await mongo.db.users.update_one(
-            {"phone": phone},
+            {"email": email},
             {
                 "$set": {
                     "name": args.name,
@@ -53,7 +53,7 @@ async def main() -> int:
                 },
                 "$setOnInsert": {
                     "schema_version": 1,
-                    "phone": phone,
+                    "email": email,
                     "language": "en",
                     "org_id": None,
                     "created_at": now,
@@ -61,7 +61,7 @@ async def main() -> int:
             },
             upsert=True,
         )
-        print(f"Admin ready: {phone}")
+        print(f"Admin ready: {email}")
     finally:
         await mongo.close()
     return 0
