@@ -16,6 +16,7 @@ export function notificationText(n) {
   if (p.commodity) p.commodity = commodity(p.commodity);
   if (p.kind) p.kind = t(`freshtrack.kind_${p.kind}`);
   if (p.severity) p.severity = t(`severity.${p.severity}`);
+  if (p.label) p.label = t(`advisory.rain_${p.label}`);
   if (p.qty_kg !== undefined) p.qty = fmtQty(p.qty_kg);
   return t(`notifications.${n.kind}`, p);
 }

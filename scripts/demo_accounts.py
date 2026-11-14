@@ -155,6 +155,30 @@ async def main() -> int:
             },
             upsert=True,
         )
+        await db.storage_facilities.update_one(
+            {"org_id": op["org_id"], "name": "Bardhaman Cold Store (demo)"},
+            {
+                "$setOnInsert": {
+                    "schema_version": 1,
+                    "org_id": op["org_id"],
+                    "name": "Bardhaman Cold Store (demo)",
+                    "district": "Purba Bardhaman",
+                    "address": "Demo address, Bardhaman",
+                    "location": {"type": "Point", "coordinates": [87.86, 23.24]},
+                    "commodities": ["potato", "tomato"],
+                    "capacity_kg": 80000,
+                    "reserved_kg": 0,
+                    "occupied_kg": 0,
+                    "status": "active",
+                    "contact_email": op["email"],
+                    "created_by": op["_id"],
+                    "is_demo": True,
+                    "created_at": now,
+                    "updated_at": now,
+                }
+            },
+            upsert=True,
+        )
         print("Demo accounts ready:")
         for a in ACCOUNTS:
             print(f"  {a['role']:<17} {a['email']}")

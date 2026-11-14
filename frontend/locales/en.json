@@ -17,7 +17,8 @@
     "screen": "Screening",
     "weather": "Weather",
     "prices": "Prices",
-    "freshtrack": "FreshTrack"
+    "freshtrack": "FreshTrack",
+    "emergencies": "Emergencies"
   },
   "common": {
     "logout": "Log out",
@@ -165,7 +166,9 @@
     "snapshot_missing": "Price data is not loaded yet.",
     "payload_too_large": "That upload is too large.",
     "email_taken": "An account with this email already exists.",
-    "condition_active": "The condition is still present. Fix it and record a normal reading first."
+    "condition_active": "The condition is still present. Fix it and record a normal reading first.",
+    "already_active": "This scenario is already active.",
+    "event_closed": "This emergency has been closed."
   },
   "units": {
     "kg": "kg",
@@ -258,6 +261,15 @@
       "alert_opened": "{severity}: {kind} at {facility} · {zone}",
       "alert_escalated": "Escalated to {severity}: {kind} at {facility} · {zone}",
       "alert_resolved": "Resolved: {kind} at {facility} · {zone}"
+    },
+    "emergency": {
+      "farm_exposed": "Simulated scenario “{name}”: your farm is inside the affected area",
+      "facility_exposed": "Simulated scenario “{name}”: your cold store is inside the affected area",
+      "stock_exposed": "Simulated scenario “{name}”: your stored produce is in an affected cold store",
+      "relocation_confirmed": "Relocation requested: your produce at {from} → {to}"
+    },
+    "weather": {
+      "heavy_rain": "{label} at {place} on {date}: {mm} mm forecast"
     }
   },
   "parties": {
@@ -740,6 +752,49 @@
     "minutes_ahead": "Check stale sensors as if this many minutes later",
     "minutes_ahead_hint": "0 = real time. Alerts from a time-advanced check are marked simulated.",
     "check_stale": "Run stale-sensor check",
-    "stale_result": "Stale zones found: {n}"
+    "stale_result": "Stale zones found: {n}",
+    "aquasentinel": "Flood scenario & weather (AquaSentinel)",
+    "flood_hint": "Triggers a SIMULATED flood polygon, finds affected records and proposes relocations. Nothing moves until a person confirms.",
+    "scenario": "Scenario",
+    "trigger_flood": "Trigger simulated flood",
+    "flood_result": "Affected: {farms} farms, {stores} cold stores, {lots} stored lots.",
+    "open_emergency": "Open emergency page",
+    "weather_check": "Run heavy-rain check now",
+    "weather_result": "New heavy-rain alerts: {n}"
+  },
+  "emergency": {
+    "title": "Emergency coordination",
+    "none": "No emergency events yet.",
+    "event": "Event",
+    "simulated_label": "Simulated scenario — not a forecast or a real flood extent",
+    "summary": "Affected: {farms} farms, {stores} cold stores, {lots} stored lots, {upcoming} upcoming bookings (triggered {time}).",
+    "legend": "Map: red outline = scenario area · green = farms · red = exposed cold stores · blue = candidate stores · pale circles = forecast rainfall (Open-Meteo).",
+    "farm": "Farm",
+    "exposed_store": "Exposed cold store",
+    "candidate": "Candidate store",
+    "rain_popup": "{name}: {mm} mm forecast over 3 days",
+    "relocations": "Relocation proposals",
+    "store": "Store",
+    "free": "Free space",
+    "fit": "Uses",
+    "cost": "Transport cost",
+    "confirm": "Request relocation",
+    "confirm_q": "Request a booking at {name} for this lot? Its operator still has to accept it.",
+    "confirmed": "Booking request sent to the target store",
+    "request_sent": "Booking request sent — the target store's operator decides. Nothing has moved yet.",
+    "no_options": "No store outside the area currently takes this crop with enough free space.",
+    "no_lots": "No stored lots are affected.",
+    "urgency": "Priority {n} (1 = most perishable; Irminsul assumption)",
+    "update_costs": "Update costs",
+    "close": "Close event",
+    "closed": "Event closed",
+    "plan_proposed": "Proposed",
+    "plan_confirmed": "Requested",
+    "plan_expired": "Expired",
+    "plan_cancelled": "Cancelled",
+    "status_active": "active",
+    "status_closed": "closed",
+    "moved": "Relocation",
+    "move_planned": "requested, not yet moved"
   }
 }

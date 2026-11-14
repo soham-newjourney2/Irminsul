@@ -17,6 +17,9 @@ from backend.app.modules.admin.router import router as admin_router
 from backend.app.modules.auth.router import router as auth_router
 from backend.app.modules.batches.router import public_router as qr_router
 from backend.app.modules.batches.router import router as batches_router
+from backend.app.modules.emergency.router import aqua_router, weather_alerts_router
+from backend.app.modules.emergency.router import demo_router as emergency_demo_router
+from backend.app.modules.emergency.router import router as emergency_router
 from backend.app.modules.farms.router import router as farms_router
 from backend.app.modules.freshtrack import simulator as freshtrack_simulator
 from backend.app.modules.freshtrack.router import demo_router as freshtrack_demo_router
@@ -50,6 +53,7 @@ async def lifespan(_: FastAPI) -> AsyncIterator[None]:
             # Load the dated mandi snapshot once, in the background (planning §4.5).
             _background.add(asyncio.create_task(mandi_service.ensure_loaded(mongo.db)))
             _background.add(asyncio.create_task(scheduler.stale_sensor_loop(mongo.db)))
+            _background.add(asyncio.create_task(scheduler.heavy_rain_loop(mongo.db)))
         except Exception:
             log.exception("Index creation failed; health will report the DB state")
     try:
@@ -82,13 +86,17 @@ def create_app() -> FastAPI:
         batches_router,
         qr_router,
         screening_router,
-        weather_router,
         advisories_router,
         mandi_router,
         markets_router,
         admin_mandi_router,
         freshtrack_router,
         freshtrack_demo_router,
+        weather_alerts_router,
+        weather_router,
+        emergency_router,
+        aqua_router,
+        emergency_demo_router,
     )
     for router in api_routers:
         app.include_router(router, prefix="/api/v1")

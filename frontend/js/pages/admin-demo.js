@@ -9,7 +9,7 @@ export async function renderDemo(panel) {
   const facilities = (await api("/storage/facilities?limit=100").catch(() => ({ data: [] }))).data;
   const zones = (await Promise.all(facilities.map((f) => api(`/storage/facilities/${f.id}/zones`).then((r) => r.data.map((z) => ({ ...z, facility: f.name }))).catch(() => [])))).flat();
   if (!zones.length) {
-    panel.replaceChildren(el("div", { class: "state", text: t("demo.no_zones") }));
+    panel.replaceChildren(el("div", { class: "state", text: t("demo.no_zones") }), await floodSection());
     return;
   }
   const zone = el("select", { class: "select" }, zones.map((z) => el("option", { value: z.id, text: `${z.facility} · ${z.name}` })));
@@ -58,7 +58,42 @@ export async function renderDemo(panel) {
         { onError: fail },
       ),
     ),
+    await floodSection(),
     out,
   );
   refresh().catch(() => {});
+}
+
+async function floodSection() {
+  const scenarios = (await api("/admin/demo/flood/scenarios").catch(() => ({ data: [] }))).data;
+  const sel = el("select", { class: "select" }, scenarios.map((s) => el("option", { value: s.id, text: s.name })));
+  const result = el("div");
+  return el(
+    "section",
+    { class: "card stack" },
+    el("h2", { text: t("demo.aquasentinel") }),
+    el("p", { class: "hint", text: t("demo.flood_hint") }),
+    field(t("demo.scenario"), sel),
+    el(
+      "div",
+      { class: "row" },
+      actionButton(
+        t("demo.trigger_flood"),
+        async () => {
+          const { data } = await api("/admin/demo/flood/trigger", { method: "POST", body: { scenario_id: sel.value } });
+          result.replaceChildren(el("p", { text: t("demo.flood_result", { farms: data.exposure_counts.farms, stores: data.exposure_counts.facilities, lots: data.exposure_counts.stored_lots }) }), el("a", { class: "btn btn--primary", href: "/emergency.html", text: t("demo.open_emergency") }));
+        },
+        { kind: "danger", onError: fail },
+      ),
+      actionButton(
+        t("demo.weather_check"),
+        async () => {
+          const { data } = await api("/admin/demo/weather/check", { method: "POST" });
+          result.replaceChildren(el("p", { text: t("demo.weather_result", { n: data.new_alerts }) }));
+        },
+        { onError: fail },
+      ),
+    ),
+    result,
+  );
 }

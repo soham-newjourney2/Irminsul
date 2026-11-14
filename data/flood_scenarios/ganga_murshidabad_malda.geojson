@@ -1,0 +1,43 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ganga_murshidabad_malda",
+    "name": "Ganga belt, Murshidabad–Malda (simulated)",
+    "district": "Murshidabad",
+    "simulated": true,
+    "source": "simulated",
+    "note": "SIMULATED SCENARIO for demonstration. Illustrative polygon drawn by the Irminsul team; it is NOT a flood forecast, a hazard map, or a real flood extent."
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       87.9,
+       24.05
+      ],
+      [
+       88.45,
+       24.05
+      ],
+      [
+       88.45,
+       24.95
+      ],
+      [
+       87.9,
+       24.95
+      ],
+      [
+       87.9,
+       24.05
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}

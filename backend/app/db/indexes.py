@@ -125,6 +125,29 @@ INDEXES: dict[str, list[IndexModel]] = {
         IndexModel([("affected_farmer_ids", ASCENDING)], name="farmers"),
     ],
     "inspection_records": [IndexModel([("alert_id", ASCENDING)], name="alert")],
+    # Emergency + AquaSentinel (M6)
+    "emergency_events": [
+        IndexModel([("scenario_id", ASCENDING), ("status", ASCENDING)], name="scenario_status")
+    ],
+    "relocation_plans": [
+        IndexModel([("event_id", ASCENDING), ("urgency", ASCENDING)], name="event_urgency"),
+        IndexModel([("org_id", ASCENDING)], name="org"),
+        IndexModel([("farmer_id", ASCENDING)], name="farmer"),
+    ],
+    "weather_alerts": [
+        IndexModel(
+            [
+                ("target_type", ASCENDING),
+                ("target_id", ASCENDING),
+                ("date", ASCENDING),
+                ("label", ASCENDING),
+            ],
+            unique=True,
+            name="target_date_label",
+        ),
+        IndexModel([("owner_id", ASCENDING)], name="owner"),
+        IndexModel([("org_id", ASCENDING)], name="org"),
+    ],
     "notifications": [
         IndexModel([("user_id", ASCENDING), ("created_at", DESCENDING)], name="user_created"),
         IndexModel([("user_id", ASCENDING), ("read_at", ASCENDING)], name="user_unread"),

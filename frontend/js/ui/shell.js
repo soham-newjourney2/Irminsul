@@ -27,8 +27,12 @@ const NAV = {
     { href: "/storage/facilities.html", key: "nav.facilities" },
     { href: "/storage/bookings.html", key: "nav.bookings" },
     { href: "/storage/freshtrack.html", key: "nav.freshtrack" },
+    { href: "/emergency.html", key: "nav.emergencies" },
   ],
-  admin: [{ href: "/admin/", key: "nav.approvals" }],
+  admin: [
+    { href: "/admin/", key: "nav.approvals" },
+    { href: "/emergency.html", key: "nav.emergencies" },
+  ],
 };
 
 const LANG_LABEL = { en: "English", bn: "বাংলা", hi: "हिन्दी" };

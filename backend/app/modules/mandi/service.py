@@ -13,18 +13,18 @@ from pymongo import ASCENDING, DESCENDING, UpdateOne
 from pymongo.asynchronous.database import AsyncDatabase
 from pymongo.errors import BulkWriteError
 
-from backend.app.config import REPO_ROOT, get_settings
+from backend.app.config import REPO_ROOT
 from backend.app.core.errors import AppError
 from backend.app.core.geo import GeoPoint
 from backend.app.db.client import Doc
 from backend.app.integrations import osrm
+from backend.app.integrations.routes import cached_distance
 from backend.app.modules.mandi import netcalc
 from backend.app.modules.mandi.normalize import normalise_row
 
 log = logging.getLogger("irminsul.mandi")
 DATA = REPO_ROOT / "data"
 SNAPSHOT_SOURCE = "agmarknet-snapshot"
-ROUTE_TTL = timedelta(days=30)
 _status: dict[str, bool] = {"loading": False}
 
 
@@ -273,33 +273,6 @@ async def freshness(db: AsyncDatabase[Doc]) -> dict[str, Any]:
 # --- net realization -------------------------------------------------------------------
 
 
-async def _distance(db: AsyncDatabase[Doc], a: GeoPoint, b: GeoPoint) -> osrm.Distance:
-    key = f"{a.lat:.3f},{a.lng:.3f}>{b.lat:.3f},{b.lng:.3f}"
-    hit = await db.route_cache.find_one({"key": key})
-    if hit and hit["fetched_at"] > datetime.now(UTC) - ROUTE_TTL:
-        return osrm.Distance(
-            km=hit["km"], source=hit["source"], duration_min=hit.get("duration_min")
-        )
-    d = await osrm.road_distance(
-        a.lat, a.lng, b.lat, b.lng, timeout_s=get_settings().http_timeout_s
-    )
-    if d.source == "osrm":  # only cache real routes; estimates are recomputed cheaply
-        await db.route_cache.update_one(
-            {"key": key},
-            {
-                "$set": {
-                    "key": key,
-                    "km": d.km,
-                    "source": d.source,
-                    "duration_min": d.duration_min,
-                    "fetched_at": datetime.now(UTC),
-                }
-            },
-            upsert=True,
-        )
-    return d
-
-
 async def net_realization(
     db: AsyncDatabase[Doc],
     origin: GeoPoint,
@@ -322,7 +295,7 @@ async def net_realization(
     out = []
     for _, p in candidates[:max_markets]:
         loc = p["market_location"]["location"]
-        dist = await _distance(db, origin, GeoPoint(lat=loc["lat"], lng=loc["lng"]))
+        dist = await cached_distance(db, origin, GeoPoint(lat=loc["lat"], lng=loc["lng"]))
         r = netcalc.compute(
             qty_kg=qty_kg,
             modal_price_paise_per_quintal=p["modal_price_paise_per_quintal"],

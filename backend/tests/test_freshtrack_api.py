@@ -85,10 +85,14 @@ async def _setup(make_user: UserFactory) -> dict[str, Any]:
     }
 
 
+# One fixed "now" per test run so reading offsets (and excursion durations) are exact.
+_BASE = datetime.now(UTC)
+
+
 async def _reading(
     c: httpx.AsyncClient, zone_id: str, temp: float, minutes_ago: float, rh: float = 92
 ) -> httpx.Response:
-    at = (datetime.now(UTC) - timedelta(minutes=minutes_ago)).isoformat()
+    at = (_BASE - timedelta(minutes=minutes_ago)).isoformat()
     return await c.post(
         "/api/v1/freshtrack/observations",
         json={"zone_id": zone_id, "temp": temp, "rh_pct": rh, "observed_at": at},
@@ -270,8 +274,11 @@ async def test_admin_inject_and_simulator(make_user: UserFactory) -> None:
 async def test_release_records_observation_summary(make_user: UserFactory) -> None:
     s = await _setup(make_user)
     op, zid = s["op"], s["zone"]["id"]
-    await _reading(op, zid, 4.0, 0)
-    await _reading(op, zid, 4.5, 0)
+    for temp in (4.0, 4.5):  # server-timestamped (now), i.e. after the check-in above
+        r = await op.post(
+            "/api/v1/freshtrack/observations", json={"zone_id": zid, "temp": temp, "rh_pct": 92}
+        )
+        assert r.status_code == 201
     await op.post(f"/api/v1/storage/bookings/{s['booking']['id']}/release", json={})
     ev = (await s["farmer"].get(f"/api/v1/batches/{s['batch']['id']}")).json()["data"]["events"]
     types = [e["type"] for e in ev]

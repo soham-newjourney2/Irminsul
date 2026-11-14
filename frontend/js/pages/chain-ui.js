@@ -25,6 +25,8 @@ export function detailLines(type, p = {}) {
   if (p.corrected && Object.keys(p.corrected).length) {
     lines.push(`${t("chain.corrected_values")}: ${Object.entries(p.corrected).map(([k, v]) => `${k} = ${v}`).join(", ")}`);
   }
+  if (type === "relocated") lines.push(`${t("emergency.moved")}: ${p.from_district ?? "?"} → ${p.to_district ?? "?"}${p.status ? ` (${t(`emergency.move_${p.status}`)})` : ""}`);
+  if (p.simulated) lines.push(t("emergency.simulated_label"));
   if (p.kind) lines.push(`${t("freshtrack.condition")}: ${t(`freshtrack.kind_${p.kind}`)}${p.severity ? ` (${t(`severity.${p.severity}`)})` : ""}`);
   if (p.result) lines.push(`${t("freshtrack.inspection")}: ${t(`freshtrack.result_${p.result}`)}${p.corrective_action ? ` — ${p.corrective_action}` : ""}`);
   if (type === "observation_summary" && p.status) lines.push(`${t("freshtrack.summary")}: ${t(`freshtrack.summary_${p.status}`)}${p.temp_in_band_pct != null ? ` · ${p.temp_in_band_pct}% ${t("freshtrack.in_band")}` : ""}${p.readings ? ` · ${p.readings} ${t("freshtrack.readings")}` : ""}`);

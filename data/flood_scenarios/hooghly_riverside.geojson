@@ -1,0 +1,43 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "hooghly_riverside",
+    "name": "Hooghly riverside flooding (simulated)",
+    "district": "Hooghly",
+    "simulated": true,
+    "source": "simulated",
+    "note": "SIMULATED SCENARIO for demonstration. Illustrative polygon drawn by the Irminsul team; it is NOT a flood forecast, a hazard map, or a real flood extent."
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       88.2,
+       22.8
+      ],
+      [
+       88.48,
+       22.8
+      ],
+      [
+       88.48,
+       23.15
+      ],
+      [
+       88.2,
+       23.15
+      ],
+      [
+       88.2,
+       22.8
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}
