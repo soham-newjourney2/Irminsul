@@ -81,6 +81,7 @@ class ZoneIn(BaseModel):
     name: str = Field(min_length=1, max_length=60)
     kind: ZoneKind = "cold"
     commodity: Commodity | None = None
+    rule_profile: str | None = Field(default=None, max_length=40)
     capacity: QtyIn | None = None
     capacity_unit: Unit = "tonne"
 
@@ -91,6 +92,7 @@ class ZoneOut(BaseModel):
     name: str
     kind: ZoneKind
     commodity: Commodity | None
+    rule_profile: str | None
     capacity_kg: int | None
     created_at: datetime
 

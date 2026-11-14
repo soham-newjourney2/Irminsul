@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "retrieved": "2026-11-14",
+  "review_status": "not expert-reviewed",
+  "note": "Temperature/RH bands are quoted from the cited sources. Durations (warning/critical/stale) and plausibility limits are Irminsul assumptions for alerting, not standards.",
+  "defaults": {
+    "warning_after_minutes": 30,
+    "critical_after_minutes": 120,
+    "stale_after_minutes": 30,
+    "plausible": { "temp_min_c": -10, "temp_max_c": 50, "rh_min": 5, "rh_max": 100, "max_jump_c": 8, "jump_window_minutes": 10 },
+    "unusual": { "window": 24, "min_points": 12, "sigma": 3 },
+    "assumptions": [
+      "Warning after 30 minutes continuously outside the band; critical after 120 minutes.",
+      "A zone is stale when no reading arrives for 30 minutes (assumed sensor interval: up to 15 minutes).",
+      "Implausible: temperature outside -10…50 °C, RH outside 5…100 %, or a jump of more than 8 °C within 10 minutes.",
+      "'Unusual' = latest reading more than 3 standard deviations from the mean of the previous 24 readings (needs at least 12). Information only."
+    ]
+  },
+  "commodity_defaults": { "potato": "potato_table", "tomato": "tomato_ripe", "rice": "rice_no_band", "jute": "jute_bales" },
+  "profiles": {
+    "potato_table": {
+      "commodity": "potato",
+      "label": "Table potato",
+      "temp_min_c": 3.0,
+      "temp_max_c": 5.0,
+      "rh_min": 90,
+      "rh_max": 95,
+      "verified": true,
+      "source": {
+        "org": "National Horticulture Board — Technical Standards for Cold Storage (Type 01), Ministry of Agriculture",
+        "url": "https://www.nhb.gov.in/documents/cs1.pdf",
+        "pages": "9–10",
+        "quote": "Table Potato 4°C 5 – 10 months 90 – 95% … inability to maintain temperature variation range of ± 1°C"
+      },
+      "derivation": "4 °C holding temperature ± 1 °C variation range (NHB) → 3–5 °C."
+    },
+    "potato_seed": {
+      "commodity": "potato",
+      "label": "Seed potato",
+      "temp_min_c": 2.0,
+      "temp_max_c": 4.0,
+      "rh_min": 90,
+      "rh_max": 95,
+      "verified": true,
+      "source": {
+        "org": "National Horticulture Board — Technical Standards for Cold Storage (Type 01), based on CPRI advice",
+        "url": "https://www.nhb.gov.in/documents/cs1.pdf",
+        "pages": "9",
+        "quote": "Seed Potato 3°C … 90 – 95% … critical storage temperature for seed potato is taken as 3 o C ±1 o C"
+      },
+      "derivation": "3 °C ± 1 °C (CPRI via NHB) → 2–4 °C."
+    },
+    "potato_processing": {
+      "commodity": "potato",
+      "label": "Processing potato (chips / French fries)",
+      "temp_min_c": 7.2,
+      "temp_max_c": 10.0,
+      "rh_min": 90,
+      "rh_max": 95,
+      "verified": true,
+      "source": {
+        "org": "National Horticulture Board — Technical Standards for Cold Storage (Type 01)",
+        "url": "https://www.nhb.gov.in/documents/cs1.pdf",
+        "pages": "9",
+        "quote": "For French Fries 7.2 – 10°C 1 – 10 months ** 90 – 95% For Chipping 7.2–10°C"
+      },
+      "derivation": "Band as published."
+    },
+    "tomato_ripe": {
+      "commodity": "tomato",
+      "label": "Ripe tomato",
+      "temp_min_c": 13.0,
+      "temp_max_c": 15.0,
+      "rh_min": 85,
+      "rh_max": 90,
+      "verified": true,
+      "source": {
+        "org": "National Horticulture Board — Technical Standards for Cold Storage (Type 02, produce requiring pre-cooling)",
+        "url": "https://nhb.gov.in/documents/cs2.pdf",
+        "pages": "11",
+        "quote": "Group 6: Fruits and vegetables, 13 to 15°C (55 to 60°F), 85-90% relative humidity. … tomatoes, ripe"
+      },
+      "derivation": "Compatibility group band as published."
+    },
+    "tomato_mature_green": {
+      "commodity": "tomato",
+      "label": "Mature-green tomato",
+      "temp_min_c": 18.0,
+      "temp_max_c": 21.0,
+      "rh_min": 85,
+      "rh_max": 90,
+      "verified": true,
+      "source": {
+        "org": "National Horticulture Board — Technical Standards for Cold Storage (Type 02, produce requiring pre-cooling)",
+        "url": "https://nhb.gov.in/documents/cs2.pdf",
+        "pages": "11",
+        "quote": "Group 7: Fruits and vegetables, 18 to 21°C (65 to 70°F), 85-90% relative humidity. … tomatoes, mature green"
+      },
+      "derivation": "Compatibility group band as published."
+    },
+    "jute_bales": {
+      "commodity": "jute",
+      "label": "Jute bales (ambient godown)",
+      "temp_min_c": null,
+      "temp_max_c": null,
+      "rh_min": null,
+      "rh_max": 65,
+      "verified": false,
+      "verification_note": "International cargo-insurance reference, not an Indian standard. No NJB/ICAR/JCI godown RH figure was found. Owner to verify.",
+      "source": {
+        "org": "Transport Information Service (TIS), German Insurance Association (GDV) — Jute",
+        "url": "https://tis-gdv.de/?p=1520",
+        "pages": null,
+        "quote": "Relative humidity 65%, water content 12.5 – 13.7%, maximum equilibrium moisture content 65%"
+      },
+      "derivation": "Upper RH limit only; no temperature band is published."
+    },
+    "rice_no_band": {
+      "commodity": "rice",
+      "label": "Rice / paddy (ambient warehouse)",
+      "temp_min_c": null,
+      "temp_max_c": null,
+      "rh_min": null,
+      "rh_max": null,
+      "verified": false,
+      "verification_note": "No cited temperature/RH band found (official sources give grain moisture ≤ 14%, which an air sensor cannot measure). Only stale-sensor and implausible-value checks apply.",
+      "source": {
+        "org": "NIPHM (Govt. of India) — safe storage moisture for rice/paddy 14% (grain moisture, not air RH)",
+        "url": "https://www.niphm.gov.in/Education/msp.pdf",
+        "pages": null,
+        "quote": null,
+        "quote_note": "Figure seen only in a search-result summary; the document was not opened. Not used for any threshold."
+      },
+      "derivation": "No band."
+    }
+  }
+}

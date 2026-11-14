@@ -111,6 +111,20 @@ INDEXES: dict[str, list[IndexModel]] = {
         IndexModel([("location", GEOSPHERE)], name="location_2dsphere"),
     ],
     "route_cache": [IndexModel([("key", ASCENDING)], unique=True, name="key_unique")],
+    # FreshTrack (M5)
+    "storage_observations": [
+        IndexModel([("zone_id", ASCENDING), ("observed_at", ASCENDING)], name="zone_time"),
+        IndexModel([("observed_at", DESCENDING)], name="time"),
+    ],
+    "storage_alerts": [
+        IndexModel(
+            [("zone_id", ASCENDING), ("kind", ASCENDING), ("status", ASCENDING)],
+            name="zone_kind_status",
+        ),
+        IndexModel([("org_id", ASCENDING), ("updated_at", DESCENDING)], name="org_updated"),
+        IndexModel([("affected_farmer_ids", ASCENDING)], name="farmers"),
+    ],
+    "inspection_records": [IndexModel([("alert_id", ASCENDING)], name="alert")],
     "notifications": [
         IndexModel([("user_id", ASCENDING), ("created_at", DESCENDING)], name="user_created"),
         IndexModel([("user_id", ASCENDING), ("read_at", ASCENDING)], name="user_unread"),

@@ -418,6 +418,7 @@ dependencies = [
 [package.dev-dependencies]
 data = [
     { name = "pyarrow" },
+    { name = "pypdf" },
 ]
 dev = [
     { name = "pyright" },
@@ -448,7 +449,10 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
-data = [{ name = "pyarrow", specifier = ">=26.0.1" }]
+data = [
+    { name = "pyarrow", specifier = ">=26.0.1" },
+    { name = "pypdf", specifier = ">=7.1.0" },
+]
 dev = [
     { name = "pyright", specifier = ">=1.1.414" },
     { name = "pytest", specifier = ">=9.2.0" },
@@ -961,6 +965,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/0c/83/8528a5f0686ed285c933ef3d46cadad00fb7967c89226b11edd392ecfeb8/pymongo-4.20.0-cp312-cp312-win32.whl", hash = "sha256:795bd09d2b538cb7c14babc4d662d25d18cd2407c7ca197a7fc625e9ef97d99d", size = 818063, upload-time = "2026-11-12T20:51:01.675Z" },
     { url = "https://files.pythonhosted.org/packages/c3/d6/1b5e9a2d1e48e40f25307800fac93873c3ccea793fb408d62a94d4d70545/pymongo-4.20.0-cp312-cp312-win_amd64.whl", hash = "sha256:a000dc78bfabf77cd1e99a686d34286d73db2ff85d573a68ae5c5f9d3986c5d1", size = 823662, upload-time = "2026-11-12T20:51:03.14Z" },
     { url = "https://files.pythonhosted.org/packages/b8/c3/4264d479d4132f2cef29e09af212862c346aefaf60392b24b6eda9987104/pymongo-4.20.0-cp312-cp312-win_arm64.whl", hash = "sha256:89f3eed8a90d63a6a762e0019edbd7797e27d24613cd85ec4ced0a55b270b1cb", size = 820718, upload-time = "2026-11-12T20:51:04.826Z" },
+]
+
+[[package]]
+name = "pypdf"
+version = "7.1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/60/d3/367aa9baefaededd3321cde46bbcb9f008bb51cef3a6b745608352a99534/pypdf-7.1.0.tar.gz", hash = "sha256:ca3fa902369e98a6d2cb7b56396de902b72ef9bb3c1e8706c1bfc7d8bd0cf0d7", size = 7215190, upload-time = "2026-11-13T12:23:18.629Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ed/4c/d19f91b743c8579b67e3d8b001e095745dec5bb13a9b4b9eadc235a85d9e/pypdf-7.1.0-py3-none-any.whl", hash = "sha256:47cca6b24bdcf4c4d65b5f7b8b972535c61710a061261e737688777cfd9a7bfb", size = 418698, upload-time = "2026-11-13T12:23:16.777Z" },
 ]
 
 [[package]]

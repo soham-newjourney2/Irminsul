@@ -16,7 +16,8 @@
     "batches": "Batches",
     "screen": "Screening",
     "weather": "Weather",
-    "prices": "Prices"
+    "prices": "Prices",
+    "freshtrack": "FreshTrack"
   },
   "common": {
     "logout": "Log out",
@@ -113,7 +114,8 @@
     "empty_audit": "No audit entries yet.",
     "actor": "By",
     "target": "Record",
-    "reason": "Reason"
+    "reason": "Reason",
+    "tab_demo": "Demo controls"
   },
   "audit": {
     "user": {
@@ -162,7 +164,8 @@
     "guidance_not_available": "No sourced guidance for this yet.",
     "snapshot_missing": "Price data is not loaded yet.",
     "payload_too_large": "That upload is too large.",
-    "email_taken": "An account with this email already exists."
+    "email_taken": "An account with this email already exists.",
+    "condition_active": "The condition is still present. Fix it and record a normal reading first."
   },
   "units": {
     "kg": "kg",
@@ -184,7 +187,10 @@
     "cached_at": "Cached at {time}",
     "unverified": "Threshold unverified",
     "trend": "Trend",
-    "estimate": "Estimate"
+    "estimate": "Estimate",
+    "simulated": "Simulated",
+    "cited": "Cited source",
+    "unverified_source": "Unverified source"
   },
   "prices": {
     "asking": "Asking price",
@@ -247,6 +253,11 @@
       "checked_in": "{qty} of {commodity} checked in at {facility}",
       "released": "{qty} of {commodity} released from {facility}",
       "cancelled": "{name} cancelled a booking at {facility}"
+    },
+    "freshtrack": {
+      "alert_opened": "{severity}: {kind} at {facility} · {zone}",
+      "alert_escalated": "Escalated to {severity}: {kind} at {facility} · {zone}",
+      "alert_resolved": "Resolved: {kind} at {facility} · {zone}"
     }
   },
   "parties": {
@@ -635,5 +646,100 @@
     "net": "Net in hand",
     "too_far": "Beyond practical distance",
     "disclaimer": "Estimates only: prices are from the date shown and may have changed; distances are by road (OSRM) or a straight-line estimate."
+  },
+  "freshtrack": {
+    "title": "FreshTrack — storage conditions",
+    "intro": "Readings are compared with the cited safe band for the crop in each zone. Alerts explain what was seen and what to inspect; an alert is a prompt to check, not a food-safety verdict.",
+    "zone": "Zone",
+    "need_zone": "Add a zone to a facility first.",
+    "no_profile": "No cited storage band for this zone's crop — only sensor checks (stale, implausible) run.",
+    "no_temp_band": "no cited temperature band",
+    "no_rh_band": "no cited humidity band",
+    "safe_band": "Safe band",
+    "temp": "Temperature",
+    "rh": "Relative humidity (%)",
+    "band_max": "Band max",
+    "band_min": "Band min",
+    "chart_label": "Readings for {zone}",
+    "last_reading": "Last reading {time}",
+    "no_readings": "No readings yet.",
+    "simulated_note": "Small dots are simulated readings from the demo simulator.",
+    "manual_reading": "Add a reading",
+    "add_reading": "Save reading",
+    "reading_saved": "Reading saved",
+    "reading_with_alert": "Reading saved — an alert was raised or updated",
+    "alerts": "Alerts",
+    "no_alerts": "No alerts for this zone.",
+    "my_alerts": "Alerts on my stored produce",
+    "no_my_alerts": "No alerts on your stored produce.",
+    "acknowledge": "Acknowledge",
+    "acknowledged": "Alert acknowledged",
+    "still_active": "The condition is still present. Bring it back into range and record a normal reading before resolving.",
+    "findings": "What did the inspection find?",
+    "findings_hint": "e.g. door seal leaking, compressor tripped",
+    "corrective_action": "Corrective action taken",
+    "corrective_hint": "e.g. replaced seal, restarted unit, checked product",
+    "resolve": "Resolve alert",
+    "resolved_toast": "Alert resolved and inspection recorded",
+    "inspect_and_resolve": "Record inspection and resolve",
+    "cleared": "Condition cleared at {time}; awaiting inspection.",
+    "inspection": "Inspection",
+    "profile": "Storage profile",
+    "profile_default": "Default for the crop",
+    "profile_hint": "Pick seed / table / processing where it applies.",
+    "condition": "Condition",
+    "summary": "Storage summary",
+    "in_band": "of readings in band",
+    "readings": "readings",
+    "kind_temp_high": "Temperature too high",
+    "kind_temp_low": "Temperature too low",
+    "kind_rh_high": "Humidity too high",
+    "kind_rh_low": "Humidity too low",
+    "kind_implausible": "Implausible sensor reading",
+    "kind_unusual": "Unusual reading",
+    "kind_stale": "Sensor silent",
+    "status_open": "Open",
+    "status_acknowledged": "Acknowledged",
+    "status_resolved": "Resolved",
+    "explain_temp_high": "Above {threshold} °C for {minutes} min (since {start}; peak {peak} °C). Safe band {band} for {profile}.",
+    "explain_temp_low": "Below {threshold} °C for {minutes} min (since {start}; lowest {peak} °C). Safe band {band} for {profile}.",
+    "explain_rh_high": "Humidity above {threshold}% for {minutes} min (since {start}; peak {peak}%). Safe band {band} for {profile}.",
+    "explain_rh_low": "Humidity below {threshold}% for {minutes} min (since {start}; lowest {peak}%). Safe band {band} for {profile}.",
+    "explain_implausible": "The sensor reported {peak} °C at {latest}, which looks implausible ({reasons}).",
+    "explain_unusual": "{peak} °C at {latest} is unusual compared with recent readings (mean {mean} °C, beyond {sigma} standard deviations). Information only.",
+    "explain_stale": "No reading for {minutes} min (expected at least every {threshold} min). Last reading {start}.",
+    "inspect_temp_high": "Check: door seals and door discipline, refrigeration unit and evaporator, product core temperature, air circulation.",
+    "inspect_temp_low": "Check: thermostat set-point, defrost cycle, product for chilling or freezing damage.",
+    "inspect_rh_high": "Check: condensation, drainage, ventilation; look for wet or mouldy produce.",
+    "inspect_rh_low": "Check: humidifier or water supply, door openings; look for shrivelling or weight loss.",
+    "inspect_implausible": "Check the sensor (placement, cable, battery) before acting on this value.",
+    "inspect_unusual": "Investigation signal only: compare with a handheld thermometer.",
+    "inspect_stale": "Check the sensor and its connection, or enter a manual reading.",
+    "reason_temp_out_of_plausible_range": "temperature outside the plausible range",
+    "reason_rh_out_of_plausible_range": "humidity outside 5–100%",
+    "reason_temp_jump": "sudden jump between readings",
+    "result_resolved": "resolved",
+    "summary_within_band": "within the safe band",
+    "summary_excursions": "some readings outside the band",
+    "summary_no_readings": "no readings"
+  },
+  "demo": {
+    "intro": "Demo controls create simulated readings and alerts, clearly labelled. Every action is recorded in the audit log.",
+    "freshtrack": "FreshTrack simulator",
+    "no_zones": "No storage zones exist yet.",
+    "running": "Simulators running: {n}",
+    "start": "Start simulator (1 reading / min)",
+    "stop": "Stop simulator",
+    "started": "Simulator started",
+    "stopped": "Simulator stopped",
+    "kind": "Excursion type",
+    "minutes": "Duration (minutes)",
+    "inject": "Inject excursion",
+    "result": "Alerts raised",
+    "no_alert_yet": "No alert yet — the excursion is shorter than the warning threshold.",
+    "minutes_ahead": "Check stale sensors as if this many minutes later",
+    "minutes_ahead_hint": "0 = real time. Alerts from a time-advanced check are marked simulated.",
+    "check_stale": "Run stale-sensor check",
+    "stale_result": "Stale zones found: {n}"
   }
 }

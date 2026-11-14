@@ -26,6 +26,7 @@ const NAV = {
     { href: "/storage/", key: "nav.home" },
     { href: "/storage/facilities.html", key: "nav.facilities" },
     { href: "/storage/bookings.html", key: "nav.bookings" },
+    { href: "/storage/freshtrack.html", key: "nav.freshtrack" },
   ],
   admin: [{ href: "/admin/", key: "nav.approvals" }],
 };

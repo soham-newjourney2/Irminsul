@@ -21,6 +21,8 @@ from backend.app.core.units import to_kg
 from backend.app.core.ws import hub
 from backend.app.db.client import Doc, mongo
 from backend.app.modules.batches.service import emit, owned_open_batch
+from backend.app.modules.freshtrack import rules as freshtrack_rules
+from backend.app.modules.freshtrack import service as freshtrack_service
 from backend.app.modules.notifications.service import notify, org_member_ids
 from backend.app.modules.storage.schemas import (
     BookingFacility,
@@ -243,6 +245,7 @@ def zone_out(z: Doc) -> ZoneOut:
         name=z["name"],
         kind=z["kind"],
         commodity=z.get("commodity"),
+        rule_profile=z.get("rule_profile"),
         capacity_kg=z.get("capacity_kg"),
         created_at=z["created_at"],
     )
@@ -254,6 +257,10 @@ async def create_zone(
     f = await _own_facility(db, operator, facility_id)
     if data.commodity and data.commodity not in f["commodities"]:
         raise AppError(422, "validation_error", "Zone commodity is not handled by this facility")
+    if data.rule_profile is not None:
+        p = freshtrack_rules.profile(data.rule_profile)
+        if p is None or (data.commodity and p["commodity"] != data.commodity):
+            raise AppError(422, "validation_error", "Unknown storage profile for this crop")
     cap = _kg(data.capacity, data.capacity_unit) if data.capacity is not None else None
     if cap is not None and cap > f["capacity_kg"]:
         raise AppError(422, "validation_error", "Zone capacity exceeds facility capacity")
@@ -263,6 +270,7 @@ async def create_zone(
         "name": data.name.strip(),
         "kind": data.kind,
         "commodity": data.commodity,
+        "rule_profile": data.rule_profile,
         "capacity_kg": cap,  # informational; the invariant is enforced per facility
         "created_at": datetime.now(UTC),
     }
@@ -589,7 +597,19 @@ async def _emit_booking_event(
             },
             "location": facility.get("location", batch["location"]),
         }
-    elif whole and event == "released":
+    if event == "released":
+        # Storage conditions over the stay go into the chain before the release itself.
+        summary = await freshtrack_service.booking_summary(db, booking)
+        if summary is not None:
+            await emit(
+                db,
+                batch_id,
+                "observation_summary",
+                None,
+                {"booking_id": str(booking["_id"]), **summary},
+                source="system",
+            )
+    if whole and event == "released":
         changes = {
             "status": "active",
             "custodian": {"type": "farmer", "id": batch["farmer_id"], "name": None},

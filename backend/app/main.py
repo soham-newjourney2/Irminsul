@@ -18,6 +18,9 @@ from backend.app.modules.auth.router import router as auth_router
 from backend.app.modules.batches.router import public_router as qr_router
 from backend.app.modules.batches.router import router as batches_router
 from backend.app.modules.farms.router import router as farms_router
+from backend.app.modules.freshtrack import simulator as freshtrack_simulator
+from backend.app.modules.freshtrack.router import demo_router as freshtrack_demo_router
+from backend.app.modules.freshtrack.router import router as freshtrack_router
 from backend.app.modules.health.router import router as health_router
 from backend.app.modules.listings.router import router as listings_router
 from backend.app.modules.mandi import service as mandi_service
@@ -29,6 +32,7 @@ from backend.app.modules.screening.router import router as screening_router
 from backend.app.modules.storage.router import router as storage_router
 from backend.app.modules.users.router import router as users_router
 from backend.app.modules.weather.router import advisories_router, weather_router
+from backend.app.workers import scheduler
 
 log = logging.getLogger("irminsul")
 _background: set[asyncio.Task[None]] = set()
@@ -45,11 +49,16 @@ async def lifespan(_: FastAPI) -> AsyncIterator[None]:
             await ensure_indexes(mongo.db)
             # Load the dated mandi snapshot once, in the background (planning §4.5).
             _background.add(asyncio.create_task(mandi_service.ensure_loaded(mongo.db)))
+            _background.add(asyncio.create_task(scheduler.stale_sensor_loop(mongo.db)))
         except Exception:
             log.exception("Index creation failed; health will report the DB state")
     try:
         yield
     finally:
+        freshtrack_simulator.stop_all()
+        for task in list(_background):
+            task.cancel()
+        _background.clear()
         await mongo.close()
 
 
@@ -78,6 +87,8 @@ def create_app() -> FastAPI:
         mandi_router,
         markets_router,
         admin_mandi_router,
+        freshtrack_router,
+        freshtrack_demo_router,
     )
     for router in api_routers:
         app.include_router(router, prefix="/api/v1")

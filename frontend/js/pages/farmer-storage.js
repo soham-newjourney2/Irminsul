@@ -8,6 +8,7 @@ import { mountShell } from "../ui/shell.js";
 import { commoditySelect, done, fail, list, newIdempotencyKey } from "./common.js";
 import { bookingCard, capacityMeter, datesForm, liveMeters } from "./facility-ui.js";
 import { batchSelect } from "./chain-ui.js";
+import { alertCard } from "./freshtrack-ui.js";
 
 const me = await mountShell({ role: "farmer" });
 const root = document.getElementById("root");
@@ -68,17 +69,21 @@ async function render() {
   const mapEl = el("div", { class: "map" });
   const facHost = el("div");
   const bookingsHost = el("div");
+  const alertsHost = el("div");
   root.replaceChildren(
     el("h1", { text: t("storage.title") }),
     el("div", { class: "row" }, field(t("common.crop"), crop)),
     mapEl,
     facHost,
+    el("h2", { text: t("freshtrack.my_alerts") }),
+    alertsHost,
     el("h2", { text: t("storage.my_bookings") }),
     bookingsHost,
   );
   mapCtx = await createMap(mapEl);
   myBatches = await api("/batches").then((r) => r.data).catch(() => []);
 
+  list(alertsHost, async () => (await api("/freshtrack/alerts?limit=20")).data, (rows) => el("ul", { class: "item-list" }, rows.map((a) => alertCard(a))), "freshtrack.no_my_alerts");
   const loadBookings = () =>
     list(bookingsHost, async () => (await api("/storage/bookings")).data, (rows) => el("ul", { class: "item-list" }, rows.map((b) => bookingCard(b, "farmer", loadBookings))), "storage.empty_bookings");
   const loadFacilities = async () => {

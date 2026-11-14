@@ -3,31 +3,13 @@ import { api } from "../api.js";
 import { commodity, fmtDate, fmtMoney, fmtPerQuintal, fmtQtyBoth, KG_PER_UNIT } from "../format.js";
 import { errorMessage, t } from "../i18n.js";
 import { el, errorState, field, loadingState } from "../ui/dom.js";
+import { loadChart } from "../ui/chart.js";
 import { mountShell } from "../ui/shell.js";
 import { districtSelect, input, list, unitSelect } from "./common.js";
 
 const me = await mountShell({ role: "farmer" });
 const root = document.getElementById("root");
-const CHART = {
-  src: "https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js",
-  sri: "sha384-dug+JxfBvklEQdJ4AYuBBAIScUz0bVN73xpy273gcAwHjb3qI0fXmuYNaNfdyYJG",
-};
-let chartLoading = null;
 let chart = null;
-
-function loadChart() {
-  if (window.Chart) return Promise.resolve(window.Chart);
-  chartLoading ??= new Promise((resolve, reject) => {
-    const s = el("script", { src: CHART.src, integrity: CHART.sri, crossorigin: "anonymous" });
-    s.addEventListener("load", () => resolve(window.Chart));
-    s.addEventListener("error", () => {
-      chartLoading = null;
-      reject(new Error("chart_unavailable"));
-    });
-    document.head.append(s);
-  });
-  return chartLoading;
-}
 
 function freshnessBanner(meta) {
   if (!meta?.newest_arrival_date) return null;

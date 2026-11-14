@@ -2,6 +2,7 @@ import { api } from "../api.js";
 import { errorMessage, fmtDateTime, t } from "../i18n.js";
 import { el, emptyState, errorState, loadingState, toast } from "../ui/dom.js";
 import { mountShell } from "../ui/shell.js";
+import { renderDemo } from "./admin-demo.js";
 
 await mountShell({ role: "admin" });
 
@@ -94,6 +95,10 @@ async function load() {
   panel.replaceChildren(loadingState(t("common.loading")));
   usersFilter.hidden = current !== "users";
   try {
+    if (current === "demo") {
+      await renderDemo(panel);
+      return;
+    }
     if (current === "audit") {
       const { data } = await api("/admin/audit-logs?limit=100", { signal });
       panel.replaceChildren(

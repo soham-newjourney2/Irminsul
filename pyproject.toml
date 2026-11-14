@@ -22,6 +22,7 @@ dependencies = [
 [dependency-groups]
 data = [
     "pyarrow>=26.0.1",
+    "pypdf>=7.1.0",
 ]
 dev = [
     "pyright>=1.1.414",

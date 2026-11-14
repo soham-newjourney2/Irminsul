@@ -114,12 +114,20 @@ function zonesBlock(f) {
   const name = input("name", { required: true, maxlength: "60" });
   const kind = el("select", { class: "select", name: "kind" }, ["cold", "ambient"].map((k) => el("option", { value: k, text: t(`storage.zone_${k}`) })));
   const crop = commoditySelect({ blank: "common.any" });
-  const form = el("form", { class: "stack" }, field(t("storage.zone_name"), name), el("div", { class: "inline-fields" }, field(t("storage.zone_kind"), kind), field(t("common.crop"), crop)), el("button", { class: "btn", type: "submit", text: t("storage.add_zone") }));
+  const profile = el("select", { class: "select", name: "rule_profile" }, el("option", { value: "", text: t("freshtrack.profile_default") }));
+  api("/freshtrack/rules").then(({ data }) => {
+    const fill = () => {
+      profile.replaceChildren(el("option", { value: "", text: t("freshtrack.profile_default") }), ...Object.entries(data.profiles).filter(([, p]) => !crop.value || p.commodity === crop.value).map(([id, p]) => el("option", { value: id, text: `${p.label}${p.verified ? "" : ` (${t("badges.unverified_source")})`}` })));
+    };
+    crop.addEventListener("change", fill);
+    fill();
+  }).catch(() => {});
+  const form = el("form", { class: "stack" }, field(t("storage.zone_name"), name), el("div", { class: "inline-fields" }, field(t("storage.zone_kind"), kind), field(t("common.crop"), crop)), field(t("freshtrack.profile"), profile, t("freshtrack.profile_hint")), el("button", { class: "btn", type: "submit", text: t("storage.add_zone") }));
   form.addEventListener("submit", async (ev) => {
     ev.preventDefault();
     if (!form.reportValidity()) return;
     try {
-      await api(`/storage/facilities/${f.id}/zones`, { method: "POST", body: { name: name.value, kind: kind.value, commodity: crop.value || null } });
+      await api(`/storage/facilities/${f.id}/zones`, { method: "POST", body: { name: name.value, kind: kind.value, commodity: crop.value || null, rule_profile: profile.value || null } });
       form.reset();
       load();
     } catch (err) {

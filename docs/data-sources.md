@@ -50,14 +50,18 @@ All metadata below read live from the Hugging Face API.
 
 Implication: PlantVillage models are lab-image trained and generalize poorly to field photos (B's own real-world check). Keep the "unsure" path, "possible disease" wording, and a high threshold; model card must state this. Jute → "not supported" (decision #3).
 
-## 4. Storage-rule sources (values extracted in M5, owner verifies)
+## 4. Storage-rule sources (verified 2026-11-14 → `data/storage_rules.json`)
 
-| Source | Covers | Status |
-|---|---|---|
-| NHB Technical Standards, Cold Storage Type 01 (NHB-CS-Type 01-2010) — https://www.nhb.gov.in/documents/cs1.pdf | Potato (seed / table / processing), RH bands | PDF reachable (200). Values not yet extracted |
-| NHB potato post-harvest guide — https://nhb.gov.in/pdf/vegetable/potato/pot009.pdf | Potato storage conditions | PDF reachable (200). Values not yet extracted |
-| USDA ARS Agriculture Handbook 66 — https://purl.fdlp.gov/GPO/gpo66112 | Tomato (mature-green vs ripe), potato, chilling injury | Reachable (redirect). Values not yet extracted |
-| FAO post-harvest manual — https://www.fao.org/4/ae075e/ae075e14.htm | Processing-potato temperature | Reachable (200) |
-| Rice (grain moisture / storage), jute (fibre storage) | — | **No source chosen yet**; to find an ICAR/FCI/government source in M5 |
+PDFs downloaded to `data/raw/sources/` (git-ignored) and read locally with `pypdf` (optional `data` group, owner-approved).
 
-No numeric thresholds are recorded here on purpose: secondary snippets were garbled or derived; numbers will be taken from the primary PDFs in M5.
+| Profile | Band | Source (verbatim) | Status |
+|---|---|---|---|
+| Table potato | 3–5 °C, 90–95 % RH | NHB cold-storage standard Type 01 (cs1.pdf) p.9: "Table Potato 4°C … 90 – 95%"; p.10: "temperature variation range of ± 1°C" | verified |
+| Seed potato | 2–4 °C, 90–95 % RH | cs1.pdf p.9: "critical storage temperature for seed potato is taken as 3 o C ±1 o C" (CPRI advice) | verified |
+| Processing potato | 7.2–10 °C, 90–95 % RH | cs1.pdf p.9: "For French Fries 7.2 – 10°C … For Chipping 7.2–10°C" | verified |
+| Ripe tomato | 13–15 °C, 85–90 % RH | NHB Type 02 (cs2.pdf) p.11, Group 6 | verified |
+| Mature-green tomato | 18–21 °C, 85–90 % RH | cs2.pdf p.11, Group 7 | verified |
+| Jute bales | RH ≤ 65 % only | TIS (German Insurance Association) jute page — not an Indian standard | **unverified** |
+| Rice / paddy | none | No cited air temperature/RH band found (official figures are grain moisture ≤ 14 %) | no band — sensor checks only |
+
+Alert durations (warning 30 min, critical 120 min, stale 30 min) and plausibility limits are Irminsul assumptions, listed in the rules file and shown in the UI.
