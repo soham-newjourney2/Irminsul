@@ -30,15 +30,16 @@ async function drawChart(canvas, data) {
   const Chart = await loadChart();
   chart?.destroy();
   const labels = data.readings.map((r) => fmtDateTime(r.observed_at));
+  const clock = new Intl.DateTimeFormat(document.documentElement.lang || "en", { hour: "numeric", minute: "2-digit" });
   const p = data.profile ?? {};
   const datasets = [
-    { label: t("freshtrack.temp"), data: data.readings.map((r) => r.temp_c), borderWidth: 2, pointRadius: data.readings.map((r) => (r.source === "simulated" ? 1 : 3)), yAxisID: "y" },
-    { label: t("freshtrack.rh"), data: data.readings.map((r) => r.rh_pct), borderWidth: 1, borderDash: [4, 3], pointRadius: 0, yAxisID: "y1" },
+    { label: t("freshtrack.temp"), data: data.readings.map((r) => r.temp_c), borderWidth: 2, borderColor: "#c3d58f", backgroundColor: "#c3d58f", tension: 0.35, pointRadius: data.readings.map((r) => (r.source === "simulated" ? 1 : 3)), yAxisID: "y" },
+    { label: t("freshtrack.rh"), data: data.readings.map((r) => r.rh_pct), borderWidth: 1, borderDash: [4, 3], borderColor: "#5fd0a8", backgroundColor: "#5fd0a8", tension: 0.35, pointRadius: 0, yAxisID: "y1" },
   ];
   if (p.temp_min_c != null) {
     datasets.push(
-      { label: t("freshtrack.band_max"), data: labels.map(() => p.temp_max_c), borderWidth: 1, pointRadius: 0, borderColor: "rgba(180,35,24,.6)", fill: false, yAxisID: "y" },
-      { label: t("freshtrack.band_min"), data: labels.map(() => p.temp_min_c), borderWidth: 1, pointRadius: 0, borderColor: "rgba(29,95,168,.6)", backgroundColor: "rgba(31,122,58,.10)", fill: "-1", yAxisID: "y" },
+      { label: t("freshtrack.band_max"), data: labels.map(() => p.temp_max_c), borderWidth: 1, pointRadius: 0, borderColor: "rgba(255,158,143,.7)", fill: false, yAxisID: "y" },
+      { label: t("freshtrack.band_min"), data: labels.map(() => p.temp_min_c), borderWidth: 1, pointRadius: 0, borderColor: "rgba(166,201,242,.7)", backgroundColor: "rgba(195,213,143,.09)", fill: "-1", yAxisID: "y" },
     );
   }
   chart = new Chart(canvas, {
@@ -48,7 +49,10 @@ async function drawChart(canvas, data) {
       responsive: true,
       maintainAspectRatio: false,
       interaction: { mode: "index", intersect: false },
-      scales: { y: { title: { display: true, text: "°C" } }, y1: { position: "right", min: 0, max: 100, grid: { drawOnChartArea: false }, title: { display: true, text: "% RH" } } },
+      scales: {
+        x: { ticks: { maxTicksLimit: 8, maxRotation: 0, autoSkip: true, callback: (v) => clock.format(new Date(data.readings[v]?.observed_at)) } },
+        y: { title: { display: true, text: "°C" } },
+        y1: { position: "right", min: 0, max: 100, grid: { drawOnChartArea: false }, title: { display: true, text: "% RH" } } },
     },
   });
 }

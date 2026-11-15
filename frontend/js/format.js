@@ -65,7 +65,7 @@ export function statusBadge(kind, status) {
   return el("span", { class: "badge", dataset: { tone: TONE[status] ?? "muted" }, text: t(`status_${kind}.${status}`) });
 }
 
-/** Asking vs agreed prices are always labelled differently (planning §4.1). */
+/** Asking vs agreed prices are always labelled differently. */
 export function priceBlock(labelKey, paise, agreed = false) {
   return el(
     "div",

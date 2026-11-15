@@ -1,10 +1,12 @@
 import { api } from "../api.js";
 import { HOME } from "../auth.js";
 import { currentLang, errorMessage, t } from "../i18n.js";
+import { paintScene } from "../ui/nature.js";
 import { mountShell } from "../ui/shell.js";
 
 const me = await mountShell({ public: true });
 if (me) location.replace(HOME[me.role]);
+paintScene(document.getElementById("scene-art"));
 
 const form = document.getElementById("register-form");
 const errorBox = document.getElementById("form-error");

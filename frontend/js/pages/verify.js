@@ -1,4 +1,4 @@
-// Public QR verify page — no login, no personal data (planning §4.2).
+// Public QR verify page — no login, no personal data.
 import { api } from "../api.js";
 import { commodity, fmtQty } from "../format.js";
 import { errorMessage, t } from "../i18n.js";

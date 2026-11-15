@@ -3,6 +3,7 @@ import { api } from "../api.js";
 import { HOME, getMe, logout } from "../auth.js";
 import { LANGS, apply, initI18n, setLang, t } from "../i18n.js";
 import { el } from "./dom.js";
+import { ambient, icon, sprite } from "./nature.js";
 import { bell } from "./notify.js";
 
 // Nav grows as milestones add pages. Keys are locale keys.
@@ -76,7 +77,7 @@ function renderHeader(me) {
     el(
       "div",
       { class: "app-header__inner" },
-      el("a", { class: "brand", href: me ? HOME[me.role] : "/", "data-i18n": "app.name" }),
+      el("a", { class: "brand", href: me ? HOME[me.role] : "/" }, icon("sigil"), el("span", { "data-i18n": "app.name" })),
       links.length
         ? el(
             "nav",
@@ -98,12 +99,14 @@ function renderHeader(me) {
         langSelect(me),
         me
           ? el("button", {
-              class: "btn",
+              class: "btn btn--sm",
               type: "button",
               "data-i18n": "common.logout",
               onclick: logout,
             })
-          : null,
+          : here === "/login.html"
+            ? null
+            : el("a", { class: "btn btn--sm", href: "/login.html", "data-i18n": "landing.login" }),
       ),
       notifications?.panel,
     ),
@@ -152,6 +155,8 @@ export async function mountShell({ role = null, public: isPublic = false } = {})
     return new Promise(() => {});
   }
   await initI18n(me?.language);
+  sprite();
+  ambient();
   renderHeader(me);
   if (me && role && me.status !== "active") showPending(me);
   apply();

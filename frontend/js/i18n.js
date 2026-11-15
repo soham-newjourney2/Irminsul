@@ -1,4 +1,4 @@
-// data-i18n keys + locale JSON (planning §9). Numbers/dates via Intl.
+// data-i18n keys + locale JSON. Numbers/dates via Intl.
 
 export const LANGS = ["en", "bn", "hi"];
 const INTL_TAG = { en: "en-IN", bn: "bn-IN", hi: "hi-IN" };

@@ -1,4 +1,4 @@
-// Sourced guidance card (planning §4.5): always shows source, date and "not expert-reviewed".
+// Sourced guidance card: always shows source, date and "not expert-reviewed".
 import { api } from "../api.js";
 import { currentLang, t } from "../i18n.js";
 import { el } from "../ui/dom.js";

@@ -1,4 +1,4 @@
-// Farmer: crop photo screening — "possible condition", never a diagnosis (planning §4.5).
+// Farmer: crop photo screening — "possible condition", never a diagnosis.
 import { api, apiUpload, newIdempotencyKey } from "../api.js";
 import { commodity, fmtNum } from "../format.js";
 import { errorMessage, fmtDateTime, t } from "../i18n.js";
@@ -13,7 +13,7 @@ const root = document.getElementById("root");
 const SUPPORTED = ["potato", "tomato"];
 const MAX_EDGE = 512;
 
-/** Client-side resize to ~512 px JPEG (planning §4.5); the server re-validates everything. */
+/** Client-side resize to ~512 px JPEG; the server re-validates everything. */
 async function resize(file) {
   const bitmap = await createImageBitmap(file);
   const scale = Math.min(1, MAX_EDGE / Math.max(bitmap.width, bitmap.height));

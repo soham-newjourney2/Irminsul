@@ -36,6 +36,7 @@ export async function createMap(container, { center = WB_CENTER, zoom = 7 } = {}
     const map = L.map(container).setView(center, zoom);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
+      referrerPolicy: "strict-origin-when-cross-origin",
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
     // Maps inside closed <details> or detached nodes start at 0×0; fix size once visible.

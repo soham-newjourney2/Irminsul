@@ -1,4 +1,4 @@
-// Farmer: forecast + sourced crop advisories for a farm (planning §4.4/§4.5).
+// Farmer: forecast + sourced crop advisories for a farm.
 import { api } from "../api.js";
 import { commodity, fmtDate, fmtNum } from "../format.js";
 import { errorMessage, fmtDateTime, t } from "../i18n.js";

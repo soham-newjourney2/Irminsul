@@ -1,4 +1,4 @@
-// Explainable FreshTrack alert cards, shared by operator, farmer and admin views (planning §4.3).
+// Explainable FreshTrack alert cards, shared by operator, farmer and admin views.
 import { api } from "../api.js";
 import { fmtNum } from "../format.js";
 import { fmtDateTime, t } from "../i18n.js";

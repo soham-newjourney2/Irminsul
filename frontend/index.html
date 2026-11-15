@@ -3,24 +3,123 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#060a08">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/scene.css">
   <title>Irminsul</title>
 </head>
-<body>
+<body class="scene landing">
   <header id="app-header"></header>
-  <main id="app-main" class="container narrow stack">
-    <h1 data-i18n="landing.title"></h1>
-    <p class="muted" data-i18n="landing.body"></p>
-    <div class="stack">
-      <a class="btn btn--primary btn--block" href="/login.html" data-i18n="landing.login"></a>
-      <a class="btn btn--block" href="/register.html" data-i18n="landing.register"></a>
+  <main id="app-main">
+    <section class="hero">
+      <svg class="scene-art" id="hero-art" aria-hidden="true"></svg>
+      <canvas class="tree3d" id="tree3d" aria-hidden="true"></canvas>
+      <div class="wrap hero__copy">
+        <p class="eyebrow reveal" data-i18n="landing.eyebrow"></p>
+        <h1 class="display reveal">
+          <span data-i18n="landing.hero_a"></span><br>
+          <em data-i18n="landing.hero_b"></em>
+        </h1>
+        <p class="lede reveal" data-i18n="landing.body"></p>
+        <div class="hero__cta reveal">
+          <a class="pill" href="/register.html"><span data-i18n="landing.register"></span><span class="pill__dot" data-icon="arrow-ur"></span></a>
+          <a class="quiet-link" href="/login.html" data-i18n="landing.login"></a>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#features" data-i18n="landing.scroll"></a>
+    </section>
+
+    <section class="features" id="features">
+      <div class="wrap features__grid">
+        <article class="feat reveal"><span class="feat__ico" data-icon="link"></span><h3 data-i18n="landing.f_trace"></h3><p data-i18n="landing.f_trace_d"></p></article>
+        <article class="feat reveal" data-d="1"><span class="feat__ico" data-icon="snow"></span><h3 data-i18n="landing.f_cold"></h3><p data-i18n="landing.f_cold_d"></p></article>
+        <article class="feat reveal" data-d="2"><span class="feat__ico" data-icon="sprout"></span><h3 data-i18n="landing.f_intel"></h3><p data-i18n="landing.f_intel_d"></p></article>
+        <article class="feat reveal" data-d="3"><span class="feat__ico" data-icon="wave"></span><h3 data-i18n="landing.f_emerg"></h3><p data-i18n="landing.f_emerg_d"></p></article>
+      </div>
+    </section>
+
+    <div class="ferns">
+      <svg class="scene-art" id="fern-art" aria-hidden="true"></svg>
+      <div class="wrap ferns__body">
+        <div class="intro reveal">
+          <h2 class="title"><span data-i18n="landing.chain_a"></span> <em data-i18n="landing.chain_em"></em> <span data-i18n="landing.chain_b"></span></h2>
+          <p data-i18n="landing.chain_body"></p>
+        </div>
+        <div class="show">
+          <figure class="glass chain-card reveal">
+            <div class="c3d" id="chain3d"></div>
+            <figcaption data-i18n="landing.chain_caption"></figcaption>
+          </figure>
+          <div class="stats">
+            <div class="glass stat reveal"><b data-count="3">3</b><span data-i18n="landing.stat_langs"></span></div>
+            <div class="glass stat reveal" data-d="1"><b data-count="4">4</b><span data-i18n="landing.stat_roles"></span></div>
+            <div class="glass stat reveal" data-d="2"><b data-count="1">1</b><span data-i18n="landing.stat_qr"></span></div>
+          </div>
+        </div>
+
+        <section class="reasons">
+          <h2 class="title center reveal"><span data-i18n="landing.reasons_a"></span> <em data-i18n="landing.reasons_em"></em> <span data-i18n="landing.reasons_b"></span></h2>
+          <div class="four">
+            <article class="glass reason reveal"><div class="reason__n">1</div><h3 data-i18n="landing.r1_t"></h3><p data-i18n="landing.r1_d"></p></article>
+            <article class="glass reason reveal" data-d="1"><div class="reason__n">2</div><h3 data-i18n="landing.r2_t"></h3><p data-i18n="landing.r2_d"></p></article>
+            <article class="glass reason reveal" data-d="2"><div class="reason__n">3</div><h3 data-i18n="landing.r3_t"></h3><p data-i18n="landing.r3_d"></p></article>
+            <article class="glass reason reveal" data-d="3"><div class="reason__n">4</div><h3 data-i18n="landing.r4_t"></h3><p data-i18n="landing.r4_d"></p></article>
+          </div>
+        </section>
+      </div>
     </div>
+
+    <section class="story" id="story">
+      <svg class="scene-art" id="story-art" aria-hidden="true"></svg>
+      <div class="wrap story__body">
+        <div class="slide reveal" id="slide">
+          <p class="eyebrow" data-i18n="landing.story_eyebrow"></p>
+          <h2 class="title big"><span id="s-a" data-i18n="landing.s1_a"></span> <em id="s-em" data-i18n="landing.s1_em"></em></h2>
+          <p id="s-d" data-i18n="landing.s1_d"></p>
+          <a class="more" id="s-link" href="/farmer/batches.html"><span id="s-l" data-i18n="landing.s1_link"></span><span data-icon="arrow-r"></span></a>
+        </div>
+        <div class="story__ctrl reveal">
+          <button class="round" id="prev" type="button" data-i18n-aria-label="landing.story_prev"><span data-icon="arrow-l"></span></button>
+          <button class="round" id="next" type="button" data-i18n-aria-label="landing.story_next"><span data-icon="arrow-r"></span></button>
+          <span class="count" id="count">01 / 03</span>
+          <span class="bar"><i id="bar"></i></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <p class="eyebrow reveal" data-i18n="landing.cta_eyebrow"></p>
+      <h2 class="title reveal"><span data-i18n="landing.cta_a"></span> <em data-i18n="landing.cta_em"></em></h2>
+      <div class="reveal"><a class="pill" href="/register.html"><span data-i18n="landing.register"></span><span class="pill__dot" data-icon="arrow-ur"></span></a></div>
+    </section>
   </main>
+
+  <footer class="site-foot">
+    <div class="wrap foot__cols">
+      <div>
+        <a class="brand" href="/"><span data-icon="sigil"></span><span data-i18n="app.name"></span></a>
+        <p class="foot__blurb" data-i18n="landing.footer_blurb"></p>
+      </div>
+      <nav>
+        <h4 data-i18n="landing.footer_platform"></h4>
+        <a href="/login.html" data-i18n="landing.login"></a>
+        <a href="/register.html" data-i18n="landing.register"></a>
+        <a href="/verify.html" data-i18n="landing.verify"></a>
+      </nav>
+      <nav id="foot-langs">
+        <h4 data-i18n="landing.footer_language"></h4>
+        <button type="button" data-lang="en">English</button>
+        <button type="button" data-lang="bn">বাংলা</button>
+        <button type="button" data-lang="hi">हिन्दी</button>
+      </nav>
+    </div>
+  </footer>
   <script type="module" src="/js/pages/landing.js"></script>
 </body>
 </html>
