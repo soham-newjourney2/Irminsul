@@ -8,7 +8,7 @@
 | Pinned revision | `9e3c97cf1e63e2a665a27c7bccd0ac067a2dbe5d` (repo last modified 2026-10-17) |
 | License | Apache-2.0 (training data: PlantVillage; Cropped-PlantDoc, CC BY 4.0, for 27 classes) |
 | Architecture | MobileNetV2 1.0/224 (fine-tuned from `google/mobilenet_v2_1.0_224`), 38 classes |
-| Our artefact | ONNX opset 17, 9.2 MB, exported by `scripts/export_model.py`; SHA-256 in `manifest.json`, checked at load |
+| Our artefact | ONNX opset 17, 9.2 MB, exported by `scripts/model/export.py`; SHA-256 in `manifest.json`, checked at load |
 | Export parity | max \|logit diff\| torch vs onnxruntime = 1.9e-6 |
 | Runtime | onnxruntime CPU, one session, lazy-loaded |
 | Approved by | Owner, 2026-11-14 |
@@ -22,7 +22,7 @@
 ## Decision rules
 | Rule | Value | Status |
 |---|---|---|
-| "Not sure" if top probability within the chosen crop is below | **0.6** | **Provisional.** Planning default; the source card recommends 0.5 on lab images, its own field check used 0.85 |
+| "Not sure" if top probability within the chosen crop is below | **0.6** | **Provisional.** Project default; the source card recommends 0.5 on lab images, its own field check used 0.85 |
 | "Doesn't look like a {crop} leaf" if the probability mass on that crop's classes is below | 0.5 | Our rule, provisional |
 | Probabilities are reported as the model gives them | — | never re-normalised within a crop |
 
@@ -70,4 +70,4 @@ Exported ONNX model + Irminsul's decision rules, on openly licensed Wikimedia Co
 
 Script: kept outside the repo (one-off); the photos are not redistributed.
 
-**Demo impact (planning §5 step 1):** a real potato field photo will most likely get "not sure". For the demo, use a clear single-leaf photo on a plain background, and keep the "not sure" path visible as a feature, not a failure.
+**Demo impact:** a real potato field photo will most likely get "not sure". For the demo, use a clear single-leaf photo on a plain background, and keep the "not sure" path visible as a feature, not a failure.

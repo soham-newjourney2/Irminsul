@@ -1,4 +1,4 @@
-"""M1: auth, pending gate, RBAC, admin approval + audit (planning §13)."""
+"""M1: auth, pending gate, RBAC, admin approval + audit."""
 
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime

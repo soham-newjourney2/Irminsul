@@ -1,4 +1,4 @@
-"""Emergency coordination (planning §4.4): simulated flood → exposure → relocation proposals.
+"""Emergency coordination: simulated flood → exposure → relocation proposals.
 
 No autonomous moves: an authorised human confirms each relocation, which only *requests* a
 booking at the target facility (its operator still accepts it through the normal flow).

@@ -50,7 +50,7 @@ async def lifespan(_: FastAPI) -> AsyncIterator[None]:
     else:
         try:
             await ensure_indexes(mongo.db)
-            # Load the dated mandi snapshot once, in the background (planning §4.5).
+            # Load the dated mandi snapshot once, in the background.
             _background.add(asyncio.create_task(mandi_service.ensure_loaded(mongo.db)))
             _background.add(asyncio.create_task(scheduler.stale_sensor_loop(mongo.db)))
             _background.add(asyncio.create_task(scheduler.heavy_rain_loop(mongo.db)))

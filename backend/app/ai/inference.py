@@ -1,4 +1,4 @@
-"""Stable screening interface (planning §6): ONNX model + preprocessing + class map + thresholds.
+"""Stable screening interface: ONNX model + preprocessing + class map + thresholds.
 
 Results are bounded: probabilities are reported as they are (temperature-calibrated, never
 re-normalised within a crop), and anything below the provisional threshold — or a photo that
@@ -155,7 +155,7 @@ def supported_crops(bundle: Bundle) -> list[str]:
 
 def _model_dir() -> Path:
     if not MODELS_ROOT.is_dir():
-        raise ModelUnavailable("Model files not found; run scripts/export_model.py")
+        raise ModelUnavailable("Model files not found; run scripts/model/export.py")
     dirs = sorted(
         (d for d in MODELS_ROOT.iterdir() if (d / "manifest.json").is_file()), reverse=True
     )

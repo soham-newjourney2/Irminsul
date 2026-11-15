@@ -1,4 +1,4 @@
-"""In-memory WebSocket hub (single instance, planning §6). Messages: {"type": ..., "data": ...}."""
+"""In-memory WebSocket hub (single instance). Messages: {"type": ..., "data": ...}."""
 
 import logging
 from collections import defaultdict

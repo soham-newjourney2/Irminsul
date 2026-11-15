@@ -1,4 +1,4 @@
-"""FreshTrack engine: duration/severity, stale detection, implausible, unusual (planning §13)."""
+"""FreshTrack engine: duration/severity, stale detection, implausible, unusual."""
 
 from datetime import UTC, datetime, timedelta
 

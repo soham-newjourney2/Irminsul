@@ -1,6 +1,6 @@
 """Facilities, zones and bookings.
 
-Capacity invariant (planning §7): reserved_kg + occupied_kg ≤ capacity_kg, enforced by a
+Capacity invariant: reserved_kg + occupied_kg ≤ capacity_kg, enforced by a
 conditional update with $expr inside the same transaction as the booking status change.
 """
 

@@ -1,5 +1,5 @@
 """M6 exit criteria: a simulated event finds affected records and proposes capacity-checked
-relocation options; confirmations are audited (planning §12)."""
+relocation options; confirmations are audited."""
 
 from typing import Any
 

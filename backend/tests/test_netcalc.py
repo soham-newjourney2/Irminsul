@@ -1,4 +1,4 @@
-"""Net realization arithmetic + distance fallback (planning §13)."""
+"""Net realization arithmetic + distance fallback."""
 
 import httpx
 import pytest

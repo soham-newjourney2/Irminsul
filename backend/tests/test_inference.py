@@ -1,4 +1,4 @@
-"""Screening: preprocessing + output mapping with a tiny fixture (planning §13)."""
+"""Screening: preprocessing + output mapping with a tiny fixture."""
 
 from typing import Any
 

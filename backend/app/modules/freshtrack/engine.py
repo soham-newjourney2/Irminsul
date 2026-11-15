@@ -1,4 +1,4 @@
-"""FreshTrack alert engine — pure functions, no I/O (planning §4.3).
+"""FreshTrack alert engine — pure functions, no I/O.
 
 Findings explain themselves: condition, time window, threshold, peak. An "unusual" flag is an
 investigation signal only, never a food-safety verdict.

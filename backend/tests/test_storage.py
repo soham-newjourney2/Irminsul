@@ -1,4 +1,4 @@
-"""M2 storage: facilities, zones, bookings, capacity invariant (planning §4.1, §7, §13)."""
+"""M2 storage: facilities, zones, bookings, capacity invariant."""
 
 import asyncio
 from typing import Any

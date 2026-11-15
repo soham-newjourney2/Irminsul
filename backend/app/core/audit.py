@@ -1,4 +1,4 @@
-"""Append-only audit log for admin and business-critical actions (planning §3, §11)."""
+"""Append-only audit log for admin and business-critical actions."""
 
 from datetime import UTC, datetime
 from typing import Any

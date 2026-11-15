@@ -1,4 +1,4 @@
-"""Net realization per market (planning §4.5), integer paise throughout.
+"""Net realization per market, integer paise throughout.
 
 net = qty x modal price - transport (road km x rate/km/quintal x quintals)
       - fees (% of gross)

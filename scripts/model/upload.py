@@ -1,9 +1,9 @@
 """Upload the locally exported screening model to MongoDB GridFS and write the lock file.
 
-Usage (once, locally, after scripts/export_model.py):  uv run python -I scripts/upload_model.py
+Usage (once, locally, after scripts/model/export.py):  uv run python -I scripts/model/upload.py
 - Files go to GridFS bucket "model_files" (idempotent: identical files are not re-uploaded).
 - ai/model_cards/plantvillage-mobilenetv2.lock.json (committed) pins every file's SHA-256;
-  scripts/download_models.py refuses anything that does not match it.
+  scripts/model/download.py refuses anything that does not match it.
 """
 
 import asyncio
@@ -13,7 +13,7 @@ import json
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 from gridfs import AsyncGridFSBucket  # noqa: E402
@@ -32,7 +32,7 @@ async def main() -> int:
         (d for d in MODELS_ROOT.iterdir() if (d / "manifest.json").is_file()), reverse=True
     )
     if not dirs:
-        print("No exported model found; run scripts/export_model.py first", file=sys.stderr)
+        print("No exported model found; run scripts/model/export.py first", file=sys.stderr)
         return 1
     model_dir = dirs[0]
     manifest = json.loads((model_dir / "manifest.json").read_text(encoding="utf-8"))

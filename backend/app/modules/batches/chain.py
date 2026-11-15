@@ -1,4 +1,4 @@
-"""Tamper-evidence hash chain for batch events (planning §4.2). Not a blockchain.
+"""Tamper-evidence hash chain for batch events. Not a blockchain.
 
 hash_n = sha256(prev_hash + canonical_json(event fields)). Timestamps are normalised to
 milliseconds (BSON precision) before hashing so stored events re-verify byte-for-byte.

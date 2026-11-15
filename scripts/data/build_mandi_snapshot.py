@@ -1,6 +1,6 @@
 # pyright: reportAttributeAccessIssue=false
 # (pyarrow.compute functions are generated at import time; pyright cannot see them.)
-"""Build the dated West Bengal mandi snapshot (planning §4.5 CSV fallback) from AGMARKNET data.
+"""Build the dated West Bengal mandi snapshot from AGMARKNET data.
 
 Source: AGMARKNET (Ministry of Agriculture & Farmers Welfare, GoI) via data.gov.in
 "Variety-wise Daily Market Prices Data of Commodity", compiled by Manas Khandelwal (Kaggle,
@@ -8,8 +8,8 @@ DOI 10.34740/kaggle/dsv/15888319), mirrored on Hugging Face. Licence: GODL-India
 
 Needs the optional group:  uv sync --group data
 Usage:
-  uv run --group data python -I scripts/build_mandi_snapshot.py --inspect
-  uv run --group data python -I scripts/build_mandi_snapshot.py
+  uv run --group data python -I scripts/data/build_mandi_snapshot.py --inspect
+  uv run --group data python -I scripts/data/build_mandi_snapshot.py
 Input:  data/raw/hf-mandi/mandi_daily_<year>.parquet (pinned revision below)
 Output: data/mandi_snapshot_<last-date>.csv + .json (provenance)
 """
@@ -26,7 +26,7 @@ from pathlib import Path
 import pyarrow.compute as pc
 import pyarrow.parquet as pq
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / "data" / "raw" / "hf-mandi"
 DATASET = "DHIVAKARNAIDUSUNKARI/mandi-india-daily-prices-2001-2026"
 REVISION = "62ad5b49bc00c60b6303ddf3d74ea0718addb59b"

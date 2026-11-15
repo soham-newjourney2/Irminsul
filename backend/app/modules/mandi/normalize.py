@@ -14,7 +14,7 @@ CROP_OF_COMMODITY = {
 
 
 def clean_market(name: str) -> str:
-    """'Bishnupur (Bankura) APMC' → 'Bishnupur' (same rule as scripts/geocode_markets.py)."""
+    """'Bishnupur (Bankura) APMC' → 'Bishnupur' (same rule as scripts/data/geocode_markets.py)."""
     n = re.sub(r"\bAPMC\b|\(.*?\)", " ", name, flags=re.I)
     n = n.replace("/", " ")
     return re.sub(r"\s+", " ", n).strip()

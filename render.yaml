@@ -1,5 +1,5 @@
 # Render Blueprint (https://render.com/docs/blueprint-spec). One free web service:
-# API + static frontend + WebSocket (planning §6). Secrets are NOT in this file:
+# API + static frontend + WebSocket. Secrets are NOT in this file:
 # `sync: false` values are entered in the Render dashboard when the Blueprint is created.
 services:
   - type: web
@@ -8,7 +8,7 @@ services:
     plan: free
     region: singapore # closest Render region to West Bengal
     # Python is pinned by .python-version (3.12); uv is used because uv.lock is present.
-    buildCommand: uv sync --frozen --no-dev && uv run --no-sync python -I scripts/download_models.py
+    buildCommand: uv sync --frozen --no-dev && uv run --no-sync python -I scripts/model/download.py
     # Render terminates TLS at its proxy; uvicorn trusts its X-Forwarded-For (FORWARDED_ALLOW_IPS
     # below) so per-IP login limits see the real client IP (security review finding #5).
     startCommand: uv run --no-sync uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT --proxy-headers

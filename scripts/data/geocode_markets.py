@@ -1,6 +1,6 @@
 """One-off: geocode West Bengal mandi markets from the dated snapshot with OSM Nominatim.
 
-Usage: uv run python -I scripts/geocode_markets.py
+Usage: uv run python -I scripts/data/geocode_markets.py
 Policy (operations.osmfoundation.org/policies/nominatim): ≤ 1 request/s, identifying
 User-Agent, results cached — this script is resumable and never re-queries a market.
 Only market/district names are sent. Output: data/markets_wb.json (ODbL attribution).
@@ -15,7 +15,7 @@ from pathlib import Path
 
 import httpx
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "data" / "markets_wb.json"
 URL = "https://nominatim.openstreetmap.org/search"
 UA = "IrminsulHackathon/0.1 (one-off geocoding of public market names)"
@@ -26,7 +26,7 @@ LAT_MIN, LAT_MAX, LNG_MIN, LNG_MAX = 21.4, 27.4, 85.7, 90.0
 def snapshot() -> Path:
     files = sorted((ROOT / "data").glob("mandi_snapshot_*.csv"))
     if not files:
-        sys.exit("No snapshot; run scripts/build_mandi_snapshot.py first")
+        sys.exit("No snapshot; run scripts/data/build_mandi_snapshot.py first")
     return files[-1]
 
 

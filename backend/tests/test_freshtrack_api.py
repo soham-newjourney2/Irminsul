@@ -1,4 +1,4 @@
-"""FreshTrack API: exit criteria (planning §12 M5) + permissions + notifications + batch events."""
+"""FreshTrack API: exit criteria + permissions + notifications + batch events."""
 
 from datetime import UTC, datetime, timedelta
 from typing import Any

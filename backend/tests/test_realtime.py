@@ -1,4 +1,4 @@
-"""WebSocket hub + notification push (planning §0 #21)."""
+"""WebSocket hub + notification push."""
 
 from typing import Any
 

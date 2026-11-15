@@ -1,26 +1,45 @@
-# Local toolchain (uv, python, caches, binaries)
-tools/
-.venv/
-
-# Secrets
+# Secrets and local environment
 .env
 .env.*
 !.env.example
 
-# Python
+# Local toolchain: uv, downloaded Pythons, caches
+tools/
+.venv/
+
+# Python build and tool caches
 __pycache__/
 *.py[cod]
+*.egg-info/
+build/
+dist/
 .pytest_cache/
 .ruff_cache/
+.mypy_cache/
+.pyright/
 .coverage
+coverage.xml
 htmlcov/
 
-# Data / models (fetched, not committed)
+# Fetched data and model files (rebuilt by scripts/, never committed)
 ai/models/
 data/raw/
 
-# OS / editor
+# Logs and scratch files
+*.log
+*.tmp
+tmp/
+
+# Personal notes, assistant config and local hooks (kept on disk, not shared)
+CLAUDE.md
+.claude/
+planning.md
+.githooks/
+
+# OS and editor files
 .DS_Store
 Thumbs.db
+desktop.ini
 .vscode/
 .idea/
+*.swp

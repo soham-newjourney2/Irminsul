@@ -1,4 +1,4 @@
-"""M2 marketplace: farms, listings, purchase requests, orders (planning §4.1, §13)."""
+"""M2 marketplace: farms, listings, purchase requests, orders."""
 
 from typing import Any
 

@@ -1,24 +1,11 @@
-"""Create local demo accounts (+ one demo farm and cold store) for manual testing.
+"""Base demo accounts (admin, farmer, distributor, operator) plus one farm and two cold stores."""
 
-Usage: uv run python -I scripts/demo_accounts.py
-Password: SEED_DEMO_PASSWORD from .env (never hard-coded). If unset, a random password is
-generated and printed once. Everything created here is marked is_demo: true.
-Full demo seeding (planning §5 story) is scripts/seed.py in M7.
-"""
-
-import asyncio
-import secrets
-import sys
 from datetime import UTC, datetime
-from pathlib import Path
-
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from pymongo.asynchronous.database import AsyncDatabase
 
-from backend.app.config import get_settings
 from backend.app.core.security import hash_password
-from backend.app.db.client import Doc, mongo
+from backend.app.db.client import Doc
 from backend.app.db.indexes import ensure_indexes
 
 ACCOUNTS = [
@@ -169,38 +156,3 @@ async def ensure_base(db: AsyncDatabase[Doc], password: str) -> dict[str, Doc]:
         upsert=True,
     )
     return users
-
-
-async def main() -> int:
-    settings = get_settings()
-    await mongo.connect(settings)
-    if mongo.db is None:
-        print("MONGODB_URI not set", file=sys.stderr)
-        return 1
-    db = mongo.db
-    secret = settings.seed_demo_password
-    generated = secret is None
-    password = secrets.token_urlsafe(9) if secret is None else secret.get_secret_value()
-    if len(password) < 8:
-        print("SEED_DEMO_PASSWORD must be at least 8 characters", file=sys.stderr)
-        return 1
-    try:
-        await ensure_base(db, password)
-
-        print("Demo accounts ready:")
-        for a in ACCOUNTS:
-            print(f"  {a['role']:<17} {a['email']}")
-        if generated:
-            print(
-                "Password (generated, shown once; set SEED_DEMO_PASSWORD in .env to choose):",
-                password,
-            )
-        else:
-            print("Password: the SEED_DEMO_PASSWORD value from your .env")
-    finally:
-        await mongo.close()
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(asyncio.run(main()))

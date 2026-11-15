@@ -7,7 +7,7 @@ import json
 
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
 
-# Only the third-party origins the frontend actually uses (planning §6 CDN libs).
+# Only the third-party origins the frontend actually uses.
 CSP = "; ".join(
     [
         "default-src 'self'",

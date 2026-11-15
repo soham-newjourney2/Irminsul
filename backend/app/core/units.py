@@ -1,4 +1,4 @@
-"""Quantities are stored as integer kg; money as integer paise (planning §0 #15, §7)."""
+"""Quantities are stored as integer kg; money as integer paise."""
 
 from decimal import ROUND_HALF_UP, Decimal
 from typing import Annotated, Literal

@@ -1,4 +1,4 @@
-"""Reference data (planning §0): supported crops and West Bengal districts."""
+"""Reference data: supported crops and West Bengal districts."""
 
 from typing import Literal
 

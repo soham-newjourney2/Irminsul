@@ -1,6 +1,6 @@
 """Crop screening: validated upload → cleaned JPEG in GridFS → ONNX → bounded result.
 
-Upload safety (planning §11): size cap, MIME allow-list, Pillow verify, pixel cap against
+Upload safety: size cap, MIME allow-list, Pillow verify, pixel cap against
 decompression bombs, and re-encoding to a plain JPEG (drops EXIF incl. GPS and any
 trailing payload) before anything is stored or analysed.
 """
@@ -37,7 +37,7 @@ LIMITATIONS = [
     "confirm_with_kvk",
 ]
 
-screening_limiter = RateLimiter(limit=10, window_s=60)  # per user (planning §8)
+screening_limiter = RateLimiter(limit=10, window_s=60)  # per user
 
 
 def _bucket(db: AsyncDatabase[Doc]) -> AsyncGridFSBucket:

@@ -1,4 +1,4 @@
-"""Background loops started in the FastAPI lifespan (planning §6: asyncio tasks, no Celery)."""
+"""Background loops started in the FastAPI lifespan (asyncio tasks, no Celery)."""
 
 import asyncio
 import logging

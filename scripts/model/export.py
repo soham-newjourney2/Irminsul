@@ -1,7 +1,7 @@
 """One-time local export: Hugging Face MobileNetV2 (PlantVillage) → ONNX + versioned metadata.
 
 Needs the optional `export` group:  uv sync --group export
-Usage:  uv run python -I scripts/export_model.py
+Usage:  uv run python -I scripts/model/export.py
 
 Security: pinned revision, safetensors only (no pickle), no remote code, caches under ./tools.
 Output: ai/models/plantvillage-mobilenetv2/<rev7>/{model.onnx, preprocess.json,
@@ -16,7 +16,7 @@ import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 os.environ.setdefault("HF_HOME", str(ROOT / "tools" / "hf-cache"))
 os.environ.setdefault("HF_HUB_DISABLE_TELEMETRY", "1")
 
@@ -31,7 +31,7 @@ REVISION = "9e3c97cf1e63e2a665a27c7bccd0ac067a2dbe5d"  # pinned 2026-11-14
 LICENSE = "apache-2.0"
 NAME = "plantvillage-mobilenetv2"
 SUPPORTED_CROPS = ("potato", "tomato")
-# Planning §4.5: default 0.6, provisional. The model card recommends 0.5 on lab images;
+# Default 0.6, provisional. The model card recommends 0.5 on lab images;
 # we keep the stricter value because the card's own field-photo check is weak.
 CONFIDENCE_THRESHOLD = 0.6
 # Below this share of probability on the selected crop's classes → "doesn't look like <crop>".

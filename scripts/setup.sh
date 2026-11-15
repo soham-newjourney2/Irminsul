@@ -15,10 +15,5 @@ fi
 uv venv .venv --python 3.12 --allow-existing
 uv sync
 
-if [ -d .git ]; then
-  git config core.hooksPath .githooks
-  chmod +x .githooks/commit-msg
-fi
-
 [ -f .env ] || { cp .env.example .env; echo "Created .env from .env.example; fill in MONGODB_URI."; }
 echo "Done. Run: uv run uvicorn backend.app.main:app --reload"

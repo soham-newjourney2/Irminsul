@@ -1,4 +1,4 @@
-"""Request dependencies: DB handle, current user, RBAC (planning §3). UI hiding is cosmetic."""
+"""Request dependencies: DB handle, current user, RBAC. UI hiding is cosmetic."""
 
 from collections.abc import Awaitable, Callable
 from typing import Annotated

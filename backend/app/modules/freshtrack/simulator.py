@@ -1,6 +1,6 @@
-"""Demo sensor simulator (planning §4.3). Every reading it writes is source="simulated".
+"""Demo sensor simulator. Every reading it writes is source="simulated".
 
-Single-instance, in-memory task registry (planning §6: no Celery/Redis).
+Single-instance, in-memory task registry (no Celery/Redis).
 """
 
 import asyncio

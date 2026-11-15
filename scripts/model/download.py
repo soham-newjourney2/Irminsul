@@ -1,6 +1,6 @@
 """Fetch the screening model from GridFS at build time and verify it against the committed lock.
 
-Usage (Render build step):  uv run python -I scripts/download_models.py
+Usage (Render build step):  uv run python -I scripts/model/download.py
 Exits non-zero — failing the build — if any file is missing or its SHA-256 differs from
 ai/model_cards/plantvillage-mobilenetv2.lock.json. Skips files already present and valid.
 """
@@ -11,7 +11,7 @@ import json
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 from gridfs import AsyncGridFSBucket  # noqa: E402

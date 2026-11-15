@@ -1,4 +1,4 @@
-"""Index definitions (planning §7). Each milestone adds indexes for its own collections."""
+"""Index definitions. Each milestone adds indexes for its own collections."""
 
 from pymongo import ASCENDING, DESCENDING, GEOSPHERE, IndexModel
 from pymongo.asynchronous.database import AsyncDatabase

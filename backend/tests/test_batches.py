@@ -1,4 +1,4 @@
-"""M3 KrishiChain: batch followed creation → delivery, tampering detected (planning §12 M3)."""
+"""M3 KrishiChain: batch followed creation → delivery, tampering detected."""
 
 from typing import Any
 

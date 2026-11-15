@@ -1,4 +1,4 @@
-"""Mandi: price normalisation (planning §13), snapshot loading, queries, net realization API."""
+"""Mandi: price normalisation, snapshot loading, queries, net realization API."""
 
 import csv
 import json

@@ -1,4 +1,4 @@
-"""In-memory sliding-window rate limiter (single instance, planning §8)."""
+"""In-memory sliding-window rate limiter (single instance)."""
 
 import time
 from collections import defaultdict, deque

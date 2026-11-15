@@ -4,7 +4,7 @@
     "review_status": "not expert-reviewed",
     "retrieved": "2026-11-14",
     "policy": "Text quoted or closely condensed from the linked government source. No doses are given. Chemical names are listed only as they appear in the source; always follow the product label and confirm with your local KVK or agriculture officer.",
-    "translation_status": "bn/hi drafted by Claude, owner review pending",
+    "translation_status": "bn/hi drafted, owner review pending",
     "not_covered": [
       "tomato.bacterial_spot",
       "tomato.leaf_mold",

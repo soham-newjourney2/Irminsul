@@ -1,6 +1,6 @@
 """AquaSentinel: persisted heavy-rain alerts + the rainfall map layer (Open-Meteo, real data).
 
-The water-quality layer is cut (no public source found; planning §12 cut-list item 3).
+The water-quality layer is cut (no public source found).
 """
 
 import logging

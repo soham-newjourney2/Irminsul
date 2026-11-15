@@ -1,7 +1,7 @@
 """Road distance via the public OSRM demo server (shape verified live 2026-11-14).
 
-Fallback when OSRM fails: great-circle (Haversine) x 1.3, always labelled "estimate"
-(planning §0 #20). The public server is rate-limited; callers should cache results.
+Fallback when OSRM fails: great-circle (Haversine) x 1.3, always labelled "estimate".
+The public server is rate-limited; callers should cache results.
 """
 
 import math

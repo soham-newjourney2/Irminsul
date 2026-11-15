@@ -1,4 +1,4 @@
-"""Idempotency-Key support for creates (planning §8). Keys live 24 h (TTL index)."""
+"""Idempotency-Key support for creates. Keys live 24 h (TTL index)."""
 
 from collections.abc import Awaitable, Callable
 from datetime import UTC, datetime
